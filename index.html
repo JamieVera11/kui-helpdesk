@@ -298,6 +298,7 @@ dialog .db label{margin-top:10px}
 #passgate input[type=password]{font-size:18px;text-align:center;letter-spacing:2px;margin-bottom:10px}#passgate .btn{width:100%;margin-top:6px}
 #passgate .pg-rem{display:flex;gap:8px;align-items:center;justify-content:center;font-weight:400;font-size:12.5px;color:var(--muted)}#passgate .pg-rem input{width:auto}
 #passgate .pg-msg{color:var(--bad);font-size:13px;min-height:18px;margin-top:8px;font-weight:600}#passgate .note{margin-top:8px}
+.bio-ul{margin:6px 0 0;padding-left:18px;line-height:1.7}.bio-ul li{margin:3px 0}.bio-ul .btn{margin-left:4px;padding:4px 10px}
 #post-dlg .pb{white-space:pre-line;line-height:1.6;margin:10px 0}
 #post-dlg img.pv{max-width:100%;border:1px solid var(--line);border-radius:8px;margin-top:8px}
 .pm-row{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;border-bottom:1px solid var(--silverl);padding:8px 0}
@@ -921,6 +922,17 @@ body[data-portal=SYS] #portal button.on{border-color:#E3E8EE}
         <textarea id="s-roster" style="min-height:220px;font-family:Consolas,monospace;font-size:12.5px;white-space:pre"></textarea>
         <div class="actions" style="justify-content:flex-start"><button class="btn sec small" type="button" data-rl="1">Preview the legend</button><button class="btn sec small" type="button" id="rl-reset">Restore RL-002 defaults</button></div>
         <div class="note">Click <b>Save settings</b> at the bottom to keep changes.</div></div>
+      <h3>Biometric logs and roster</h3>
+      <p class="lead">Upload the <b>roster</b> whenever it changes, and the <b>raw biometric export</b>. The helpdesk compares them and tells each employee, when they log in, which days have a missing Time In or Time Out, so they know to file a Manual Time In / Out. HMUA need <b>6 punches</b> a day (3 blocks); everyone else <b>2</b>. Rest days and leave codes are skipped.</p>
+      <div class="box hl">
+        <div class="toolbar"><button class="btn small" type="button" id="ro-pick">Upload roster (.xlsx)</button><button class="btn small" type="button" id="bio-pick">Upload biometric (.xlsx / .csv)</button>
+          <button class="btn small sec" type="button" id="bio-xls">Download missing logs (Excel)</button>
+          <input type="file" id="ro-file" accept=".xlsx,.csv" class="hidden"><input type="file" id="bio-file" accept=".xlsx,.csv" class="hidden"></div>
+        <div id="bio-status" class="note" style="margin:0 0 8px"></div>
+        <div class="toolbar" style="margin-bottom:6px"><label class="note" style="margin:0">Show:</label><select id="bio-show" style="width:auto"><option value="open">Not filed yet</option><option value="all">All missing logs</option></select><input id="bio-q" placeholder="Search name or ID" style="width:200px"></div>
+        <div id="bio-list"></div>
+      </div>
+
       <h3>Employee list</h3>
       <p class="lead" id="emp-count"></p>
       <div class="box hl">
@@ -1109,7 +1121,7 @@ function netStatus(){const n=document.getElementById('net');if(!n)return;n.class
   n.textContent=NET_ERR?NET_ERR:!ONLINE?'Offline preview: data stays in this browser':PENDING?'Saving…':'● Online: saved for everyone'}
 function netError(e){const c=e&&e.code;NET_ERR=c==='invalid_argument'?'Not saved: you do not have access to the helpdesk data.':c==='quota_exceeded'?'Not saved: the online storage is full.':'Not saved online ('+(c||'error')+'). Reload the page and do it again.';netStatus();say(NET_ERR)}
 // updates made by other people: refresh this page, but never while a question box or the settings are open
-function remoteChanged(keys){keys.forEach(k=>REMOTE.add(k));flushRemote()}
+function remoteChanged(keys){keys.forEach(k=>REMOTE.add(k));if(keys.some(k=>/\.(roster|bio)$/.test(k))){try{renderBio();renderUAlerts()}catch(e){}}flushRemote()}
 function flushRemote(){if(!REMOTE.size||DLG_OPEN||(document.getElementById('dlg')||{}).open||(typeof HR_OPEN!=='undefined'&&HR_OPEN==='set-body'))return;
   const k=[...REMOTE][0];REMOTE.clear();window.dispatchEvent(new StorageEvent('storage',{key:k}))}
 setInterval(flushRemote,1500);
@@ -1678,7 +1690,7 @@ function backupInfo(st){const why=[],lb=S.lastBackup,n=S.tickets.length,since=S.
   return{need:why.length>0,why,days,since,urgent:st.pct>=95}}
 window.addEventListener('storage',e=>{if(!e.key||!e.key.startsWith(PFX))return;clearTimeout(window._sy);window._sy=setTimeout(()=>{load();
   if(!$('v-log').classList.contains('hidden')&&!$('log-body').classList.contains('hidden'))renderLog();if(!$('v-home').classList.contains('hidden'))renderStatus();
-  if(apprUser&&!$('v-approve').classList.contains('hidden'))renderAppr();if(USER&&!$('v-mine').classList.contains('hidden'))renderMine();if(USER&&!$('v-bal').classList.contains('hidden'))renderBal();renderUAlerts()},300)});
+  if(apprUser&&!$('v-approve').classList.contains('hidden'))renderAppr();if(USER&&!$('v-mine').classList.contains('hidden'))renderMine();if(USER&&!$('v-bal').classList.contains('hidden'))renderBal();if(!$('v-file').classList.contains('hidden'))renderQuick();renderUAlerts();if(typeof renderBio==='function')renderBio()},300)});
 
 // ===================== ROUTING =====================
 function routeKeyFor(code,e){const r=S.forms[code].route;if(r==='NONE')return'NONE';if(r==='DEPT')return'DEPT:'+e.dept;return'ROLE:'+r}
@@ -1716,7 +1728,7 @@ function tkTouched(t){return Math.max((t.approval&&t.approval.at)||0,(t.proc&&t.
 function updatesFor(id,since){id=String(id).toUpperCase();if(!since)return[];return S.tickets.filter(t=>t.emp.id.toUpperCase()===id&&tkTouched(t)>since&&t.approval.method!=='Cancelled by employee')}
 function renderUAlerts(){const b=$('u-alerts');if(!b)return;if(!USER||!S){b.innerHTML='';return}
   const sw=swapsFor(USER.id).length,up=updatesFor(USER.id,USER_SEEN);
-  b.innerHTML=(sw?`<div class="alert warn"><div class="grow"><b>🔔 ${sw===1?'A co-employee asks':sw+' co-employees ask'} to swap schedules with you.</b> The request goes to the approver only after you agree.</div><button class="btn small" data-go="mine">Answer now</button></div>`:'')+
+  b.innerHTML=bioNotice()+(sw?`<div class="alert warn"><div class="grow"><b>🔔 ${sw===1?'A co-employee asks':sw+' co-employees ask'} to swap schedules with you.</b> The request goes to the approver only after you agree.</div><button class="btn small" data-go="mine">Answer now</button></div>`:'')+
     (up.length?`<div class="alert info"><div class="grow"><b>${up.length===1?'1 of your requests was':up.length+' of your requests were'} updated</b> since your last login: ${esc(up.slice(0,4).map(t=>t.no+' '+(t.proc&&t.proc.at===tkTouched(t)&&t.proc.status?(t.proc.result?'Payroll: '+t.proc.result.toUpperCase():t.proc.status):t.code==='SC'?(t.approval.status==='Approved'?'forwarded to Payroll':t.approval.status==='Rejected'?'not forwarded to Payroll (see why)':stLabel(t.approval.status)):stLabel(t.approval.status))).join(', '))}${up.length>4?'…':''}.</div><button class="btn small sec" data-go="mine">See My Requests</button></div>`:'')}
 function logout(msg){if(USER)saveDraft();USER=null;AFTER=null;renderUbar();show('home');if(msg)flash(msg)}
 function flash(t){const el=$('v-file').classList.contains('hidden')?$('h-alert'):$('f-alert');el.innerHTML=`<div class="alert info"><div class="grow">${esc(t)}</div></div>`+el.innerHTML}
@@ -2692,7 +2704,7 @@ function pinCell(arr,i,k){const r=S[arr][i],p=(PEND.get(r)||{})[k];
     (r[k]&&p!=='__CLEAR__'?`<div class="note"><span class="st own">Set</span> <a href="#" data-pc="${arr}" data-r="${i}" data-pk="${k}">remove</a></div>`:'')}
 function renderSettings(){
   $('set-jump').innerHTML='<span class="note" style="margin:0 6px 0 0;align-self:center">Jump to:</span>'+[...$('set-body').querySelectorAll('h3')].filter(h=>!h.closest('.man,details')).map((h,i)=>{h.id='sj'+i;h.style.scrollMarginTop='120px';return`<button data-sj="sj${i}">${esc(h.textContent.replace(/\s*\(.*\)$/,'').replace(/ – .*/,''))}</button>`}).join('');
-  $('s-roster').value=S.roster||DEFAULT_ROSTER;rlCheck();
+  $('s-roster').value=S.roster||DEFAULT_ROSTER;rlCheck();renderBio();
   renderPM();$('s-co').value=S.company;$('s-bk').value=S.bkDays;$('s-printer').checked=S.printer;renderAdmin();renderLv();
   const oneWord=0;
   $('emp-count').innerHTML=esc(S.employees.length+' employees in the name list'+(S.employees===DEFAULT_EMPLOYEES?' (the list built into the app).':'.'))+
@@ -2885,6 +2897,151 @@ $('emp-file').onchange=async ev=>{const f=ev.target.files[0];ev.target.value='';
     const sheets=await readXlsx(await f.arrayBuffer());if(!sheets.length)throw new Error('No sheets found.');
     const best=sheets.slice().sort((a,b)=>idScore(b.rows)-idScore(a.rows))[0];importRows(best.rows,best.name,sheets)}
   catch(e){alert('Could not read this file: '+e.message+'\nSave it as .xlsx (or .csv) and try again, or use copy and paste.')}};
+
+// ===================== BIOMETRIC CHECK: roster + raw biometric -> missing Time In / Time Out per employee =====================
+const RO_KEY=PFX+'.roster',BIO_KEY=PFX+'.bio',DOCC={};
+function getDoc(k){const raw=LS.getItem(k);if(!raw)return null;if(DOCC[k]&&DOCC[k].raw===raw)return DOCC[k].v;let v=null;try{v=JSON.parse(LZ.unpack(raw))}catch(e){}DOCC[k]={raw,v};return v}
+function putDoc(k,v){LS.setItem(k,LZ.pack(JSON.stringify(v)))}
+const NOPUNCH=new Set(['RDOA','RDONA','VL','SL','UPL','AB','OB','RESIGNED','ML','PL','SPL','BL','EL','HOL','LWOP','AWOL','LOA']);
+const isoD=d=>d.getUTCFullYear()+'-'+pad(d.getUTCMonth()+1,2)+'-'+pad(d.getUTCDate(),2);
+const isoAdd=(iso,n)=>isoD(new Date(Date.parse(iso+'T00:00:00Z')+n*864e5));
+const dayNo=iso=>Math.round(Date.parse(iso+'T00:00:00Z')/864e5);
+const serialIso=v=>{const n=parseFloat(v);return /^\d+(\.\d+)?$/.test(String(v).trim())&&n>30000&&n<80000?isoD(new Date(Math.round((n-25569)*864e5))):''};
+const fmtMin=m=>{m=((m%1440)+1440)%1440;const h=Math.floor(m/60),mi=m%60;return((h+11)%12+1)+':'+pad(mi,2)+(h<12?' AM':' PM')};
+// --- roster file: one row per employee, one column per date (any sheet, any month) ---
+function parseRoster(sheets){const out={};
+  sheets.forEach(sh=>{const rows=sh.rows;let hr=-1,idc=-1;
+    for(let r=0;r<Math.min(rows.length,12)&&hr<0;r++)(rows[r]||[]).forEach((c,i)=>{if(hr<0&&/^(employee\s*id|emp\.?\s*id|employee\s*code|id\s*(no\.?|number)?)$/i.test(String(c).trim())){hr=r;idc=i}});
+    if(hr<0)return;
+    const find=re=>{for(let r=hr;r<=hr+2;r++){const row=rows[r]||[];for(let i=0;i<row.length;i++)if(re.test(String(row[i]).trim()))return i}return-1};
+    const nc=find(/^(name|employee\s*name|full\s*name)$/i),pc=find(/^position$/i),lc=find(/^(location|work\s*location|department|dept\.?)$/i),last=Math.max(idc,nc,pc,lc);
+    const dcols=[];for(let r=hr;r<=hr+1;r++)(rows[r]||[]).forEach((c,i)=>{const iso=serialIso(c);if(iso&&i>last)dcols.push([i,iso])});
+    if(!dcols.length)return;
+    for(let r=hr+1;r<rows.length;r++){const row=rows[r]||[],id=String(row[idc]||'').trim().toUpperCase();if(!/^[A-Z]*\d{3,}$/.test(id))continue;
+      const rec=out[id]=out[id]||{n:'',p:'',l:'',c:{}};if(nc>=0&&row[nc])rec.n=String(row[nc]).trim();if(pc>=0&&row[pc])rec.p=String(row[pc]).trim();if(lc>=0&&row[lc])rec.l=String(row[lc]).trim();
+      dcols.forEach(([i,iso])=>{const v=String(row[i]||'').trim().toUpperCase();if(v&&!rec.c[iso])rec.c[iso]=v})}});
+  return out}
+function mergeRoster(up){const R=getDoc(RO_KEY)||{e:{},m:{}};const months=new Set();let emps=0;const codes=new Set();
+  Object.entries(up).forEach(([id,rec])=>{const byM={};Object.entries(rec.c).forEach(([iso,v])=>{codes.add(v);(byM[iso.slice(0,7)]=byM[iso.slice(0,7)]||{})[+iso.slice(8)]=v});
+    if(!Object.keys(byM).length)return;emps++;R.e[id]={n:rec.n,p:rec.p,l:rec.l};
+    Object.entries(byM).forEach(([m,days])=>{months.add(m);const a=[];for(let d=1;d<=31;d++)a.push(days[d]||'');while(a.length&&!a[a.length-1])a.pop();(R.m[m]=R.m[m]||{})[id]=a.join(',')})});
+  const keep=Object.keys(R.m).sort().slice(-4);Object.keys(R.m).forEach(m=>{if(!keep.includes(m))delete R.m[m]});
+  return{R,emps,months:[...months].sort(),codes}}
+function rosterCode(id,iso){const R=getDoc(RO_KEY),m=R&&R.m&&R.m[iso.slice(0,7)],s=m&&m[id];return s?(s.split(',')[+iso.slice(8)-1]||''):''}
+// --- biometric file: Date/Time + ID Number (+ Name, Status) ---
+function parseStamp(v){v=String(v).trim();
+  if(/^\d+(\.\d+)?$/.test(v)){const n=parseFloat(v);if(!(n>30000&&n<80000))return null;const ms=Math.round((n-25569)*864e5/6e4)*6e4,d=new Date(ms),dd=d.getUTCDate(),mm=d.getUTCMonth()+1;
+    return{ms,amb:dd<=12&&dd!==mm,alt:dd<=12&&dd!==mm?Date.UTC(d.getUTCFullYear(),dd-1,mm,d.getUTCHours(),d.getUTCMinutes()):null}}
+  let m=/^(\d{4})-(\d{1,2})-(\d{1,2})[ T](\d{1,2}):(\d{2})/.exec(v);if(m)return{ms:Date.UTC(+m[1],m[2]-1,+m[3],+m[4],+m[5])};
+  m=/^(\d{1,2})[\/.-](\d{1,2})[\/.-](\d{2,4})\s+(\d{1,2}):(\d{2})(?::\d{2})?\s*([AP]\.?\s*M\.?)?/i.exec(v);if(!m)return null;
+  let a=+m[1],b=+m[2],y=+m[3],h=+m[4];if(y<100)y+=2000;const ap=(m[6]||'').toUpperCase().replace(/[.\s]/g,'');if(ap==='PM'&&h<12)h+=12;if(ap==='AM'&&h===12)h=0;
+  const mo=a>12&&b<=12?b:a,da=a>12&&b<=12?a:b;return{ms:Date.UTC(y,mo-1,da,h,+m[5])}}
+function parseBio(rows){let hr=-1,dc=-1,ic=-1,nc=-1;
+  for(let r=0;r<Math.min(rows.length,15)&&hr<0;r++){const row=(rows[r]||[]).map(c=>String(c).trim().toLowerCase()),d=row.findIndex(c=>/^(date\s*\/\s*time|date\s*time|datetime|time)$/.test(c));if(d<0)continue;
+    hr=r;dc=d;ic=row.findIndex(c=>/^(id\s*number|employee\s*id|employee\s*code|emp\.?\s*id|user\s*id)$/.test(c));if(ic<0)ic=row.findIndex(c=>/^(no\.?|ac-?no\.?|enroll\s*no\.?|id)$/.test(c));nc=row.findIndex(c=>/^(name|employee\s*name)$/.test(c))}
+  if(hr<0)throw new Error('No "Date/Time" column was found. Upload the raw biometric export (with the Date/Time and ID Number columns).');
+  if(ic<0)throw new Error('No "ID Number" column was found in the biometric file.');
+  const P=[];let bad=0;
+  for(let r=hr+1;r<rows.length;r++){const row=rows[r]||[],id=String(row[ic]||'').trim().toUpperCase(),v=String(row[dc]??'').trim();if(!id||!v)continue;const t=parseStamp(v);if(!t){bad++;continue}P.push(Object.assign({id,name:nc>=0?String(row[nc]||'').trim():''},t))}
+  // Excel sometimes turns 11/5/2026 into May 11, 2026: put such dates back next to the others
+  const sure=P.filter(p=>!p.amb).map(p=>p.ms).sort((a,b)=>a-b),mid=sure.length?sure[Math.floor(sure.length/2)]:null;let fixed=0;
+  if(mid!==null)P.forEach(p=>{if(p.amb&&p.alt!=null&&Math.abs(p.alt-mid)<Math.abs(p.ms-mid)){p.ms=p.alt;fixed++}});
+  return{P,bad,fixed}}
+function mergeBio(P){const B=getDoc(BIO_KEY)||{p:{},n:{}};let lo=Infinity,hi=-Infinity;P.forEach(p=>{lo=Math.min(lo,p.ms);hi=Math.max(hi,p.ms)});
+  const from=isoD(new Date(lo)),to=isoD(new Date(hi)),ids=new Set();
+  Object.values(B.p).forEach(days=>Object.keys(days).forEach(iso=>{if(iso>=from&&iso<=to)delete days[iso]}));   // a new file replaces the dates it covers
+  P.sort((a,b)=>a.ms-b.ms).forEach(p=>{const iso=isoD(new Date(p.ms)),min=Math.round((p.ms-Date.parse(iso+'T00:00:00Z'))/6e4),d=(B.p[p.id]=B.p[p.id]||{}),a=(d[iso]=d[iso]||[]);
+    ids.add(p.id);if(p.name)B.n[p.id]=p.name;if(a.length&&min-a[a.length-1]<5)return;a.push(min)});   // punches within 5 minutes count once
+  let all=[];Object.values(B.p).forEach(days=>all=all.concat(Object.keys(days)));all.sort();
+  const oldest=isoAdd(all[all.length-1]||to,-45);
+  Object.keys(B.p).forEach(id=>{Object.keys(B.p[id]).forEach(iso=>{if(iso<oldest)delete B.p[id][iso]});if(!Object.keys(B.p[id]).length)delete B.p[id]});
+  all=all.filter(x=>x>=oldest);let last=0;Object.values(B.p).forEach(days=>Object.entries(days).forEach(([iso,a])=>{a.forEach(m=>{const x=dayNo(iso)*1440+m;if(x>last)last=x})}));
+  B.from=all[0];B.to=all[all.length-1];B.last=last;return{B,from,to,ids:ids.size}}
+// --- shift times for one employee, from the Roster Legend (Administrator -> Shift codes and times) ---
+function rosterInfo(id){const R=getDoc(RO_KEY),e=(R&&R.e&&R.e[id])||{},h=empById(id)||{};return{name:e.n||h.name||(((getDoc(BIO_KEY)||{}).n||{})[id])||id,pos:[e.p,h.position].filter(Boolean),dep:[e.l,h.dept,e.p,h.position].filter(Boolean)}}
+function codeTime(id,code){const rows=roster().times.filter(r=>r.code===code);if(!rows.length)return null;const info=rosterInfo(id),N=rlN;
+  const word=(a,t)=>{a=N(a);return N(t).split(' ').some(w=>w===a||(a.length>=2&&w.startsWith(a))||(a.length>=3&&w.endsWith(a)))};
+  const r=rows.find(r=>r.pos.length&&r.pos.some(x=>info.pos.some(p=>N(p)===N(x))))||rows.find(r=>!r.pos.length&&info.dep.some(t=>word(r.dept,t)));
+  return r?{time:r.time,assumed:false}:{time:rows[0].time,assumed:true}}
+function parseSpans(t){const out=[],re=/(\d{1,2})(?::(\d{2}))?\s*(AM|PM|NN|MN)?\s*[–—-]\s*(\d{1,2})(?::(\d{2}))?\s*(AM|PM|NN|MN)?/gi;let m;
+  const mins=(h,mi,ap)=>{h=+h;mi=+(mi||0);ap=(ap||'').toUpperCase();if(ap==='PM'&&h<12)h+=12;if(ap==='AM'&&h===12)h=0;if(ap==='NN')h=12;if(ap==='MN')h=0;return h*60+mi};
+  while((m=re.exec(t))){const s=mins(m[1],m[2],m[3]||m[6]);let e=mins(m[4],m[5],m[6]);if(e<=s)e+=1440;out.push([s,e])}return out}
+const isHMUA=id=>rosterInfo(id).pos.some(p=>/hmua|make\s*-?\s*up/i.test(p));
+// the missing logs of one employee, within the dates of the uploaded biometric file
+const phAbs=ms=>{const d=new Date(ms+(480+new Date(ms).getTimezoneOffset())*6e4);return dayNo(d.getFullYear()+'-'+pad(d.getMonth()+1,2)+'-'+pad(d.getDate(),2))*1440+d.getHours()*60+d.getMinutes()};
+const bioSilent=id=>{const B=getDoc(BIO_KEY),d=B&&B.p&&B.p[id];return!d||!Object.keys(d).some(iso=>iso>=B.from&&iso<=B.to)};
+// an employee with no punch at all in the file is an export or enrollment problem for HR, not a list of missed punches for the employee
+function bioFlags(id,unknown,evenSilent){const B=getDoc(BIO_KEY);if(!B||!B.from)return[];if(!evenSilent&&bioSilent(id))return[];const L=roster(),days=(B.p&&B.p[id])||{},abs=(iso,m)=>dayNo(iso)*1440+m,cut=Math.max(B.last||0,B.at?phAbs(B.at)-60:0);
+  const exp=[];
+  for(let iso=isoAdd(B.from,-1);iso<=B.to;iso=isoAdd(iso,1)){const code=rosterCode(id,iso);if(!code)continue;
+    const cat=(L.codes[code]||{}).cat||'';if(NOPUNCH.has(code)||/rest|leave|absen|no punch/i.test(cat))continue;
+    const ct=codeTime(id,code);if(!ct&&!L.codes[code]){if(unknown&&iso>=B.from)unknown.add(code);continue}
+    const sp=ct&&ct.time?parseSpans(ct.time):[];exp.push({iso,code,time:sp.length?ct.time:'',spans:sp.length?sp:null,ctx:iso<B.from})}
+  const P=[];Object.entries(days).forEach(([iso,a])=>a.forEach(m=>P.push(abs(iso,m))));
+  const iv=[];exp.forEach((x,xi)=>{if(x.spans)x.spans.forEach((sp,bi)=>iv.push({xi,bi,S:abs(x.iso,sp[0]),E:abs(x.iso,sp[1]),got:[]}))});
+  P.forEach(p=>{let best=null,bd=1e9,bt=1e9;iv.forEach(v=>{const d=p<v.S?v.S-p:p>v.E?p-v.E:0,t=Math.min(Math.abs(p-v.S),Math.abs(p-v.E));if(d<bd||(d===bd&&t<bt)){best=v;bd=d;bt=t}});if(best&&bd<=300)best.got.push(p)});
+  const out=[];
+  exp.forEach((x,xi)=>{if(x.ctx)return;
+    if(x.spans){const vs=iv.filter(v=>v.xi===xi);if(Math.max(...vs.map(v=>v.E))+60>cut)return;   // shift not over yet when the file was uploaded
+      const parts=[];let any=false;vs.forEach(v=>{const M=(v.S+v.E)/2,i=v.got.some(p=>p<M),o=v.got.some(p=>p>=M);if(v.got.length)any=true;const miss=[!i&&'Time In',!o&&'Time Out'].filter(Boolean);if(miss.length)parts.push({b:vs.length>1?v.bi+1:0,miss})});
+      if(parts.length)out.push({id,iso:x.iso,code:x.code,time:x.time,none:!any,parts,have:vs.flatMap(v=>v.got).sort((a,b)=>a-b).map(fmtMin)})}
+    else{if(abs(x.iso,1440)+60>cut)return;const need=isHMUA(id)?6:2,got=(days[x.iso]||[]);if(got.length<need)out.push({id,iso:x.iso,code:x.code,time:'',none:!got.length,count:[got.length,need],have:got.map(fmtMin)})}});
+  return out}
+function flagText(f){if(f.none)return'No Time In and no Time Out';if(f.count)return'Only '+f.count[0]+' of '+f.count[1]+' punches';
+  return f.parts.map(x=>(x.b?'Block '+x.b+': ':'')+'no '+x.miss.join(' and no ')).join(' · ')}
+const flagType=f=>!f.none&&!f.count&&f.parts.length===1&&!f.parts[0].b&&f.parts[0].miss.length===1?(f.parts[0].miss[0]==='Time In'?'In':'Out'):'Both';
+function meDue(iso){let d=iso,n=0;while(n<3){d=isoAdd(d,1);const w=new Date(d+'T00:00:00Z').getUTCDay();if(w!==0&&w!==6)n++}return d}
+function meFiled(id,iso){return S.tickets.find(t=>t.code==='ME'&&t.emp&&String(t.emp.id).toUpperCase()===id&&!['Cancelled','Rejected','Declined'].includes(t.approval&&t.approval.status)&&((t.data&&t.data.rows)||[]).some(r=>r.date===iso))}
+function bioIds(){const R=getDoc(RO_KEY),ids=new Set();if(R&&R.m)Object.values(R.m).forEach(m=>Object.keys(m).forEach(id=>ids.add(id)));return[...ids]}
+// --- employee: a notice at login, with a button that opens the Manual Time In / Out form already filled in ---
+function bioNotice(){if(!USER)return'';const B=getDoc(BIO_KEY);if(!B||!B.from)return'';const id=String(USER.id).toUpperCase();
+  const fl=bioFlags(id).filter(f=>f.iso>=isoAdd(todayIso(),-40));if(!fl.length)return'';
+  const items=fl.map(f=>{const tk=meFiled(id,f.iso),due=meDue(f.iso),late=todayIso()>due;
+    return`<li><b>${esc(fmtDS(f.iso))}</b> <span class="note" style="display:inline">(${esc(f.code)}${f.time?' · '+esc(f.time):''})</span>: ${f.have.length?'recorded '+esc(f.have.join(', '))+', ':''}<b>${esc(flagText(f))}</b>.
+      ${tk?`<span class="st Approved">✓ Filed ${esc(tk.no)} – ${esc(stLabel(tk.approval.status))}</span>`:`${late?'<span class="st Rejected">Late: file now; it is credited in the next payroll</span>':'File by <b>'+esc(fmtDS(due))+'</b>.'} <button class="btn small" data-mefile="${f.iso}|${flagType(f)}">File Manual Time In / Out</button>`}</li>`}).join('');
+  const open=fl.filter(f=>!meFiled(id,f.iso)).length;
+  return`<div class="alert ${open?'warn':'info'}"><div class="grow"><b>⏱ ${open?'Missing biometric logs: '+open+' day'+(open>1?'s':'')+' to file':'Missing biometric logs: all filed'}</b> <span class="note" style="display:inline">(checked against your roster, biometric up to ${esc(fmtDS(B.to))})</span><ul class="bio-ul">${items}</ul></div></div>`}
+document.addEventListener('click',e=>{const b=e.target.closest('[data-mefile]');if(!b)return;e.preventDefault();const[iso,et]=b.dataset.mefile.split('|');
+  needLogin(()=>{openForm('ME');setTimeout(()=>{const c=document.querySelector('#fx-cause input[value="Missed punch"]');if(c)c.checked=true;
+    const tb=$('fx-rows'),tr=tb&&tb.querySelector('tr');if(tr){const d=tr.querySelector('[data-col=date]'),t=tr.querySelector('[data-col=et]');if(d)d.value=iso;if(t)t.value=et}
+    try{refreshForm()}catch(x){}const f=tr&&tr.querySelector(et==='Out'?'[data-col=out]':'[data-col=in]');if(f)f.focus()},60)})});
+// --- Administrator: uploads and the list of everyone's missing logs ---
+async function readTable(f){if(/\.csv$/i.test(f.name)){const raw=await f.arrayBuffer();let t=new TextDecoder('utf-8').decode(raw);if(t.includes('�'))t=new TextDecoder('windows-1252').decode(raw);if(t.charCodeAt(0)===0xFEFF)t=t.slice(1);return[{name:f.name,rows:splitRows(t)}]}
+  if(/\.xls$/i.test(f.name))throw new Error('This is an old .xls file. Open it in Excel, choose File → Save As → Excel Workbook (.xlsx), then upload the .xlsx file.');return await readXlsx(await f.arrayBuffer())}
+function bioAll(){const unknown=new Set(),all=[],silent=[];bioIds().forEach(id=>{if(bioSilent(id)){if(bioFlags(id,unknown,true).length)silent.push(id);return}bioFlags(id,unknown).forEach(f=>all.push(f))});all.sort((a,b)=>a.iso<b.iso?1:a.iso>b.iso?-1:rosterInfo(a.id).name.localeCompare(rosterInfo(b.id).name));return{all,unknown,silent}}
+function renderBio(){const st=$('bio-status');if(!st)return;const R=getDoc(RO_KEY),B=getDoc(BIO_KEY);
+  const rm=R&&R.m?Object.keys(R.m).sort().map(m=>new Date(m+'-01T00:00:00').toLocaleDateString('en-US',{month:'short',year:'numeric'})):[];
+  st.innerHTML=`<b>Roster:</b> ${R&&R.at?esc(bioIds().length+' employees · '+rm.join(', ')+' · uploaded '+fmtStamp(R.at)+(R.by?' by '+R.by:'')+(R.file?' ('+R.file+')':'')):'not uploaded yet'}<br>
+    <b>Biometric:</b> ${B&&B.from?esc(fmtDS(B.from)+' – '+fmtDS(B.to)+' · last punch '+fmtDS(isoAdd('1970-01-01',Math.floor(B.last/1440)))+' '+fmtMin(B.last%1440)+' · uploaded '+fmtStamp(B.at)+(B.by?' by '+B.by:'')+(B.file?' ('+B.file+')':'')):'not uploaded yet'}`;
+  const box=$('bio-list');if(!R||!B||!B.from){box.innerHTML='<p class="note">Upload both files to see the missing logs.</p>';return}
+  const{all,unknown,silent}=bioAll(),q=($('bio-q').value||'').trim().toLowerCase(),showAll=$('bio-show').value==='all';
+  const noRoster=Object.keys(B.p||{}).filter(id=>!bioIds().includes(id));
+  const list=all.map(f=>({f,tk:meFiled(f.id,f.iso)})).filter(x=>(showAll||!x.tk)&&(!q||(x.f.id+' '+rosterInfo(x.f.id).name).toLowerCase().includes(q)));
+  const open=all.filter(f=>!meFiled(f.id,f.iso)).length;
+  box.innerHTML=`<div class="note" style="margin:0 0 6px"><b>${all.length}</b> missing log${all.length===1?'':'s'} found · <b>${open}</b> not filed yet · <b>${all.length-open}</b> filed.${unknown.size?' Codes not checked (not in the Roster Legend): <b>'+esc([...unknown].join(', '))+'</b>.':''}${noRoster.length?' '+noRoster.length+' ID(s) in the biometric are not in the roster: '+esc(noRoster.slice(0,8).join(', '))+(noRoster.length>8?'…':'')+'.':''}</div>`+(silent.length?`<div class="alert warn" style="margin:0 0 8px"><div class="grow"><b>${silent.length} scheduled employee${silent.length>1?'s have':' has'} no punch at all in this biometric file</b> (not shown to them). Check that the export includes everyone, or the ID on the device: <span class="note" style="display:inline">${esc(silent.slice(0,12).map(id=>rosterInfo(id).name+' ('+id+')').join(', '))}${silent.length>12?'…':''}</span></div></div>`:'')+
+    (list.length?`<div class="scroll" style="max-height:420px"><table><thead><tr><th>Date</th><th>Employee</th><th>Roster</th><th>Recorded</th><th>Missing</th><th>Manual entry</th></tr></thead><tbody>${list.map(({f,tk})=>`<tr><td>${esc(fmtDS(f.iso))}</td><td><b>${esc(rosterInfo(f.id).name)}</b><br><span class="note" style="display:inline">${esc(f.id)}</span></td><td>${esc(f.code)}${f.time?'<br><span class="note" style="display:inline">'+esc(f.time)+'</span>':''}</td><td>${esc(f.have.join(', ')||'–')}</td><td><b>${esc(flagText(f))}</b></td><td>${tk?`<span class="st Approved">${esc(tk.no)}</span> ${esc(stLabel(tk.approval.status))}`:todayIso()>meDue(f.iso)?'<span class="st Rejected">Not filed – late</span>':'Not filed · due '+esc(fmtDS(meDue(f.iso)))}</td></tr>`).join('')}</tbody></table></div>`:'<p class="note">Nothing to show.</p>')}
+$('ro-pick').onclick=()=>$('ro-file').click();$('bio-pick').onclick=()=>$('bio-file').click();
+$('bio-show').onchange=renderBio;$('bio-q').oninput=renderBio;
+const adminName=()=>(S.admin&&S.admin.name)||'Administrator';
+$('ro-file').onchange=async ev=>{const f=ev.target.files[0];ev.target.value='';if(!f)return;
+  try{const up=parseRoster(await readTable(f)),n=Object.keys(up).filter(id=>Object.keys(up[id].c).length).length;
+    if(!n)throw new Error('No employee rows were found. The roster needs an "EMPLOYEE ID" column and one column per date.');
+    const{R,emps,months,codes}=mergeRoster(up),L=roster(),unk=[...codes].filter(c=>!L.codes[c]&&!NOPUNCH.has(c)&&!L.times.some(t=>t.code===c));
+    const mn=months.map(m=>new Date(m+'-01T00:00:00').toLocaleDateString('en-US',{month:'long',year:'numeric'}));
+    if(!await sure('Roster read: '+emps+' employees, '+mn.join(' and ')+'.\nThe roster of these employees for these months will be replaced by this file.'+(unk.length?'\n\nCodes not in the Roster Legend (not checked): '+unk.join(', '):''),'Upload roster'))return;
+    R.at=Date.now();R.by=adminName();R.file=f.name;putDoc(RO_KEY,R);renderBio()}
+  catch(e){alert('Could not read the roster: '+e.message)}};
+$('bio-file').onchange=async ev=>{const f=ev.target.files[0];ev.target.value='';if(!f)return;
+  try{const sheets=await readTable(f);let res=null,err=null;for(const sh of sheets){try{res=parseBio(sh.rows);if(res.P.length)break}catch(e){err=e}}
+    if(!res||!res.P.length)throw err||new Error('No punches were found in this file.');
+    const{B,from,to,ids}=mergeBio(res.P);
+    if(!await sure('Biometric read: '+res.P.length.toLocaleString()+' punches of '+ids+' employees, '+fmtDS(from)+' – '+fmtDS(to)+'.'+(res.fixed?'\n'+res.fixed.toLocaleString()+' dates that Excel had turned around (day and month) were corrected.':'')+(res.bad?'\n'+res.bad+' rows had no readable date and were skipped.':'')+'\n\nPunches already saved for these dates will be replaced.','Upload biometric'))return;
+    B.at=Date.now();B.by=adminName();B.file=f.name;putDoc(BIO_KEY,B);renderBio()}
+  catch(e){alert('Could not read the biometric file: '+e.message)}};
+$('bio-xls').onclick=()=>{const B=getDoc(BIO_KEY);if(!B||!B.from||!getDoc(RO_KEY)){alert('Upload the roster and the biometric file first.');return}const{all}=bioAll();if(!all.length){alert('No missing logs found.');return}
+  downloadBlob('Missing_Biometric_Logs_'+todayIso()+'.xlsx',XLSX.book([{name:'Missing logs',title:S.company+' – Missing biometric logs',sub:'Biometric '+fmtDS(B.from)+' – '+fmtDS(B.to)+' · checked against the roster · downloaded '+fmtStamp(Date.now()),
+    head:['Date','Emp ID','Employee','Position','Roster code','Shift time','Recorded punches','Missing','Manual entry','Status','Due'],
+    rows:all.map(f=>{const tk=meFiled(f.id,f.iso),i=rosterInfo(f.id);return[f.iso,f.id,i.name,i.pos[0]||'',f.code,f.time,f.have.join(', '),flagText(f),tk?tk.no:'Not filed',tk?stLabel(tk.approval.status):'',meDue(f.iso)]})}]))};
 function buildEmps(body,m){const v=(r,k)=>m[k]>=0?String(r[m[k]]||'').trim():'';const seen=new Set();
   const nm=r=>{const l=v(r,'name'),f=v(r,'first'),mid=v(r,'middle');return f?(l+', '+f+(mid?' '+mid:'')).replace(/\s+/g,' ').trim():l};
   return body.map(r=>({id:v(r,'id').toUpperCase(),name:nm(r),position:v(r,'position'),dept:v(r,'dept'),hiring:v(r,'hiring')})).filter(e=>/^[A-Z]*\d+$/.test(e.id)&&e.name&&!seen.has(e.id)&&seen.add(e.id))}
