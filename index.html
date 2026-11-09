@@ -292,6 +292,12 @@ dialog .db label{margin-top:10px}
 .gv-d{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;padding:6px 14px;font-size:14px;color:var(--muted)}.gv-d b{color:var(--ink)}
 .gv-t{margin:8px 14px;width:calc(100% - 28px)}.gv-t td{font-size:15px}
 .gv-f{font-size:11.5px;color:var(--muted);padding:10px 14px;border-top:1px solid var(--line);margin-top:8px}
+#passgate{position:fixed;inset:0;z-index:999;background:linear-gradient(150deg,#0B2A5B 0,#143E7E 100%);display:grid;place-items:center;padding:16px}
+#passgate .pg-box{background:#fff;border-radius:14px;border-top:5px solid var(--gold);padding:26px 24px;width:100%;max-width:380px;text-align:center;box-shadow:0 12px 40px rgba(0,0,0,.3)}
+#passgate .pg-logo{height:44px;margin-bottom:6px}#passgate h2{margin:0 0 4px;color:var(--navy);font-size:20px}#passgate p{margin:0 0 14px;color:var(--muted);font-size:14px}
+#passgate input[type=password]{font-size:18px;text-align:center;letter-spacing:2px;margin-bottom:10px}#passgate .btn{width:100%;margin-top:6px}
+#passgate .pg-rem{display:flex;gap:8px;align-items:center;justify-content:center;font-weight:400;font-size:12.5px;color:var(--muted)}#passgate .pg-rem input{width:auto}
+#passgate .pg-msg{color:var(--bad);font-size:13px;min-height:18px;margin-top:8px;font-weight:600}#passgate .note{margin-top:8px}
 #post-dlg .pb{white-space:pre-line;line-height:1.6;margin:10px 0}
 #post-dlg img.pv{max-width:100%;border:1px solid var(--line);border-radius:8px;margin-top:8px}
 .pm-row{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;border-bottom:1px solid var(--silverl);padding:8px 0}
@@ -1063,9 +1069,29 @@ async function retry(f){try{return await f()}catch(e){if(e&&e.code==='unavailabl
 const API=(typeof window.KUI_API==='string'&&/^https:\/\/script\.google(usercontent)?\.com\//.test(window.KUI_API.trim()))?window.KUI_API.trim():'';
 const IN_GAS=()=>!!(window.google&&google.script&&google.script.run);
 const gs=(fn,...a)=>IN_GAS()?new Promise((ok,no)=>google.script.run.withSuccessHandler(ok).withFailureHandler(no)[fn](...a))
-  :fetch(API,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({fn,args:a}),redirect:'follow'})
+  :fetch(API,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({fn,args:a,pass:PASS}),redirect:'follow'})
     .then(r=>{if(!r.ok)throw new Error('The helpdesk server answered '+r.status);return r.json()})
-    .then(j=>{if(!j||!j.ok)throw new Error((j&&j.error)||'The helpdesk server did not answer');return j.r});
+    .then(j=>{if(!j||!j.ok){const m=(j&&j.error)||'The helpdesk server did not answer';if(/^WRONG_PASSCODE/.test(m)&&PASS_OK){passForget();location.reload()}throw new Error(m)}return j.r});
+// ---------- helpdesk passcode: nothing loads without it, even if someone copies the link ----------
+let PASS='',PASS_OK=false;
+try{PASS=sessionStorage.getItem('kuiPass')||localStorage.getItem('kuiPass')||''}catch(e){}
+function passForget(){PASS='';PASS_OK=false;try{sessionStorage.removeItem('kuiPass');localStorage.removeItem('kuiPass')}catch(e){}}
+function passGate(){return new Promise(done=>{
+  const tryIt=async(first)=>{const m=document.getElementById('pg-msg'),b=document.getElementById('pg-go');
+    if(b)b.disabled=true;if(m&&!first)m.textContent='Checking…';
+    try{const r=await gs('kvAll');PASS_OK=true;const rem=document.getElementById('pg-rem');
+      try{sessionStorage.setItem('kuiPass',PASS);if(rem&&rem.checked)localStorage.setItem('kuiPass',PASS)}catch(e){}
+      const g=document.getElementById('passgate');if(g)g.remove();done(r)}
+    catch(e){const wrong=/^WRONG_PASSCODE/.test(String(e.message||e));if(wrong)passForget();const msg=String(e.message||e);show_(/no passcode is set/.test(msg)?'The helpdesk passcode is not set up yet. HR: add HELPDESK_PASSCODE in Google Apps Script (Project Settings → Script Properties).':wrong?(first?'':'Wrong passcode. Please try again.'):'Cannot reach the helpdesk. Check the internet, then try again.')}};
+  const show_=msg=>{let g=document.getElementById('passgate');
+    if(!g){document.body.insertAdjacentHTML('beforeend',`<div id="passgate"><form class="pg-box" autocomplete="off"><img src="${LOGO_B}" alt="" class="pg-logo"><h2>KUI Employee Helpdesk</h2>
+      <p>Enter the helpdesk passcode to continue.</p><input id="pg-in" type="password" placeholder="Helpdesk passcode" autocomplete="off">
+      <label class="pg-rem"><input type="checkbox" id="pg-rem"> Remember on this computer (helpdesk PC only)</label>
+      <button class="btn" id="pg-go" type="submit">Continue</button><div id="pg-msg" class="pg-msg"></div>
+      <div class="note">Ask HR for the passcode. Do not share it.</div></form></div>`);g=document.getElementById('passgate');
+      g.querySelector('form').onsubmit=ev=>{ev.preventDefault();const v=document.getElementById('pg-in').value.trim();if(!v){document.getElementById('pg-msg').textContent='Type the passcode.';return}PASS=v;tryIt(false)}}
+    document.getElementById('pg-go').disabled=false;document.getElementById('pg-msg').textContent=msg;const i=document.getElementById('pg-in');i.value='';i.focus()};
+  if(PASS)tryIt(true);else show_('')})}
 let VER=0;
 // the Sheet keeps plain JSON; the page keeps the packed form it always used
 function applyDocs(docs,all){const changed=[];if(all){Object.keys(MEM).forEach(k=>{if(!(k in docs)&&!INFL[k]){delete MEM[k];changed.push(k)}})}
@@ -1091,7 +1117,8 @@ window.addEventListener('beforeunload',e=>{if(PENDING){e.preventDefault();e.retu
 async function bootOnline(start){
   if(!IN_GAS()&&!API){ONLINE=false;if(typeof window.KUI_API==='string')NET_ERR='Not connected yet: paste the Google Apps Script link in config.js';netStatus();start();return}
   ONLINE=true;DB=true;netStatus();
-  let r=null;for(let i=0;i<3&&!r;i++){try{r=await gs('kvAll')}catch(e){NET_ERR='Cannot reach the helpdesk data yet. Trying again…';netStatus();await sleep(2000)}}
+  let r=null;if(!IN_GAS())r=await passGate();
+  for(let i=0;i<3&&!r;i++){try{r=await gs('kvAll')}catch(e){NET_ERR='Cannot reach the helpdesk data yet. Trying again…';netStatus();await sleep(2000)}}
   if(!r){NET_ERR='Cannot reach the helpdesk data. Reload the page.';netStatus();return}
   NET_ERR='';applyDocs(r.docs,true);VER=r.ver;POSTS=r.posts||[];netStatus();start();
   setInterval(poll,window.__POLL_MS||(IN_GAS()?5000:8000));document.addEventListener('visibilitychange',()=>{if(!document.hidden)poll()})}
