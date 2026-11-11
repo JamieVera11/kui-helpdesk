@@ -274,31 +274,11 @@ dialog .db label{margin-top:10px}
 .post .ex{margin:0;color:var(--ink);font-size:14px;line-height:1.5;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 .post.feat .ex{-webkit-line-clamp:4}
 .post .att{margin-top:auto;padding-top:6px;font-size:13px;color:var(--navy2);font-weight:600}
+.post .thumb{display:block;width:100%;max-height:260px;object-fit:contain;object-position:center top;border:1px solid var(--line);border-radius:8px;background:#F6F8FB;margin-top:4px}
+.post.feat .thumb{max-height:520px;object-position:center top}
+#post-dlg iframe.pv{width:100%;height:70vh;border:1px solid var(--line);border-radius:8px;margin-top:8px;background:#F6F8FB}
 .bb-empty{border:2px dashed var(--line);border-radius:12px;padding:26px;text-align:center;color:var(--muted)}
-#post-dlg{max-width:900px;width:calc(100% - 24px)}
-#post-dlg .pdfv{max-height:70vh;overflow:auto;border:1px solid var(--line);border-radius:8px;margin-top:10px;background:var(--silverl);padding:10px}
-#post-dlg .pdfv canvas{display:block;width:100%;height:auto;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.18);margin:0 auto 10px}
-#post-dlg .pdfv .pg{font-size:12px;color:var(--muted);text-align:center;margin:-4px 0 10px}
-.rl-line{margin-top:6px;padding-top:6px;border-top:1px dashed #CFE3F8;color:var(--ink);line-height:1.6}
-.rl-line span{white-space:nowrap}
-#rl-b h3{color:var(--navy);font-size:16px;margin:16px 0 8px}#rl-b:focus{outline:none}
-.linkb{background:none;border:0;color:var(--navy2);text-decoration:underline;cursor:pointer;font:inherit;font-size:12.5px;padding:0 2px}
-.gv{border:2px solid var(--navy);border-radius:12px;overflow:hidden;background:#fff}
-.gv-h{display:flex;gap:12px;align-items:center;background:var(--navy);color:#fff;padding:12px 14px;border-bottom:4px solid var(--gold)}.gv-h img{height:30px;background:#fff;border-radius:4px;padding:2px}
-.gv-h b{display:block;font-size:16px;letter-spacing:.4px}.gv-h span{font-size:12px;color:#D6E4F7}
-.gv-no{font-size:34px;font-weight:800;color:var(--navy);padding:12px 14px 4px;letter-spacing:1px}
-.gv-st{margin:0 14px;padding:9px 12px;border-radius:8px;font-weight:800;font-size:15px}.gv-st.ok{background:var(--skyl);color:var(--navy);border:1px solid var(--sky2)}.gv-st.bad{background:var(--badl);color:var(--bad);border:1px solid #F2B8B0}
-.gv-p{padding:12px 14px 4px}.gv-p b{display:block;font-size:19px}.gv-p span{color:var(--muted);font-size:13px}
-.gv-d{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;padding:6px 14px;font-size:14px;color:var(--muted)}.gv-d b{color:var(--ink)}
-.gv-t{margin:8px 14px;width:calc(100% - 28px)}.gv-t td{font-size:15px}
-.gv-f{font-size:11.5px;color:var(--muted);padding:10px 14px;border-top:1px solid var(--line);margin-top:8px}
-#passgate{position:fixed;inset:0;z-index:999;background:linear-gradient(150deg,#0B2A5B 0,#143E7E 100%);display:grid;place-items:center;padding:16px}
-#passgate .pg-box{background:#fff;border-radius:14px;border-top:5px solid var(--gold);padding:26px 24px;width:100%;max-width:380px;text-align:center;box-shadow:0 12px 40px rgba(0,0,0,.3)}
-#passgate .pg-logo{height:44px;margin-bottom:6px}#passgate h2{margin:0 0 4px;color:var(--navy);font-size:20px}#passgate p{margin:0 0 14px;color:var(--muted);font-size:14px}
-#passgate input[type=password]{font-size:18px;text-align:center;letter-spacing:2px;margin-bottom:10px}#passgate .btn{width:100%;margin-top:6px}
-#passgate .pg-rem{display:flex;gap:8px;align-items:center;justify-content:center;font-weight:400;font-size:12.5px;color:var(--muted)}#passgate .pg-rem input{width:auto}
-#passgate .pg-msg{color:var(--bad);font-size:13px;min-height:18px;margin-top:8px;font-weight:600}#passgate .note{margin-top:8px}
-.bio-ul{margin:6px 0 0;padding-left:18px;line-height:1.7}.bio-ul li{margin:3px 0}.bio-ul .btn{margin-left:4px;padding:4px 10px}
+#post-dlg{max-width:760px}
 #post-dlg .pb{white-space:pre-line;line-height:1.6;margin:10px 0}
 #post-dlg img.pv{max-width:100%;border:1px solid var(--line);border-radius:8px;margin-top:8px}
 .pm-row{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;border-bottom:1px solid var(--silverl);padding:8px 0}
@@ -621,7 +601,7 @@ body[data-portal=SYS] #portal button.on{border-color:#E3E8EE}
     <div class="rule" id="g-rule"></div>
     <div class="grid"><div class="full who" id="g-who"></div></div>
     <div class="grid" id="g-fields" style="margin-top:14px"></div>
-    <div class="err" id="g-err"></div><div class="note" id="g-up" style="font-weight:600;color:var(--navy)"></div>
+    <div class="err" id="g-err"></div>
     <div class="note" style="text-align:right">What you type is kept for 3 days if you leave this page; it is cleared once you submit.</div>
     <div class="actions"><button class="btn sec" data-back="1">← Back</button><button class="btn" id="g-submit">Submit and print</button></div>
   </div>
@@ -637,7 +617,7 @@ body[data-portal=SYS] #portal button.on{border-color:#E3E8EE}
     <div id="d-warn" class="warnbox" style="max-width:640px;margin:10px auto"></div>
     <p class="lead" id="d-next"></p>
     <div class="actions" style="justify-content:center">
-      <button class="btn gold hidden" id="d-guard">Show slip for the guard</button><button class="btn sec" id="d-print">Print my copy</button>
+      <button class="btn sec" id="d-print">Print my copy</button>
       <button class="btn sec" data-go="file">File another request</button>
       <button class="btn" id="d-out">Done – log out</button>
     </div>
@@ -676,7 +656,7 @@ body[data-portal=SYS] #portal button.on{border-color:#E3E8EE}
       <div id="a-nopin"></div>
     </div>
     <div id="a-body" class="hidden">
-      <div class="toolbar"><span id="a-who"></span><span style="flex:1"></span><button class="btn small sec" id="a-xls" title="Excel file of every request still waiting for your approval or processing">Download requests waiting for my action (Excel)</button><button class="btn small sec" id="a-chpin">Change my PIN</button><button class="btn small sec" id="a-logout">Log out</button></div>
+      <div class="toolbar"><span id="a-who"></span><span style="flex:1"></span><button class="btn small sec" id="a-xls">Download my list (Excel)</button><button class="btn small sec" id="a-chpin">Change my PIN</button><button class="btn small sec" id="a-logout">Log out</button></div>
       <div id="a-list"></div>
       <details class="box" style="margin-top:14px"><summary style="cursor:pointer;font-weight:700;color:var(--navy)">Guide for approvers and processing (HR, Admin, Payroll)</summary>
     <div class="man" id="man-appr">
@@ -694,7 +674,7 @@ body[data-portal=SYS] #portal button.on{border-color:#E3E8EE}
       <ol><li>Click <b>Approvers / Processing</b>, type your PIN and click <b>Open</b>.</li>
         <li><b>Step 1 – Waiting for your approval:</b> click <b>Show all details</b> to read the full form. Leave requests show the employee's leave balance. Click <b>Approve</b>, or <b>Reject</b> and type the reason (required).</li>
         <li><b>Step 2 – Waiting for processing</b> (HR, Admin and Payroll accounts): when the work is done, click <b>Mark as processed</b> (you can add a remark, for example "Encoded in the Nov 6–20 payroll"). If a document is missing, click <b>On hold</b> and type what is needed: the employee sees it.</li>
-        <li>Click <b>Download requests waiting for my action (Excel)</b> to get every request still waiting for your approval or processing in one Excel file.</li>
+        <li>Click <b>Download my list (Excel)</b> if you want everything waiting for you in Excel.</li>
         <li>Click <b>Log out</b> when you finish. The page also logs you out after 2 minutes.</li></ol>
       <div class="tip">Your decision, your name, the date and time are printed on the employee's form as an approval stamp. You do not need to sign that form again.</div>
       <h3>5. Approving on paper</h3>
@@ -706,8 +686,8 @@ body[data-portal=SYS] #portal button.on{border-color:#E3E8EE}
         <tr><td>Manual Time In / Out</td><td>The employee really worked those times.</td></tr>
         <tr><td>Overtime</td><td>You asked for the work. Hours and nature of work are correct.</td></tr>
         <tr><td>Official Business</td><td>The trip is work related. Destination and times are complete.</td></tr>
-        <tr><td>Salary Concern</td><td>HR: open the uploaded payslip (and any proof) and check it against the DTR and approved forms. Payroll: decide Valid (say when it will be paid) or Not valid (say why).</td></tr>
-        <tr><td>Stay-Out / Gate Pass</td><td>Dates, guardian notified (open the uploaded proof), waiver agreed, the right form for the number of nights.</td></tr></table>
+        <tr><td>Salary Concern</td><td>Facts you can confirm (for example overtime you approved).</td></tr>
+        <tr><td>Stay-Out / Gate Pass</td><td>Dates, guardian notified, waiver agreed, the right form for the number of nights.</td></tr></table>
       <h3>7. Mistakes</h3>
       <p>A decision cannot be changed on this page. Tell HR. HR can correct the approval or the processing status in the Ticket Log, and the change is recorded in the ticket history.</p>
     </div>
@@ -916,23 +896,6 @@ body[data-portal=SYS] #portal button.on{border-color:#E3E8EE}
       <div class="scroll" style="max-height:420px"><table><thead><tr><th>Employee</th><th>Leave model</th><th>Entitlement (period)</th><th>Earned</th><th>Carried over</th><th>Used</th><th>Balance</th><th>HR note</th></tr></thead><tbody id="lv-rows"></tbody></table></div>
       <div class="note" id="lv-count"></div>
 
-      <h3>Shift codes and times (Roster Legend)</h3>
-      <p class="lead">Used in Change of Shift (employees pick from their own shifts), and shown as "Your shifts" on Change of Schedule, Manual Time In / Out and Overtime. One line per entry, columns separated by <b>|</b>. Lines starting with # are notes. To add a department or position, add lines like <code>Studio | Dealer, Shuffler | D | 6:00 AM – 2:00 PM</code>; leave Positions blank for everyone in the department. The Department only needs to be part of the department name in the employee list ("HR" matches "HR and Admin").</p>
-      <div class="box hl"><div id="rl-check" class="note" style="margin:0 0 8px"></div>
-        <textarea id="s-roster" style="min-height:220px;font-family:Consolas,monospace;font-size:12.5px;white-space:pre"></textarea>
-        <div class="actions" style="justify-content:flex-start"><button class="btn sec small" type="button" data-rl="1">Preview the legend</button><button class="btn sec small" type="button" id="rl-reset">Restore RL-002 defaults</button></div>
-        <div class="note">Click <b>Save settings</b> at the bottom to keep changes.</div></div>
-      <h3>Biometric logs and roster</h3>
-      <p class="lead">Upload the <b>roster</b> whenever it changes, and the <b>raw biometric export</b>. The helpdesk compares them and tells each employee, when they log in, which days have a missing Time In or Time Out, so they know to file a Manual Time In / Out. HMUA need <b>6 punches</b> a day (3 blocks); everyone else <b>2</b>. Rest days and leave codes are skipped.</p>
-      <div class="box hl">
-        <div class="toolbar"><button class="btn small" type="button" id="ro-pick">Upload roster (.xlsx)</button><button class="btn small" type="button" id="bio-pick">Upload biometric (.xlsx / .csv)</button>
-          <button class="btn small sec" type="button" id="bio-xls">Download missing logs (Excel)</button>
-          <input type="file" id="ro-file" accept=".xlsx,.csv" class="hidden"><input type="file" id="bio-file" accept=".xlsx,.csv" class="hidden"></div>
-        <div id="bio-status" class="note" style="margin:0 0 8px"></div>
-        <div class="toolbar" style="margin-bottom:6px"><label class="note" style="margin:0">Show:</label><select id="bio-show" style="width:auto"><option value="open">Not filed yet</option><option value="all">All missing logs</option></select><input id="bio-q" placeholder="Search name or ID" style="width:200px"></div>
-        <div id="bio-list"></div>
-      </div>
-
       <h3>Employee list</h3>
       <p class="lead" id="emp-count"></p>
       <div class="box hl">
@@ -1011,8 +974,8 @@ body[data-portal=SYS] #portal button.on{border-color:#E3E8EE}
         <tr><td>Manual Time In / Out</td><td>Sign "Requested by". Clip any proof. Submit to HR.</td></tr>
         <tr><td>Overtime Authorization</td><td>Sign after the overtime, when your times match the biometric. Submit to HR within the same cut-off.</td></tr>
         <tr><td>Official Business</td><td>Sign. After the OB, attach proof of visit (receipt, visitor log, certificate). Submit to HR within the same cut-off.</td></tr>
-        <tr><td>Salary Concern</td><td>Nothing to bring to HR. Upload a photo or screenshot of your payslip in the form (other proof is optional). HR validates it, then Payroll decides; check the result in My Requests.</td></tr>
-        <tr><td>Stay-Out Pass</td><td>Before filing, have your proof ready (screenshot of your chat or text with your guardian, call log, or email): you upload it in the form. Then sign the Pass and the Waiver (Annex B) and bring your request letter. Show the approved Pass to the guard when you leave.</td></tr>
+        <tr><td>Salary Concern</td><td>Attach your payslip or proof. Submit to HR / Payroll.</td></tr>
+        <tr><td>Stay-Out Pass</td><td>Sign the Pass and the Waiver (Annex B). Bring your request letter and the proof that you told your guardian. Show the approved Pass to the guard when you leave.</td></tr>
         <tr><td>Return from Stay-Out / Luggage Slip</td><td>Sign. Show the Pass and the Luggage Slip to the guard when you arrive. Only the listed items may come in.</td></tr>
         <tr><td>Overnight Permit / Gate Pass</td><td>Sign. Show the approved permit to the guard when you leave and when you return.</td></tr></table>
       <h3>6. Checking your requests</h3>
@@ -1048,11 +1011,6 @@ body[data-portal=SYS] #portal button.on{border-color:#E3E8EE}
 <dialog id="say"><div class="dh">Helpdesk</div><div class="db"><div id="say-m"></div><div class="actions"><button class="btn" id="say-ok">OK</button></div></div></dialog>
 <dialog id="post-dlg"><div class="dh" id="pd-h"></div><div class="db"><div id="pd-b"></div>
   <div class="actions"><span id="pd-acts" style="display:flex;gap:8px;flex-wrap:wrap;margin-right:auto"></span><button class="btn" id="pd-x">Close</button></div></div></dialog>
-<dialog id="rl-dlg" style="max-width:860px;width:calc(100% - 24px)"><div class="dh">Roster Legend – shift codes and times</div><div class="db"><div id="rl-b" style="max-height:70vh;overflow:auto"></div>
-  <div class="actions"><button class="btn" id="rl-x" onclick="this.closest('dialog').close()">Close</button></div></div></dialog>
-<dialog id="guard-dlg" style="max-width:520px;width:calc(100% - 16px);padding:0"><div class="db" style="padding:12px"><div id="gv-b"></div>
-  <div class="note" style="text-align:center;margin:8px 0">Show this screen to the guard, or take a photo or screenshot of it.</div>
-  <div class="actions" style="margin-top:6px"><button class="btn sec" id="gv-save">Save as picture</button><button class="btn" onclick="this.closest('dialog').close()">Close</button></div></div></dialog>
 <datalist id="empList"></datalist>
 <div id="print"></div>
 <script src="config.js"></script>
@@ -1081,29 +1039,9 @@ async function retry(f){try{return await f()}catch(e){if(e&&e.code==='unavailabl
 const API=(typeof window.KUI_API==='string'&&/^https:\/\/script\.google(usercontent)?\.com\//.test(window.KUI_API.trim()))?window.KUI_API.trim():'';
 const IN_GAS=()=>!!(window.google&&google.script&&google.script.run);
 const gs=(fn,...a)=>IN_GAS()?new Promise((ok,no)=>google.script.run.withSuccessHandler(ok).withFailureHandler(no)[fn](...a))
-  :fetch(API,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({fn,args:a,pass:PASS}),redirect:'follow'})
+  :fetch(API,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({fn,args:a}),redirect:'follow'})
     .then(r=>{if(!r.ok)throw new Error('The helpdesk server answered '+r.status);return r.json()})
-    .then(j=>{if(!j||!j.ok){const m=(j&&j.error)||'The helpdesk server did not answer';if(/^WRONG_PASSCODE/.test(m)&&PASS_OK){passForget();location.reload()}throw new Error(m)}return j.r});
-// ---------- helpdesk passcode: nothing loads without it, even if someone copies the link ----------
-let PASS='',PASS_OK=false;
-try{PASS=sessionStorage.getItem('kuiPass')||localStorage.getItem('kuiPass')||''}catch(e){}
-function passForget(){PASS='';PASS_OK=false;try{sessionStorage.removeItem('kuiPass');localStorage.removeItem('kuiPass')}catch(e){}}
-function passGate(){return new Promise(done=>{
-  const tryIt=async(first)=>{const m=document.getElementById('pg-msg'),b=document.getElementById('pg-go');
-    if(b)b.disabled=true;if(m&&!first)m.textContent='Checking…';
-    try{const r=await gs('kvAll');PASS_OK=true;const rem=document.getElementById('pg-rem');
-      try{sessionStorage.setItem('kuiPass',PASS);if(rem&&rem.checked)localStorage.setItem('kuiPass',PASS)}catch(e){}
-      const g=document.getElementById('passgate');if(g)g.remove();done(r)}
-    catch(e){const wrong=/^WRONG_PASSCODE/.test(String(e.message||e));if(wrong)passForget();const msg=String(e.message||e);show_(/no passcode is set/.test(msg)?'The helpdesk passcode is not set up yet. HR: add HELPDESK_PASSCODE in Google Apps Script (Project Settings → Script Properties).':wrong?(first?'':'Wrong passcode. Please try again.'):'Cannot reach the helpdesk. Check the internet, then try again.')}};
-  const show_=msg=>{let g=document.getElementById('passgate');
-    if(!g){document.body.insertAdjacentHTML('beforeend',`<div id="passgate"><form class="pg-box" autocomplete="off"><img src="${LOGO_B}" alt="" class="pg-logo"><h2>KUI Employee Helpdesk</h2>
-      <p>Enter the helpdesk passcode to continue.</p><input id="pg-in" type="password" placeholder="Helpdesk passcode" autocomplete="off">
-      <label class="pg-rem"><input type="checkbox" id="pg-rem"> Remember on this computer (helpdesk PC only)</label>
-      <button class="btn" id="pg-go" type="submit">Continue</button><div id="pg-msg" class="pg-msg"></div>
-      <div class="note">Ask HR for the passcode. Do not share it.</div></form></div>`);g=document.getElementById('passgate');
-      g.querySelector('form').onsubmit=ev=>{ev.preventDefault();const v=document.getElementById('pg-in').value.trim();if(!v){document.getElementById('pg-msg').textContent='Type the passcode.';return}PASS=v;tryIt(false)}}
-    document.getElementById('pg-go').disabled=false;document.getElementById('pg-msg').textContent=msg;const i=document.getElementById('pg-in');i.value='';i.focus()};
-  if(PASS)tryIt(true);else show_('')})}
+    .then(j=>{if(!j||!j.ok)throw new Error((j&&j.error)||'The helpdesk server did not answer');return j.r});
 let VER=0;
 // the Sheet keeps plain JSON; the page keeps the packed form it always used
 function applyDocs(docs,all){const changed=[];if(all){Object.keys(MEM).forEach(k=>{if(!(k in docs)&&!INFL[k]){delete MEM[k];changed.push(k)}})}
@@ -1121,7 +1059,7 @@ function netStatus(){const n=document.getElementById('net');if(!n)return;n.class
   n.textContent=NET_ERR?NET_ERR:!ONLINE?'Offline preview: data stays in this browser':PENDING?'Saving…':'● Online: saved for everyone'}
 function netError(e){const c=e&&e.code;NET_ERR=c==='invalid_argument'?'Not saved: you do not have access to the helpdesk data.':c==='quota_exceeded'?'Not saved: the online storage is full.':'Not saved online ('+(c||'error')+'). Reload the page and do it again.';netStatus();say(NET_ERR)}
 // updates made by other people: refresh this page, but never while a question box or the settings are open
-function remoteChanged(keys){keys.forEach(k=>REMOTE.add(k));if(keys.some(k=>/\.(roster|bio)$/.test(k))){try{renderBio();renderUAlerts()}catch(e){}}flushRemote()}
+function remoteChanged(keys){keys.forEach(k=>REMOTE.add(k));flushRemote()}
 function flushRemote(){if(!REMOTE.size||DLG_OPEN||(document.getElementById('dlg')||{}).open||(typeof HR_OPEN!=='undefined'&&HR_OPEN==='set-body'))return;
   const k=[...REMOTE][0];REMOTE.clear();window.dispatchEvent(new StorageEvent('storage',{key:k}))}
 setInterval(flushRemote,1500);
@@ -1129,8 +1067,7 @@ window.addEventListener('beforeunload',e=>{if(PENDING){e.preventDefault();e.retu
 async function bootOnline(start){
   if(!IN_GAS()&&!API){ONLINE=false;if(typeof window.KUI_API==='string')NET_ERR='Not connected yet: paste the Google Apps Script link in config.js';netStatus();start();return}
   ONLINE=true;DB=true;netStatus();
-  let r=null;if(!IN_GAS())r=await passGate();
-  for(let i=0;i<3&&!r;i++){try{r=await gs('kvAll')}catch(e){NET_ERR='Cannot reach the helpdesk data yet. Trying again…';netStatus();await sleep(2000)}}
+  let r=null;for(let i=0;i<3&&!r;i++){try{r=await gs('kvAll')}catch(e){NET_ERR='Cannot reach the helpdesk data yet. Trying again…';netStatus();await sleep(2000)}}
   if(!r){NET_ERR='Cannot reach the helpdesk data. Reload the page.';netStatus();return}
   NET_ERR='';applyDocs(r.docs,true);VER=r.ver;POSTS=r.posts||[];netStatus();start();
   setInterval(poll,window.__POLL_MS||(IN_GAS()?5000:8000));document.addEventListener('visibilitychange',()=>{if(!document.hidden)poll()})}
@@ -1176,11 +1113,6 @@ const PROHIBITED='Prohibited items: intoxicating liquor or drinks, firearms or d
 const $=id=>document.getElementById(id);
 const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const pad=(n,w=4)=>String(n).padStart(w,'0');
-const fmtDS=iso=>{const x=new Date(iso+'T00:00:00');return isNaN(x)?iso:x.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'})};
-const CS_SD=d=>fmtDS(d.dFrom)+(d.dTo&&d.dTo!==d.dFrom?' to '+fmtDS(d.dTo):'');
-const CS_DATES=d=>d.ctype!=='Change of Shift'&&/^\d{4}-\d\d-\d\d$/.test(d.aFrom||'')&&/^\d{4}-\d\d-\d\d$/.test(d.aTo||'')?'OFF '+fmtDate(d.aTo)+', WORK '+fmtDate(d.aFrom):fmtDate(d.dFrom)+(d.dTo&&d.dTo!==d.dFrom?' – '+fmtDate(d.dTo):'');
-const SHK={aFrom:'aShF',aTo:'aShT',cFrom:'cShF',cTo:'cShT'};
-const schedV=(d,k)=>[fmtDate(d[k]||''),d[SHK[k]]||''].filter(Boolean).join(' · ');
 function fmtDate(iso){if(!iso)return'';const d=new Date(iso+'T00:00:00');if(isNaN(d))return iso;return d.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})}
 const PH_AWAY=(()=>{try{return Intl.DateTimeFormat().resolvedOptions().timeZone!=='Asia/Manila'}catch(e){return false}})();
 function fmtStamp(t){const d=new Date(t),z={timeZone:'Asia/Manila'};return d.toLocaleDateString('en-US',Object.assign({month:'short',day:'numeric',year:'numeric'},z))+' '+d.toLocaleTimeString('en-US',Object.assign({hour:'2-digit',minute:'2-digit'},z))+(PH_AWAY?' PH':'')}
@@ -1200,15 +1132,8 @@ function radioVal(name){const r=document.querySelector(`input[name="${name}"]:ch
 function cutoffRange(iso){const d=new Date(iso+'T00:00:00'),y=d.getFullYear(),m=d.getMonth(),day=d.getDate();let s,e;
   if(day>=21){s=new Date(y,m,21);e=new Date(y,m+1,5)}else if(day>=6){s=new Date(y,m,6);e=new Date(y,m,20)}else{s=new Date(y,m-1,21);e=new Date(y,m,5)}return[s,e]}
 function cutoff(iso){if(!iso)return'';const[s,e]=cutoffRange(iso),f=x=>x.toLocaleDateString('en-US',{month:'short',day:'numeric'});return f(s)+' – '+f(e)+', '+e.getFullYear()}
-// pay-out: cut-off 6–20 is paid on the 25th; cut-off 21–5 is paid on the 10th
-function payoutOf(e){return e.getDate()===20?new Date(e.getFullYear(),e.getMonth(),25):new Date(e.getFullYear(),e.getMonth(),10)}
-const fmtMD=x=>x.toLocaleDateString('en-US',{month:'short',day:'numeric'});
-// cut-offs around today, newest first: {label, payout}
-function cutoffsBack(n){const out=[];let d=new Date();d.setHours(0,0,0,0);d=new Date(d.getTime()+20*864e5);
-  for(let i=0;i<n;i++){const iso=d.getFullYear()+'-'+pad(d.getMonth()+1,2)+'-'+pad(d.getDate(),2),[s,e]=cutoffRange(iso);out.push({label:cutoff(iso),payout:payoutOf(e)});d=new Date(s.getTime()-864e5)}return out}
-// only cut-offs already paid out can be filed (from pay-out day on)
-function cutoffList(){const t=new Date();t.setHours(0,0,0,0);return cutoffsBack(12).filter(c=>c.payout<=t).slice(0,6).map(c=>[c.label,c.label+' · paid '+fmtMD(c.payout)])}
-function nextCutoffOpen(){const t=new Date();t.setHours(0,0,0,0);const l=cutoffsBack(12).filter(c=>c.payout>t);const c=l[l.length-1];return c?'<b>'+esc(c.label)+'</b> can be filed from <b>'+esc(fmtD(c.payout))+'</b>':''}
+function cutoffList(){const out=[];let d=new Date();for(let i=0;i<7;i++){const iso=d.getFullYear()+'-'+pad(d.getMonth()+1,2)+'-'+pad(d.getDate(),2);const c=cutoff(iso);if(!out.includes(c))out.push(c);
+  const[s]=cutoffRange(iso);d=new Date(s.getTime()-864e5)}return out}
 function workdaysBefore(fromIso){const t=new Date();t.setHours(0,0,0,0);const f=new Date(fromIso+'T00:00:00');let n=0;
   for(let d=new Date(t.getTime()+864e5);d<f;d=new Date(d.getTime()+864e5)){if(d.getDay()!==0&&d.getDay()!==6)n++}return n}
 function workdaysSince(iso){const t=new Date();t.setHours(0,0,0,0);let n=0;for(let d=new Date(new Date(iso+'T00:00:00').getTime()+864e5);d<=t;d=new Date(d.getTime()+864e5)){if(d.getDay()!==0&&d.getDay()!==6)n++}return n}
@@ -1356,8 +1281,8 @@ const DUE={LEAVE:'VL: at least 7 working days before · SL / emergency: on the d
   ME:'Within 3 working days of the missed entry, before the payroll cut-off',
   OT:'Approved BEFORE the overtime · submit within the same cut-off',
   OB:'Approved BEFORE you leave the office · submit within the same cut-off',
-  SC:'After the pay-out · upload your payslip · no need to go to HR',
-  SO:'At least 7 calendar days before leaving · not on Sundays · proof that you told your guardian (to upload)',
+  SC:'File as soon as you see the problem in your payslip',
+  SO:'At least 7 calendar days before leaving · not on Sundays',
   SR:'At least 3 calendar days before you come back · not on Sundays',
   LS:'Present to the guard on the day you bring the items in',
   GP:'Overnight: 24 hours before · Gate Pass: 48 hours before · not on Sundays'};
@@ -1372,10 +1297,6 @@ function leaveRule(type,from,fil){let base,l='';
   else base='<b>Statutory / special leave:</b> file in advance whenever possible, with the documents required for the leave type.';
   if(from)l+=live('',cutNote(from).trim());
   return base+l}
-// any date with a year far from today is almost always a typing slip in the date box
-function yearCheck(d){const y=new Date().getFullYear(),bad=new Set();
-  const look=v=>{if(typeof v==='string'&&/^\d{4,6}-\d\d-\d\d$/.test(v)){const yy=parseInt(v);if(yy<y-1||yy>y+1)bad.add(v)}else if(Array.isArray(v))v.forEach(look);else if(v&&typeof v==='object')Object.values(v).forEach(look)};
-  look(d);return bad.size?live('late','Check the year: '+[...bad].map(fmtDate).join(', ')+' looks like a typing mistake.'):''}
 function formRule(code,d){d=d||{};const r0=(d.rows||[])[0]||{};let base=esc(DUE[code]||''),l='';const td=todayIso();
   switch(code){
    case'CS':base='File at least <b>3 working days</b> before the change. Cut-off for change of shift / day off: <b>every 17th of the month</b> (next: '+fmtD(next17())+'). An unfiled or late swap shows as tardiness or absence for one employee and unrecorded work for the other.';
@@ -1386,13 +1307,13 @@ function formRule(code,d){d=d||{};const r0=(d.rows||[])[0]||{};let base=esc(DUE[
      if(r0.date){l=r0.date<td?live('late','This OT date has passed. Emergency work needs the Department Head to certify that it was required and unforeseen.'):live('ok','Advance filing: have it approved before the overtime starts.');l+=live('',cutNote(r0.date).trim())}break;
    case'OB':base='Have this approved <b>before</b> you leave the office. For urgent OB directed by management, file on your return, approved by the Department Head. Submit to HR <b>within the same payroll cut-off</b>, or it may be deducted as undertime.';
      if(r0.date){l=r0.date<td?live('late','The OB date has passed: urgent OB, approved by the Department Head on your return.'):live('ok','Get the approval before you leave the office.');l+=live('',cutNote(r0.date).trim())}break;
-   case'SC':base='You can file a concern only <b>after the pay-out</b> of that cut-off: cut-off <b>6–20</b> is paid on the <b>25th</b>, cut-off <b>21–5</b> on the <b>10th</b>. Check your payslip first. <b>How it moves:</b> 1 · HR validates your concern and tells you if it is forwarded to Payroll, or why not → 2 · Payroll checks it and decides <b>valid</b> (with when it will be paid) or <b>not valid</b> (with the reason) → you see the result in <b>My Requests</b>.';{const n=nextCutoffOpen();if(n)l=live('',n+'.')}break;
-   case'SO':base='File with HR at least <b>7 calendar days</b> before leaving, with your request letter. <b>No filing on Sundays.</b> <b>Proof needed:</b> upload a screenshot of your chat or text with your guardian, your call log, or the email. Stays of up to 10 days use the Overnight Permit / Gate Pass.';
+   case'SC':base='There is no fixed deadline. File as soon as you see the problem in your payslip, and give HR / Payroll your payslip or proof.';break;
+   case'SO':base='File with HR at least <b>7 calendar days</b> before leaving, with your request letter. <b>No filing on Sundays.</b> Stays of up to 10 days use the Overnight Permit / Gate Pass.';
      if(isSunday())l=live('late','Today is Sunday: dormitory requests are not filed on Sundays.');
-     if(d.from){const n=daysBetween(td,d.from);l+=n<0?live('late','This date has already passed ('+fmtDate(d.from)+'). Check the date and the year.'):n>=7?live('ok','On time: '+plural(n,'calendar day')+' before you leave.'):live('late','Only '+plural(n,'calendar day')+' before you leave. It needs at least 7.')}break;
+     if(d.from){const n=daysBetween(td,d.from);l+=n>=7?live('ok','On time: '+plural(n,'calendar day')+' before you leave.'):live('late','Only '+plural(n,'calendar day')+' before you leave. It needs at least 7.')}break;
    case'SR':base='File your return at least <b>3 calendar days</b> before you come back. <b>No filing on Sundays.</b> List every item you will bring in.';
      if(isSunday())l=live('late','Today is Sunday: dormitory requests are not filed on Sundays.');
-     if(d.rdate){const n=daysBetween(td,d.rdate);l+=n<0?live('late','This date has already passed ('+fmtDate(d.rdate)+'). Check the date and the year.'):n>=3?live('ok','On time: '+plural(n,'calendar day')+' before your return.'):live('late','Only '+plural(n,'calendar day')+' before your return. It needs at least 3.')}break;
+     if(d.rdate){const n=daysBetween(td,d.rdate);l+=n>=3?live('ok','On time: '+plural(n,'calendar day')+' before your return.'):live('late','Only '+plural(n,'calendar day')+' before your return. It needs at least 3.')}break;
    case'LS':base='Present this slip to the security guard on the day you bring the items in. Only the items listed may be brought in.';break;
    case'GP':base='File at least <b>24 hours</b> before departure for an Overnight Permit, and <b>48 hours</b> before for a Gate Pass. <b>No filing on Sundays:</b> if the deadline falls on a Sunday, file by Saturday. Curfew is 11:00 p.m.';
      if(isSunday())l=live('late','Today is Sunday: dormitory requests are not filed on Sundays.');
@@ -1429,30 +1350,20 @@ const FORMS={
    {k:'cp',type:'emp',show:d=>d.swap!=='Not applicable (no swap)',label:'Counterpart employee (the employee you will swap with)',req:1},
    {k:'cpHow',type:'radio',label:'How will your counterpart agree? (the request goes to the approver only after they agree)',req:1,show:d=>d.swap!=='Not applicable (no swap)',opts:[CP_SEND,CP_HERE]},
    {k:'cpPin',type:'pin',of:'cp',label:"Counterpart's PIN (your counterpart types it)",req:1,show:d=>d.swap!=='Not applicable (no swap)'&&d.cpHow===CP_HERE,note:'Your counterpart types their own helpdesk PIN to agree right now. The PIN is checked and never saved.'},
-   {k:'aTo',type:'date',label:'Date you want to be OFF',req:1,half:1,show:d=>d.ctype!=='Change of Shift'},
-   {k:'aFrom',type:'date',label:'Date you will WORK instead (your scheduled day off)',req:1,half:1,show:d=>d.ctype!=='Change of Shift'},
-   {k:'mySum',type:'calc',label:'Your request',show:d=>d.ctype!=='Change of Shift',calc:d=>d.aFrom&&d.aTo?'You: OFF on '+fmtDS(d.aTo)+', WORK on '+fmtDS(d.aFrom)+'.':'Choose both dates.'},
-   {k:'myShSum',type:'calc',label:'Your request',show:d=>d.ctype==='Change of Shift',calc:d=>d.aShF&&d.aShT&&d.dFrom?'You: work '+d.aShT+' instead of '+d.aShF+' on '+CS_SD(d)+'.':'Fill in the date(s) and both shifts.'},
-   {k:'dFrom',type:'date',label:'Date(s) of the shift change – from',req:1,half:1,show:d=>d.ctype==='Change of Shift'},
-   {k:'dTo',type:'date',label:'Date(s) of the shift change – to (same date if one day)',half:1,show:d=>d.ctype==='Change of Shift'},
-   {k:'aShF',type:'shift',label:'Your scheduled shift on those date(s)',req:1,half:1,show:d=>d.ctype==='Change of Shift',ph:'e.g. Day shift 7AM–3PM'},
-   {k:'aShT',type:'shift',label:'Shift you want to work instead',req:1,half:1,show:d=>d.ctype==='Change of Shift',ph:'e.g. Night shift 11PM–7AM'},
-   {k:'days',type:'calc',label:'No. of days',half:1,show:d=>d.ctype==='Change of Shift',calc:d=>d.dFrom?(daysBetween(d.dFrom,d.dTo||d.dFrom)+1):''},
-   {k:'cInfo',type:'calc',label:"Your counterpart's change (filled in automatically)",show:d=>d.swap!=='Not applicable (no swap)'&&!!d.cp,calc:d=>{if(!d.cp||!(d.swap!=='Not applicable (no swap)'))return'';const n=d.cp.name;
-     if(d.ctype==='Change of Shift')return d.aShF&&d.aShT?n+': works your '+d.aShF+' instead of '+d.aShT+(d.dFrom?' on '+CS_SD(d):'')+'.':'Fill in both shifts first.';
-     return d.aFrom&&d.aTo?n+': WORKS on '+fmtDS(d.aTo)+' (covers you), OFF on '+fmtDS(d.aFrom)+'.':'Choose both dates first.'}},
+   {k:'aFrom',type:'text',label:'Your day off / shift – From (original)',req:1,half:1,ph:'e.g. Rest day Oct 25 / Day shift'},
+   {k:'aTo',type:'text',label:'Your day off / shift – To (requested)',req:1,half:1,ph:'e.g. Rest day Oct 27 / Night shift'},
+   {k:'cFrom',type:'text',label:"Counterpart's day off / shift – From (original)",req:1,half:1,show:d=>d.swap!=='Not applicable (no swap)'},
+   {k:'cTo',type:'text',label:"Counterpart's day off / shift – To (requested)",req:1,half:1,show:d=>d.swap!=='Not applicable (no swap)'},
+   {k:'dFrom',type:'date',label:'Date(s) affected – from',req:1,half:1},
+   {k:'dTo',type:'date',label:'Date(s) affected – to (same date if one day)',half:1},
+   {k:'days',type:'calc',label:'No. of days',half:1,calc:d=>d.dFrom?(daysBetween(d.dFrom,d.dTo||d.dFrom)+1):''},
    {k:'reason',type:'textarea',label:'Reason for request',req:1},
    {k:'cert',type:'check',req:1,text:'UNDERTAKING: We voluntarily agree to this change of schedule. It must not result in overtime, rest day or holiday premium pay, nor in more than six (6) consecutive working days for either employee. Each of us is fully responsible for the shift we agreed to cover. My counterpart must agree on the Helpdesk with their own login before this goes to the approver, and will sign the Conforme on the printed form.'}],
-  derive(d){const sw=d.swap!=='Not applicable (no swap)';
-   if(d.ctype==='Change of Shift'){d.aFrom=d.aTo='';d.cFrom=d.cTo='';d.cShF=sw?d.aShT||'':'';d.cShT=sw?d.aShF||'':''}
-   else{d.aShF=d.aShT=d.cShF=d.cShT='';const x=[d.aFrom,d.aTo].filter(Boolean).sort();d.dFrom=x[0]||'';d.dTo=x[1]||'';d.days=x.length;
-     d.cFrom=sw?d.aTo||'':'';d.cTo=sw?d.aFrom||'':''}},
   check(d,e){const er=[],w=[];if(d.cp&&d.cp.id===e.id)er.push('The counterpart cannot be yourself.');
    if(d.dTo&&d.dFrom&&d.dTo<d.dFrom)er.push('Date to is before date from.');
-   if(d.ctype==='Change of Day Off'&&d.aFrom&&d.aFrom===d.aTo)er.push('The date you want OFF and the date you will WORK cannot be the same.');
    if(d.cp&&(d.cp.position!==e.position||d.cp.dept!==e.dept))w.push('Counterpart has a different position or department ('+d.cp.position+', '+d.cp.dept+')');
    if(d.dFrom&&workdaysBefore(d.dFrom)<3)w.push('Filed less than 3 working days before the change');return{er,w}},
-  dates:d=>CS_DATES(d),
+  dates:d=>fmtDate(d.dFrom)+(d.dTo&&d.dTo!==d.dFrom?' – '+fmtDate(d.dTo):''),
   summary:d=>d.ctype+(d.cp?' with '+d.cp.name:' (no counterpart)'),reason:d=>d.reason,cut:d=>d.dFrom},
  ME:{group:'pay',title:'Manual Time In / Out',formNo:'HR-F-003',prefix:'TK-',next:40,route:'DEPT',proc:'HR',desc:'Missed punch, biometric or power failure, field or remote work',
   lead:'Write the time you actually worked, not your schedule. A time-out after midnight belongs to the same shift. Up to 2 dates per form.',
@@ -1493,7 +1404,7 @@ const FORMS={
    {k:'natOther',type:'text',label:'Others – specify',req:1,show:d=>d.nature==='Others'},
    {k:'rows',type:'rows',label:'Details of official business',req:1,max:4,cols:[
      {k:'date',label:'Date',type:'date',req:1},{k:'dest',label:'Destination / company or office',type:'text',req:1,wide:1},
-     {k:'person',label:'Agenda',type:'text',wide:1,ph:'e.g. Conference, meeting with Mr. Cruz'},{k:'tout',label:'Time out (leave office)',type:'time',req:1},{k:'tin',label:'Time in (return)',type:'time'}]},
+     {k:'person',label:'Person to meet',type:'text'},{k:'tout',label:'Time out (leave office)',type:'time',req:1},{k:'tin',label:'Time in (return)',type:'time'}]},
    {k:'purpose',type:'textarea',label:'Purpose',req:1},
    {k:'dur',type:'radio',label:'Duration',req:1,opts:['Whole Day','Half Day - AM','Half Day - PM']},
    {k:'ret',type:'radio',label:'Return to office',req:1,opts:['Yes, same day','No, proceed home after OB']},
@@ -1505,7 +1416,7 @@ const FORMS={
   dates:d=>(d.rows||[]).map(r=>fmtDate(r.date)).join(', '),
   summary:d=>(d.nature==='Others'?d.natOther:d.nature)+' · '+(d.rows||[]).map(r=>r.dest).join('; '),reason:d=>d.purpose,cut:d=>(d.rows||[{}])[0].date},
  SC:{group:'pay',title:'Salary Concern',formNo:'Payroll',prefix:'SC-',route:'HR',proc:'PAYROLL',desc:'Problem in your pay: overtime pay, night differential, holiday pay, deductions',
-  lead:'File your pay concern online, any time of day: no need to go to the HR office. Have a photo or screenshot of your payslip ready to upload. For overtime pay, list each overtime date. HR checks your concern first; then Payroll decides whether the claim is valid, and you see the result in My Requests.',
+  lead:'HR checks your concern first. If it is valid, HR sends it to Payroll to fix; if not, HR sends you a message. For overtime pay, list each overtime date.',
   fields:[
    {k:'concern',type:'radio',label:'Concern',req:1,opts:['Overtime pay','Night differential','Holiday / rest day pay','Leave not paid','Late / absence deduction','Other deduction','Missing or short salary','Allowance','SSS / PhilHealth / Pag-IBIG','Tax','Other']},
    {k:'period',type:'select',label:'Payroll period (cut-off) concerned',req:1,opts:()=>cutoffList(),half:1},
@@ -1515,14 +1426,12 @@ const FORMS={
      {k:'hrs',label:'OT hours rendered',type:'number',req:1,step:'0.25'},{k:'paid',label:'Hours paid in payslip',type:'number',step:'0.25'},
      {k:'ref',label:'Approved OT form / ticket no.',type:'text'}]},
    {k:'details',type:'textarea',label:'Details of the concern',req:1},
-   {k:'proof',type:'file',label:'Your payslip (photo or screenshot)',req:1,max:3,note:'Your payslip is enough. Add other proof only if you have it (approved OT form, DTR, screenshot). Photo or PDF, up to 3 files, 10 MB each. No need to go to the HR office.'},
+   {k:'doc',type:'radio',label:'Supporting document',req:1,opts:['Yes – payslip / proof given to HR','No']},
    {k:'cert',type:'check',req:1,text:'I certify that the information stated above is true and correct.'}],
-  check(d){const w=[],er=[];if(d.concern==='Overtime pay'&&(d.ot||[]).some(r=>!r.ref))w.push('Some overtime rows have no approved OT form / ticket number');
-   if(d.period&&!cutoffList().some(x=>x[0]===d.period))er.push('The cut-off '+d.period+' is not paid out yet. You can file after its pay-out date.');
-   if(d.period&&d.concern==='Overtime pay')(d.ot||[]).forEach(r=>{if(r.date&&cutoff(r.date)!==d.period)er.push('OT date '+fmtDate(r.date)+' is not in the cut-off '+d.period+'. File it under its own cut-off.')});return{er,w}},
+  check(d){const w=[];if(d.concern==='Overtime pay'&&(d.ot||[]).some(r=>!r.ref))w.push('Some overtime rows have no approved OT form / ticket number');return{er:[],w}},
   dates:d=>d.period||'',summary:d=>d.concern+(d.concern==='Overtime pay'?' · '+(d.ot||[]).length+' OT date(s)':''),reason:d=>d.details,cut:null},
  SO:{group:'admin',title:'Temporary Stay-Out Pass',formNo:'Annex A + Annex B',prefix:'SO-',route:'DEPT',proc:'ADMIN',desc:'Stay out of the KUI Dormitory for 11 to 30 calendar days (prints the Pass and the Waiver)',
-  lead:'File at least 7 calendar days before leaving, with your request letter. No filing on Sundays. Stays of up to 10 days use the Overnight Permit / Gate Pass. Before you start, have your proof ready: a screenshot of your chat or text with your guardian, your call log, or the email. You will upload it in this form.',
+  lead:'File at least 7 calendar days before leaving, with your request letter. No filing on Sundays. Stays of up to 10 days use the Overnight Permit / Gate Pass.',
   fields:[
    {k:'nr',type:'radio',label:'Request',req:1,opts:['New','Renewal']},
    {k:'room',type:'text',label:'Room no.',req:1,half:1},{k:'contact',type:'text',label:'Your contact no.',req:1,half:1},
@@ -1533,7 +1442,7 @@ const FORMS={
    {k:'gName',type:'text',label:'Guardian name',req:1,half:1},{k:'gRel',type:'text',label:'Relationship',req:1,half:1},
    {k:'gNo',type:'text',label:'Guardian contact no.',req:1,half:1},{k:'gDate',type:'date',label:'Date guardian was notified',req:1,half:1},
    {k:'gMode',type:'radio',label:'How you told your guardian',req:1,opts:['Phone call','Text / SMS','Messenger / chat app','Email','Other']},
-   {k:'gFiles',type:'file',label:'Upload proof that you told your guardian',req:1,max:3,note:'A screenshot of your chat or text, your call log, or the email. Photo or PDF, up to 3 files, 10 MB each.'},
+   {k:'gProof',type:'radio',label:'Proof you will show HR',req:1,opts:['Screenshot of message / chat','Call log','Email copy','Other']},
    {k:'cert',type:'check',req:1,text:'I have read the Temporary Stay-Out Waiver, Release and Undertaking (Annex B, printed with this pass). I will sign it, and I agree to its terms: I am responsible for my own safety and belongings during the stay-out, I waive the shuttle service, my luggage will be checked when I leave, and I will file my return at least 3 calendar days before I come back.'}],
   check(d){const er=[],w=[];if(d.from&&d.to){const n=daysBetween(d.from,d.to)+1;if(n<1)er.push('Stay-out to is before stay-out from.');
     else if(n<11)er.push('This is '+n+' day(s). For stays of up to 10 days use the Overnight Permit / Gate Pass instead.');else if(n>30)er.push('The Temporary Stay-Out Pass covers 11 to 30 calendar days only. Talk to HR.')}
@@ -1551,7 +1460,7 @@ const FORMS={
    if(d.pass&&!S.tickets.some(t=>t.no.toUpperCase()===d.pass.trim().toUpperCase()&&t.code==='SO'))w.push('Stay-Out Pass '+d.pass+' is not in this computer');return{er:[],w}},
   dates:d=>fmtDate(d.rdate),summary:d=>'Pass '+d.pass+' · '+(d.items||[]).length+' item line(s)',reason:d=>'Return on '+fmtDate(d.rdate)+' '+fmtTime(d.rtime),cut:null},
  LS:{group:'admin',title:'Luggage / Item Slip',formNo:'Annex C',prefix:'LS-',route:'NONE',proc:'',desc:'List the items you will bring into the dormitory premises',
-  lead:'Show this slip to the security guard on your phone, as a photo or screenshot, or printed. Only the items listed may be brought in.',
+  lead:'Present this slip to the security guard. Only the items listed may be brought in.',
   fields:[
    {k:'room',type:'text',label:'Room no.',req:1,half:1},{k:'edate',type:'date',label:'Date of entry',req:1,half:1},
    {k:'pass',type:'text',label:'Temp. Stay-Out Pass no. (if any)',half:1},
@@ -1622,10 +1531,9 @@ function migrate(){
   if(!S.leave||!S.leave.rows||(S.leave.src===DEFAULT_LEAVE.src&&!S.leave.at))S.leave=DEFAULT_LEAVE;
   if(S.leave.live)S.leave.asOf=todayIso();
   // once: the department head approves the dormitory forms too
-  // once: a salary concern is validated by HR first, then decided by Payroll
-  if(!S.scFix1){if(S.forms&&S.forms.SC&&S.forms.SC.route==='DEPT')S.forms.SC.route='HR';S.scFix1=1}
   if(!S.trialFix1){['SO','SR','GP'].forEach(c=>{if(S.forms&&S.forms[c])S.forms[c].route='DEPT'});S.trialFix1=1}
   // once: the masterlist has one department, HR and Admin, approved by SL; drop the earlier sample departments that have no PIN
+  if(!S.scHrFix){if(S.forms&&S.forms.SC)S.forms.SC.route='HR';S.scHrFix=1}
   if(!S.trialFix2){const D=[...new Set(DEFAULT_EMPLOYEES.map(e=>e.dept))];S.routes=(S.routes||[]).filter(r=>D.includes(r.dept)||r.pinH||r.backupPinH);D.forEach(d=>{if(!S.routes.find(r=>r.dept===d))S.routes.push({dept:d,name:'SL',position:'Department Head',pinH:'',backupName:'',backupPinH:''})});S.trialFix2=1}
   (S.roles||[]).forEach(r=>{if(r.role==='DORM'){r.role='ADMIN';if(!r.position||/^dormitory admin$/i.test(r.position))r.position='Admin (Dormitory)'}});
   S.roles=S.roles||[];ROLE_DEFS.forEach(r=>{if(!S.roles.find(x=>x.role===r.role))S.roles.push({role:r.role,name:'',position:r.label,pinH:'',backupName:'',backupPinH:''})});
@@ -1653,7 +1561,7 @@ function setAppr(t,a){t.approval=a;const p=t.proc||(t.proc={dept:'',status:'',by
 function addHist(t,what){(t.hist=t.hist||[]).push({at:Date.now(),what})}
 const NOSTEP2=['Rejected','Cancelled','Declined'];
 function procState(t){const p=t.proc||{};if(!p.dept)return'';return p.status||(NOSTEP2.includes(t.approval.status)?'Not processed (not approved)':'Waiting for approval')}
-function procText(t){const p=t.proc||{};if(!p.dept)return'';return PROC_LABEL[p.dept]+' – '+(p.result?(p.result==='Valid'?'VALID':'NOT VALID'):procState(t))+(p.by?' · '+p.by:'')+(p.at?' · '+fmtStamp(p.at):'')+(p.remark?' · '+p.remark:'')}
+function procText(t){const p=t.proc||{};if(!p.dept)return'';return PROC_LABEL[p.dept]+' – '+procState(t)+(p.by?' · '+p.by:'')+(p.at?' · '+fmtStamp(p.at):'')+(p.remark?' · '+p.remark:'')}
 function maxNo(prefix){const P=String(prefix).toUpperCase();let m=0;S.tickets.forEach(t=>{const n=t.no.toUpperCase();if(n.startsWith(P)){const v=parseInt(n.slice(P.length),10);if(v>m)m=v}});return m}
 function save(){
   if(BROKEN){alert('Not saved: the data on this computer could not be read. HR must Restore a backup first.');return false}
@@ -1690,7 +1598,7 @@ function backupInfo(st){const why=[],lb=S.lastBackup,n=S.tickets.length,since=S.
   return{need:why.length>0,why,days,since,urgent:st.pct>=95}}
 window.addEventListener('storage',e=>{if(!e.key||!e.key.startsWith(PFX))return;clearTimeout(window._sy);window._sy=setTimeout(()=>{load();
   if(!$('v-log').classList.contains('hidden')&&!$('log-body').classList.contains('hidden'))renderLog();if(!$('v-home').classList.contains('hidden'))renderStatus();
-  if(apprUser&&!$('v-approve').classList.contains('hidden'))renderAppr();if(USER&&!$('v-mine').classList.contains('hidden'))renderMine();if(USER&&!$('v-bal').classList.contains('hidden'))renderBal();if(!$('v-file').classList.contains('hidden'))renderQuick();renderUAlerts();if(typeof renderBio==='function')renderBio()},300)});
+  if(apprUser&&!$('v-approve').classList.contains('hidden'))renderAppr();if(USER&&!$('v-mine').classList.contains('hidden'))renderMine();if(USER&&!$('v-bal').classList.contains('hidden'))renderBal();renderUAlerts()},300)});
 
 // ===================== ROUTING =====================
 function routeKeyFor(code,e){const r=S.forms[code].route;if(r==='NONE')return'NONE';if(r==='DEPT')return'DEPT:'+e.dept;return'ROLE:'+r}
@@ -1728,8 +1636,8 @@ function tkTouched(t){return Math.max((t.approval&&t.approval.at)||0,(t.proc&&t.
 function updatesFor(id,since){id=String(id).toUpperCase();if(!since)return[];return S.tickets.filter(t=>t.emp.id.toUpperCase()===id&&tkTouched(t)>since&&t.approval.method!=='Cancelled by employee')}
 function renderUAlerts(){const b=$('u-alerts');if(!b)return;if(!USER||!S){b.innerHTML='';return}
   const sw=swapsFor(USER.id).length,up=updatesFor(USER.id,USER_SEEN);
-  b.innerHTML=bioNotice()+(sw?`<div class="alert warn"><div class="grow"><b>🔔 ${sw===1?'A co-employee asks':sw+' co-employees ask'} to swap schedules with you.</b> The request goes to the approver only after you agree.</div><button class="btn small" data-go="mine">Answer now</button></div>`:'')+
-    (up.length?`<div class="alert info"><div class="grow"><b>${up.length===1?'1 of your requests was':up.length+' of your requests were'} updated</b> since your last login: ${esc(up.slice(0,4).map(t=>t.no+' '+(t.proc&&t.proc.at===tkTouched(t)&&t.proc.status?(t.proc.result?'Payroll: '+t.proc.result.toUpperCase():t.proc.status):t.code==='SC'?(t.approval.status==='Approved'?'forwarded to Payroll':t.approval.status==='Rejected'?'not forwarded to Payroll (see why)':stLabel(t.approval.status)):stLabel(t.approval.status))).join(', '))}${up.length>4?'…':''}.</div><button class="btn small sec" data-go="mine">See My Requests</button></div>`:'')}
+  b.innerHTML=(sw?`<div class="alert warn"><div class="grow"><b>🔔 ${sw===1?'A co-employee asks':sw+' co-employees ask'} to swap schedules with you.</b> The request goes to the approver only after you agree.</div><button class="btn small" data-go="mine">Answer now</button></div>`:'')+
+    (up.length?`<div class="alert info"><div class="grow"><b>${up.length===1?'1 of your requests was':up.length+' of your requests were'} updated</b> since your last login: ${esc(up.slice(0,4).map(t=>t.no+' '+(t.proc&&t.proc.at===tkTouched(t)&&t.proc.status?t.proc.status:stLabel(t.approval.status))).join(', '))}${up.length>4?'…':''}.</div><button class="btn small sec" data-go="mine">See My Requests</button></div>`:'')}
 function logout(msg){if(USER)saveDraft();USER=null;AFTER=null;renderUbar();show('home');if(msg)flash(msg)}
 function flash(t){const el=$('v-file').classList.contains('hidden')?$('h-alert'):$('f-alert');el.innerHTML=`<div class="alert info"><div class="grow">${esc(t)}</div></div>`+el.innerHTML}
 $('u-out').onclick=()=>logout('You are logged out. Thank you!');
@@ -1847,7 +1755,7 @@ function newTicket(code,e,extra){load();   // read the latest saved data first, 
   const t=Object.assign({no,code,kind:code,filed:Date.now(),emp:{id:e.id,name:e.name,position:e.position,dept:e.dept,hiring:e.hiring},dept:e.dept,routeKey:key,
     approver:ap.name,approverPos:ap.position,approval:key==='NONE'?{status:'NotRequired',by:'',at:null,method:'',remark:''}:NEWAPPR(),hrStatus:'Open',exported:false,
     auth:{by:'own',at:Date.now()}},extra);t.proc={dept:fc.proc||'',status:'',by:'',at:null,remark:''};setAppr(t,t.approval);return t}
-function whoHTML(code,e){return`<div class="av">${esc(initials(e.name))}</div><div><b>${esc(e.name)}</b> · ${esc(e.id)}<br>${esc(e.position)} · ${esc(e.dept)}${e.hiring?' · Hiring: '+esc(e.hiring):''}<br>${approverText(code,e)}${['CS','ME','OT'].includes(code)?shiftLine(e):''}</div>`}
+function whoHTML(code,e){return`<div class="av">${esc(initials(e.name))}</div><div><b>${esc(e.name)}</b> · ${esc(e.id)}<br>${esc(e.position)} · ${esc(e.dept)}${e.hiring?' · Hiring: '+esc(e.hiring):''}<br>${approverText(code,e)}</div>`}
 
 // ===================== ONE WINDOW ONLY =====================
 const WIN='kuiTrial.win.'+randHex(4);let winT=0;
@@ -1890,7 +1798,7 @@ function leaveEmpChanged(){
     i.closest('label').classList.toggle('hidden',hide);if(hide&&i.checked)i.checked=false});
   $('l-typenote').textContent=model==='AL'?'You are entitled to Annual Leave (AL) instead of VL / SL.':'';
 }
-function leaveRuleRefresh(){$('l-rule').innerHTML=leaveRule(radioVal('ltype'),$('l-from').value,radioVal('lfil'))+yearCheck({a:$('l-from').value,b:($('l-to')||{}).value});lvFormRefresh()}
+function leaveRuleRefresh(){$('l-rule').innerHTML=leaveRule(radioVal('ltype'),$('l-from').value,radioVal('lfil'));lvFormRefresh()}
 // ---------- leave balances ----------
 function lvMonths(hd,to,cap){const a=new Date(hd+'T00:00:00'),b=new Date(to+'T00:00:00');let m=(b.getFullYear()-a.getFullYear())*12+b.getMonth()-a.getMonth();if(b.getDate()<a.getDate())m--;return Math.max(0,Math.min(m,cap))}
 function lvRec(id){const r=((S&&S.leave&&S.leave.rows)||{})[String(id).toUpperCase()]||null;if(!r||!r.hd)return r;
@@ -1949,43 +1857,8 @@ function optList(o){return(typeof o==='function'?o():o).map(x=>Array.isArray(x)?
 function colInput(c,v){v=v??'';
   if(c.type==='hours')return`<span class="hrs" data-col="${c.k}">${esc(v)}</span>`;
   if(c.type==='select')return`<select data-col="${c.k}"><option value=""></option>${optList(c.opts).map(([a,b])=>`<option value="${esc(a)}"${a===v?' selected':''}>${esc(b)}</option>`).join('')}</select>`;
-  return`<input data-col="${c.k}" type="${c.type}"${c.step?' step="'+c.step+'"':''}${c.type==='number'?' min="0"':''}${c.ph?' placeholder="'+esc(c.ph)+'"':''} value="${esc(v)}">`}
+  return`<input data-col="${c.k}" type="${c.type}"${c.step?' step="'+c.step+'"':''}${c.type==='number'?' min="0"':''} value="${esc(v)}">`}
 function rowHTML(f){return`<tr>${f.cols.map(c=>`<td${c.wide?' style="min-width:180px"':''}>${colInput(c)}</td>`).join('')}<td><button class="btn small sec" data-delrow="${f.k}" title="Remove row">✕</button></td></tr>`}
-
-// ===================== ROSTER LEGEND (RL-002): shift codes, times and breaks per department / position =====================
-const DEFAULT_ROSTER="# Shift codes: CODE | Description | Category\nCODE | D | Day | Regular shift\nCODE | M | Mid | Regular shift\nCODE | N | Night | Regular shift\nCODE | TRN6 | Training start at 6 am | Training\nCODE | TRN9 | Training start at 9 am | Training\nCODE | TRN12 | Training start at 12 pm | Training\nCODE | TRN14 | Training start at 2 pm | Training\nCODE | HKDO | Housekeeping - Day - Office | Housekeeping shift\nCODE | HKDA | Housekeeping - Day - Accommodation | Housekeeping shift\nCODE | HKMO | Housekeeping - Mid - Office | Housekeeping shift\nCODE | HKMA | Housekeeping - Mid - Accommodation | Housekeeping shift\nCODE | HKNO | Housekeeping - Night - Office | Housekeeping shift\nCODE | HKNA | Housekeeping - Night - Accommodation | Housekeeping shift\nCODE | RDOA | Rest Day Off - Accommodation | Rest day\nCODE | RDONA | Rest Day Off - No Accommodation | Rest day\nCODE | AB | Absent | Leave / absence\nCODE | SL | Sick Leave | Leave / absence\nCODE | VL | Vacation Leave | Leave / absence\nCODE | UPL | Unpaid Leave | Leave / absence\n# Shift times: Department | Positions (blank = everyone in the department) | Code | Time\nStudio | Studio Manager | D | 9:00 AM – 6:00 PM\nStudio | Studio Manager | M | 5:00 PM – 2:00 AM\nStudio | Studio Manager | N | 1:00 AM – 10:00 AM\nStudio | Pit Boss, Asst. Pit Boss, Dealer, Shuffler, Controller | D | 6:00 AM – 2:00 PM\nStudio | Pit Boss, Asst. Pit Boss, Dealer, Shuffler, Controller | M | 2:00 PM – 10:00 PM\nStudio | Pit Boss, Asst. Pit Boss, Dealer, Shuffler, Controller | N | 10:00 PM – 6:00 AM\nStudio | Pit Boss, Asst. Pit Boss, Dealer, Shuffler, Controller | TRN6 | 6:00 AM – 2:00 PM\nStudio | Pit Boss, Asst. Pit Boss, Dealer, Shuffler, Controller | TRN9 | 9:00 AM – 5:00 PM\nStudio | Pit Boss, Asst. Pit Boss, Dealer, Shuffler, Controller | TRN12 | 12:00 PM – 8:00 PM\nStudio | Pit Boss, Asst. Pit Boss, Dealer, Shuffler, Controller | TRN14 | 2:00 PM – 10:00 PM\nHR |  | D | 8:00 AM – 5:00 PM\nIT |  | D | 7:00 AM – 3:00 PM\nIT |  | M | 3:00 PM – 11:00 PM\nIT |  | N | 11:00 PM – 7:00 AM\nHandyman |  | D | 6:00 AM – 3:00 PM\nHandyman |  | M | 2:00 PM – 11:00 PM\nHandyman |  | N | 10:00 PM – 7:00 AM\nMUA |  | D | Block 1: 4:00 AM – 6:00 AM; Block 2: 12:00 NN – 2:00 PM; Block 3: 8:00 PM – 10:00 PM\nHousekeeping |  | HKDO | 5:00 AM – 2:00 PM\nHousekeeping |  | HKDA | 8:00 AM – 5:00 PM\nHousekeeping |  | HKMO | 1:00 PM – 10:00 PM\nHousekeeping |  | HKMA | N/A\nHousekeeping |  | HKNO | 9:00 PM – 6:00 AM\nHousekeeping |  | HKNA | N/A\n# Break time: Department | Positions | BREAK | Break rule\nStudio | Studio Manager | BREAK | 8 hrs duty / 1 hr break\nStudio | Pit Boss, Asst. Pit Boss, Dealer, Shuffler, Controller | BREAK | 20-min break every 1 hr of duty\nHandyman |  | BREAK | 8 hrs duty / 1 hr break\nHousekeeping |  | BREAK | 8 hrs duty / 1 hr break";
-function rosterParse(txt){const codes={},times=[],breaks=[];
-  String(txt||'').split(/\r?\n/).forEach(l=>{l=l.trim();if(!l||l[0]==='#')return;const c=l.split('|').map(x=>x.trim());
-    if(c[0].toUpperCase()==='CODE'){if(c[1])codes[c[1].toUpperCase()]={desc:c[2]||'',cat:c[3]||''};return}
-    if(c.length<4||!c[0])return;const pos=c[1]?c[1].split(',').map(x=>x.trim()).filter(Boolean):[];
-    if(c[2].toUpperCase()==='BREAK')breaks.push({dept:c[0],pos,rule:c.slice(3).join(' | ')});else times.push({dept:c[0],pos,code:c[2].toUpperCase(),time:c.slice(3).join(' | ')})});
-  return{codes,times,breaks}}
-let ROSTER_C=null,ROSTER_T=null;
-function roster(){const t=(S&&S.roster)||DEFAULT_ROSTER;if(t!==ROSTER_T){ROSTER_T=t;ROSTER_C=rosterParse(t)}return ROSTER_C}
-const rlN=x=>String(x||'').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();
-function rlDeptOk(rule,dept){const a=rlN(rule),b=rlN(dept);if(!a||!b)return false;return a===b||(' '+b+' ').includes(' '+a+' ')}
-function rlPosOk(list,pos){if(!list.length)return true;const p=rlN(pos);return list.some(x=>{const a=rlN(x);return p===a||(' '+p+' ').includes(' '+a+' ')})}
-// a row matches when the department matches; rows that name positions win over rows for the whole department
-function rlMatch(rows,e){if(!e)return[];const m=rows.filter(r=>rlDeptOk(r.dept,e.dept)&&rlPosOk(r.pos,e.position));const sp=m.filter(r=>r.pos.length);
-  if(!sp.length)return m;const keys=new Set(sp.map(r=>r.dept+'|'+r.pos.join(',')));return m.filter(r=>r.pos.length?keys.has(r.dept+'|'+r.pos.join(',')):!m.some(x=>x.pos.length&&rlN(x.dept)===rlN(r.dept)))}
-function shiftsFor(e){const R=roster();return rlMatch(R.times,e).filter(r=>r.time&&!/^n\/?a$/i.test(r.time)).map(r=>({code:r.code,desc:(R.codes[r.code]||{}).desc||r.code,time:r.time}))}
-function breakFor(e){const b=rlMatch(roster().breaks,e);return b.length?b[0].rule:''}
-const shiftLabel=x=>x.code+' – '+x.desc+' ('+x.time+')';
-function shiftLine(e){const l=shiftsFor(e);if(!l.length)return'';const b=breakFor(e);
-  return`<div class="rl-line">🕘 <b>Your shifts:</b> ${l.map(x=>`<span><b>${esc(x.code)}</b> ${esc(x.time)}</span>`).join(' · ')}${b?' · <b>Break:</b> '+esc(b):''} <button type="button" class="linkb" data-rl="1">All shift codes</button></div>`}
-function rosterHTML(){const R=roster(),grp={};R.times.forEach(r=>{const k=r.dept+(r.pos.length?' – '+r.pos.join(', '):'');(grp[k]=grp[k]||[]).push(r)});
-  const br={};R.breaks.forEach(b=>br[b.dept+(b.pos.length?' – '+b.pos.join(', '):'')]=b.rule);
-  return`<h3 style="margin-top:0">Shift codes</h3><table class="rtable"><thead><tr><th>Code</th><th>Description</th><th>Category</th></tr></thead><tbody>${Object.entries(R.codes).map(([c,x])=>`<tr><td><b>${esc(c)}</b></td><td>${esc(x.desc)}</td><td>${esc(x.cat)}</td></tr>`).join('')}</tbody></table>
-  <h3>Shift times and breaks by department</h3><table class="rtable"><thead><tr><th>Department / position</th><th>Code</th><th>Shift time</th></tr></thead><tbody>${Object.entries(grp).map(([k,l])=>l.map((r,i)=>`<tr>${i?'':`<td rowspan="${l.length}"><b>${esc(k)}</b>${br[k]?`<div class="note">Break: ${esc(br[k])}</div>`:''}</td>`}<td><b>${esc(r.code)}</b></td><td>${esc(r.time)}</td></tr>`).join('')).join('')}</tbody></table>
-  <div class="note">N/A means the shift is not available for that area. Source: Roster Legend RL-002.</div>`}
-function rlCheck(){const el=$('rl-check');if(!el||!S)return;const keep=S.roster;S.roster=$('s-roster').value;
-  const none={};let n=0;(S.employees||[]).forEach(e=>{if(!shiftsFor(e).length){n++;const k=(e.dept||'?')+' – '+(e.position||'?');none[k]=(none[k]||0)+1}});S.roster=keep;
-  const l=Object.entries(none).sort((a,b)=>b[1]-a[1]);
-  el.innerHTML=!n?'✓ Every employee in the list has shift times.':'<b>'+n+'</b> of '+(S.employees||[]).length+' employees have no shift times yet (they type their shift instead): '+esc(l.slice(0,12).map(([k,c])=>k+' ('+c+')').join('; '))+(l.length>12?'; …':'')}
-document.addEventListener('input',e=>{if(e.target.id==='s-roster')rlCheck()});
-document.addEventListener('click',e=>{if(e.target.id==='rl-reset'){$('s-roster').value=DEFAULT_ROSTER;rlCheck()}});
-function openRoster(){const ta=$('s-roster'),vis=ta&&ta.offsetParent!==null,keep=S&&S.roster;if(vis&&S)S.roster=ta.value;$('rl-b').innerHTML=rosterHTML();if(vis&&S)S.roster=keep;$('rl-dlg').showModal()}
-document.addEventListener('click',e=>{if(e.target.closest('[data-rl]')){e.preventDefault();openRoster()}});
 function fieldHTML(f){
   const lab=f.label?`<label>${esc(f.label)}${f.req&&f.type!=='check'?' <span class="req">*</span>':''}</label>`:'';const id='fx-'+f.k;let c='';
   switch(f.type){
@@ -1995,8 +1868,6 @@ function fieldHTML(f){
     case'emp':c=`<div class="pick"><input id="${id}" data-pick="1" placeholder="Type any part of the name or the Employee ID…" autocomplete="off"><div class="pick-list hidden" id="${id}-list"></div></div><div class="note" id="${id}-info"></div>`;break;
     case'pin':c=`<input id="${id}" type="password" inputmode="numeric" autocomplete="off" placeholder="Counterpart types own PIN"><div class="note">${esc(f.note||'')}</div>`;break;
     case'calc':c=`<div class="info" id="${id}">–</div>`;break;
-    case'file':c=`<input id="${id}" type="file" accept="image/png,image/jpeg,image/webp,application/pdf"${(f.max||1)>1?' multiple':''} class="filein"><div class="note">${esc(f.note||'')}${ASSETS?'':' <b>Uploading is not available on this account: show your proof at the HR office instead.</b>'}</div><div class="note" id="${id}-sel"></div>`;break;
-    case'shift':{const l=shiftsFor(USER);c=l.length?`<select id="${id}"><option value=""></option>${l.map(x=>`<option value="${esc(shiftLabel(x))}">${esc(shiftLabel(x))}</option>`).join('')}</select>`:`<input id="${id}" type="text"${f.ph?' placeholder="'+esc(f.ph)+'"':''}>`;break}
     case'check':c=`<label class="check"><input type="checkbox" id="${id}"><span>${esc(f.text)}</span></label>`;break;
     case'rows':c=`<div style="overflow:auto"><table class="rt"><thead><tr>${f.cols.map(x=>`<th>${esc(x.label)}${x.req?' <span class="req" style="color:var(--bad)">*</span>':''}</th>`).join('')}<th></th></tr></thead><tbody id="${id}">${rowHTML(f)}</tbody></table></div>
       <button class="btn small sec" data-addrow="${f.k}" style="margin-top:6px">Add row</button> <span class="note">Up to ${f.max} rows.</span>`;break;
@@ -2014,18 +1885,17 @@ function collect(){const F=FORMS[CUR],d={};
   F.fields.forEach(f=>{const el=$('fx-'+f.k);
     if(f.type==='radio')d[f.k]=radioVal('fx-'+f.k);
     else if(f.type==='check')d[f.k]=el.checked;
-    else if(f.type==='file')d[f.k]=el&&el.files?[...el.files]:[];
     else if(f.type==='emp'){const e=findEmp(el.value);d[f.k]=e?{id:e.id,name:e.name,position:e.position,dept:e.dept}:null}
     else if(f.type==='rows'){d[f.k]=[...el.querySelectorAll('tr')].map(tr=>{const o={};f.cols.forEach(c=>{if(c.type!=='hours')o[c.k]=tr.querySelector(`[data-col="${c.k}"]`).value.trim()});
       f.cols.filter(c=>c.type==='hours').forEach(c=>o[c.k]=hoursBetween(o.in,o.out));return o}).filter(o=>f.cols.some(c=>c.type!=='hours'&&o[c.k]))}
     else if(f.type!=='calc')d[f.k]=el.value.trim()});
-  if(F.derive)F.derive(d);F.fields.filter(f=>f.type==='calc').forEach(f=>d[f.k]=f.calc(d));if(F.derive)F.derive(d);return d}
+  F.fields.filter(f=>f.type==='calc').forEach(f=>d[f.k]=f.calc(d));return d}
 function refreshForm(){if(!CUR||$('v-form').classList.contains('hidden'))return;const F=FORMS[CUR],d=collect();
   F.fields.forEach(f=>{const box=document.querySelector(`[data-fk="${f.k}"]`);if(f.show)box.classList.toggle('hidden',!f.show(d));
     if(f.type==='calc')$('fx-'+f.k).textContent=d[f.k]===''||d[f.k]==null?'–':d[f.k];
-    if(f.type==='emp'){const e=d[f.k],x=$('fx-'+f.k+'-info'),self=e&&USER&&String(e.id).toUpperCase()===String(USER.id).toUpperCase();x.textContent=self?'This is you. Choose the co-employee you will swap with.':e?e.id+' · '+e.position+' · '+e.dept:'';x.style.color=self?'var(--bad)':'';x.style.fontWeight=self?'600':''}
+    if(f.type==='emp'){const e=d[f.k];$('fx-'+f.k+'-info').textContent=e?e.id+' · '+e.position+' · '+e.dept:''}
     if(f.type==='rows')$('fx-'+f.k).querySelectorAll('tr').forEach(tr=>{const i=tr.querySelector('[data-col="in"]'),o=tr.querySelector('[data-col="out"]'),h=tr.querySelector('.hrs');if(h)h.textContent=i&&o?hoursBetween(i.value,o.value):''})});
-  $('g-rule').innerHTML=formRule(CUR,d)+yearCheck(d);
+  $('g-rule').innerHTML=formRule(CUR,d);
 }
 $('g-fields').addEventListener('input',refreshForm);$('g-fields').addEventListener('change',refreshForm);
 document.addEventListener('click',e=>{const a=e.target.closest('[data-addrow]'),r=e.target.closest('[data-delrow]');if(!a&&!r)return;
@@ -2035,7 +1905,7 @@ document.addEventListener('click',e=>{const a=e.target.closest('[data-addrow]'),
 // ---------- employee picker: search any part of the name ----------
 let PICK_I=-1;
 function pickRender(inp){const box=$(inp.id+'-list'),q=inp.value;if(findEmp(q)){box.classList.add('hidden');return}
-  const me=USER?String(USER.id).toUpperCase():'',list=q.trim()?S.employees.filter(e=>String(e.id).toUpperCase()!==me&&nameMatch(q,e.name,e.id,e.position,e.dept)).sort((a,b)=>a.name.localeCompare(b.name)).slice(0,8):[];PICK_I=-1;
+  const list=q.trim()?S.employees.filter(e=>nameMatch(q,e.name,e.id,e.position,e.dept)).sort((a,b)=>a.name.localeCompare(b.name)).slice(0,8):[];PICK_I=-1;
   box.innerHTML=list.map(e=>`<button type="button" class="pick-it" data-pv="${esc(empLabel(e))}"><b>${esc(e.name)}</b> <span>${esc(e.id)} · ${esc(e.position)} · ${esc(e.dept)}</span></button>`).join('')||(q.trim()?'<div class="note" style="padding:8px 12px">No employee matches.</div>':'');
   box.classList.toggle('hidden',!q.trim())}
 document.addEventListener('input',e=>{if(e.target.dataset&&e.target.dataset.pick)pickRender(e.target)});
@@ -2055,55 +1925,26 @@ $('g-submit').onclick=()=>{
   const F=FORMS[CUR],e=USER,d=collect(),errs=[];if(!e)return show('login');
   F.fields.forEach(f=>{if(f.show&&!f.show(d)){if(f.type==='rows')d[f.k]=[];else if(f.type!=='calc')d[f.k]='';return}
     if(!f.req)return;const v=d[f.k];
-    if(f.type==='file'){if(!ASSETS)return;if(!v||!v.length){errs.push('Upload: '+(f.short||f.label)+'.');return}
-      if(v.length>(f.max||1))errs.push('Upload up to '+(f.max||1)+' files only.');
-      v.forEach(x=>{if(!/^(image\/(png|jpeg|webp)|application\/pdf)$/.test(x.type))errs.push(x.name+': upload a photo (JPG, PNG) or a PDF.');else if(x.size>10*1048576)errs.push(x.name+' is over 10 MB.')});return}
     if(f.type==='check'){if(!v)errs.push('Tick the certification / undertaking box.');return}
     if(f.type==='rows'){if(!v.length){errs.push('Fill in at least one row in "'+f.label+'".');return}
       v.forEach((r,i)=>f.cols.forEach(c=>{if(c.req&&!r[c.k])errs.push(f.label+', row '+(i+1)+': fill in '+c.label+'.')}));return}
     if(!v)errs.push('Fill in: '+(f.short||f.label)+'.')});
-  if(F.derive){F.derive(d);F.fields.filter(f=>f.type==='calc').forEach(f=>d[f.k]=f.calc(d));F.derive(d)}
   let w=[];if(F.check){const r=F.check(d,e);errs.push(...r.er);w=r.w}
-  if(yearCheck(d))errs.push('A date has a wrong year. Check the dates you typed.');
   if(!errs.length)F.fields.filter(f=>f.type==='pin').forEach(f=>{if(f.show&&!f.show(d))return;const who=d[f.of];if(!who)return;const bad=checkOtherPin(who,d[f.k]);if(bad)errs.push(bad);else d[f.k+'Ok']=Date.now()});
   F.fields.filter(f=>f.type==='pin').forEach(f=>{delete d[f.k];const el=$('fx-'+f.k);if(el)el.value=''});   // a PIN is never saved
   if(errs.length){$('g-err').textContent=errs.join('\n');return}
   if(d.cpPinOk){d.cpAgreed=d.cpPinOk;delete d.cpPinOk}
-  const fileFields=F.fields.filter(f=>f.type==='file'&&Array.isArray(d[f.k]));
-  const finish=()=>{const tk=newTicket(CUR,e,{data:d,warnings:w});
-    if(CUR==='CS'&&d.cp&&d.swap!=='Not applicable (no swap)'&&!d.cpAgreed)setAppr(tk,{status:'Counterpart',by:'',at:null,method:'',remark:''});
-    S.tickets.push(tk);if(!save()){S.tickets.pop();return}dropDraft(tk.code);done(tk)};
-  if(!fileFields.some(f=>d[f.k].length)){fileFields.forEach(f=>{d[f.k]=[];if(f.req)w.push('No proof uploaded: '+f.label.toLowerCase()+' (to be shown at HR)')});return finish()}
-  const btn=$('g-submit'),code=CUR;btn.disabled=true;$('g-err').textContent='';$('g-up').textContent='Uploading your proof… please wait.';
-  (async()=>{try{for(const f of fileFields){const out=[];for(const x of d[f.k])out.push(await uploadProof(x));d[f.k]=out}
-      $('g-up').textContent='';if(CUR!==code)return;finish()}
-    catch(er){$('g-up').textContent='';$('g-err').textContent='The proof could not be uploaded ('+((er&&(er.message||er.code))||'error')+'). Check the internet connection and click Submit again.'}
-    finally{btn.disabled=false}})();
+  const tk=newTicket(CUR,e,{data:d,warnings:w});
+  if(CUR==='CS'&&d.cp&&d.swap!=='Not applicable (no swap)'&&!d.cpAgreed)setAppr(tk,{status:'Counterpart',by:'',at:null,method:'',remark:''});
+  S.tickets.push(tk);if(!save()){S.tickets.pop();return}dropDraft(tk.code);done(tk);
 };
-// employee proof: stored in the helpdesk's file store online; small files kept inside the record in the offline preview
-async function uploadProof(x){
-  if(ONLINE){const b64=await new Promise((ok,no)=>{const rd=new FileReader();rd.onload=()=>ok(String(rd.result).split(',')[1]);rd.onerror=no;rd.readAsDataURL(x)});return await gs('uploadProof',x.name,x.type,b64)}
-  if(x.size>1.5*1048576)throw{message:x.name+' is too big for the offline preview (1.5 MB)'};
-  const data=await new Promise((ok,no)=>{const rd=new FileReader();rd.onload=()=>ok(rd.result);rd.onerror=no;rd.readAsDataURL(x)});return{name:x.name,type:x.type,size:x.size,data}}
-// open an uploaded proof (photo or PDF) inside the helpdesk
-function viewFile(f,title){const img=/^image\//.test(f.type);$('pd-h').textContent=title||'Uploaded proof';
-  $('pd-b').innerHTML=`<div class="box" style="margin-top:0">${img?'🖼️':'📄'} <b>${esc(f.name)}</b> · ${esc(fsize(f.size||0))}</div><div id="pd-view"><div class="note">Loading…</div></div>`;
-  $('pd-acts').innerHTML='<button class="btn sec" id="pd-dl">Download</button>';$('pd-x').onclick=()=>$('post-dlg').close();$('post-dlg').showModal();
-  const fail=()=>{const v=$('pd-view');if(v)v.innerHTML='<div class="err">The file could not be loaded. Check the internet connection and try again.</div>'};
-  fileBlob(f).then(async b=>{const v=$('pd-view');if(!v)return;if(img){v.innerHTML=`<img class="pv" src="${b.url}" alt="${esc(f.name)}">`;return}
-    v.innerHTML='<div class="pdfv"><div class="note">Loading the pages…</div></div>';try{await renderPdf(b.blob,v.querySelector('.pdfv'))}catch(e){v.innerHTML='<div class="warnbox">The file could not be shown here. Click <b>Download</b> to open it.</div>'}}).catch(fail);
-  $('pd-dl').onclick=async()=>{try{const b=await fileBlob(f);downloadBlob(f.name,b.blob)}catch(e){fail()}}}
-const PROOFS=[];
-function filesHTML(l){return(l||[]).map(f=>{PROOFS.push(f);return`<button type="button" class="btn small sec" data-vf="${PROOFS.length-1}" style="margin:2px 6px 2px 0">${/^image\//.test(f.type)?'🖼️':'📄'} ${esc(f.name)}</button>`}).join('')||'<span class="note">No file uploaded (to be shown at HR)</span>'}
-document.addEventListener('click',e=>{const b=e.target.closest('[data-vf]');if(b){e.preventDefault();const f=PROOFS[+b.dataset.vf];if(f)viewFile(f)}});
-document.addEventListener('change',e=>{const el=e.target;if(el.type==='file'&&el.classList.contains('filein')){const o=$(el.id+'-sel');if(o)o.innerHTML=[...el.files].map(x=>'📎 '+esc(x.name)+' · '+esc(fsize(x.size))).join('<br>')}});
 
 // ===================== DRAFTS (what you typed is kept if you leave the form) =====================
 const DPFX='kuiTrial.draft.',DRAFT_DAYS=3;
 const draftKey=code=>USER?DPFX+USER.id.toUpperCase()+'.'+code:null;
 function curCode(){return !$('v-leave').classList.contains('hidden')?'LEAVE':!$('v-form').classList.contains('hidden')?CUR:null}
 function captureDraft(code){const box=code==='LEAVE'?$('v-leave'):$('g-fields'),d={at:Date.now(),v:{},r:{},c:{},rows:{}};let any=false;
-  box.querySelectorAll('input,select,textarea').forEach(el=>{if(el.type==='password'||el.type==='file'||el.closest('tbody'))return;
+  box.querySelectorAll('input,select,textarea').forEach(el=>{if(el.type==='password'||el.closest('tbody'))return;
     if(el.type==='radio'){if(el.checked){d.r[el.name]=el.value;any=true}}else if(el.type==='checkbox'){if(el.id&&el.checked)d.c[el.id]=true}
     else if(el.id&&el.value.trim()){d.v[el.id]=el.value;any=true}});
   box.querySelectorAll('tbody[id^="fx-"]').forEach(tb=>{const rows=[...tb.querySelectorAll('tr')].map(tr=>{const o={};tr.querySelectorAll('[data-col]').forEach(x=>{if(x.value!==undefined&&x.tagName!=='SPAN')o[x.dataset.col]=x.value});return o});
@@ -2132,15 +1973,15 @@ window.addEventListener('beforeunload',()=>{if(USER)saveDraft()});
 let lastTicket=null;
 const NEXT={LEAVE:'Sign the printed form and submit it to HR with any attachment.',CS:'Sign as Applicant and have your counterpart sign the Conforme, then submit to HR.',
   ME:'Sign "Requested by" and submit the form with any proof to HR.',OT:'After the overtime, sign the form and submit it to HR within the same cut-off.',
-  OB:'After the OB, attach proof of visit and submit the form to HR within the same cut-off.',SC:'No need to go to the HR office: your payslip is uploaded with this request. HR validates your concern first, then Payroll decides. Check My Requests for the result.',
-  SO:'Sign the Pass and the Waiver. Bring your request letter to HR. Your proof that you told your guardian is already uploaded with this request.',SR:'Sign, and present the Pass and the Luggage / Item Slip to the guard when you arrive.',
-  LS:'Show the slip to the security guard with your items: click Show slip for the guard and show your phone, or a photo or screenshot of it. Printing is optional.',GP:'Sign, and show the approved permit to the guard when you leave and return.'};
+  OB:'After the OB, attach proof of visit and submit the form to HR within the same cut-off.',SC:'Give the printed form with your payslip / proof to HR.',
+  SO:'Sign the Pass and the Waiver. Bring your request letter and proof that you told your guardian to HR.',SR:'Sign, and present the Pass and the Luggage / Item Slip to the guard when you arrive.',
+  LS:'Sign the slip and present it to the security guard with your items.',GP:'Sign, and show the approved permit to the guard when you leave and return.'};
 const NEXT_NP={LEAVE:'Go to the HR office to sign your printed form, and bring any attachment (for example the medical certificate).',
   CS:'You and your counterpart go to the HR office to sign the printed form (Applicant and Conforme).',ME:'Go to the HR office to sign your printed form, and bring any proof.',
   OT:'After the overtime, go to the HR office to sign your printed form within the same cut-off.',OB:'After the OB, go to the HR office to sign your printed form and give your proof of visit, within the same cut-off.',
-  SC:'No need to go to the HR office: your payslip is uploaded with this request. HR validates your concern first, then Payroll decides whether it is valid. The result shows in My Requests when you log in.',SO:'Go to the HR office to sign the printed Pass and the Waiver, and bring your request letter. Your proof that you told your guardian is already uploaded with this request.',
+  SC:'Bring your payslip or proof to the HR office and sign your printed form there.',SO:'Go to the HR office to sign the printed Pass and the Waiver. Bring your request letter and proof that you told your guardian.',
   SR:'Get your printed Return section and Luggage / Item Slip from the HR office, sign them, and show them to the guard when you arrive.',
-  LS:'Click Show slip for the guard, then show it to the guard with your items on your phone, or take a photo or screenshot of it. No printing needed.',GP:'Once approved, get your printed permit from the HR office or the Dormitory Admin, sign it, and show it to the guard when you leave and return.'};
+  LS:'Get your printed slip from the HR office, sign it, and show it to the guard with your items.',GP:'Once approved, get your printed permit from the HR office or the Dormitory Admin, sign it, and show it to the guard when you leave and return.'};
 function applyPrinter(){const p=!!(S&&S.printer);['l-submit','g-submit'].forEach(i=>$(i).textContent=p?'Submit and print':'Submit');$('d-print').classList.toggle('hidden',!p)}
 function done(tk){
   lastTicket=tk;$('d-no').textContent=tk.no;
@@ -2152,53 +1993,15 @@ function done(tk){
   $('d-next').innerHTML=S.printer?esc(NEXT[tk.code]||'')+'<br>Write down your ticket number. Log in and open <b>My Requests</b> anytime to see the status and print your copy.'
     :'<b>Your request is saved</b> and sent to the approver. '+esc(NEXT_NP[tk.code]||'')+'<br>Write down or take a photo of your ticket number. Log in and open <b>My Requests</b> anytime to see the status.';
   if(tk.approval.status==='Counterpart')$('d-next').innerHTML='<b>Ask '+esc(firstName(tk.data.cp.name))+' to log in on the helpdesk and agree</b> (a note shows when they log in). Your request goes to the approver only after that.<br>'+$('d-next').innerHTML;
-  $('d-guard').classList.toggle('hidden',!GUARD.includes(tk.code));$('d-guard').textContent=tk.code==='LS'?'Show slip for the guard':'Show pass for the guard';
   show('done',{replace:1});
 }
 $('d-print').onclick=()=>lastTicket&&printTicket(lastTicket);
-$('d-guard').onclick=()=>lastTicket&&openGuard(lastTicket);
 $('d-out').onclick=()=>logout('You are logged out. Thank you!');
 
-
-// ===================== GUARD VIEW: a slip / pass the employee shows on a phone, as a photo or a screenshot =====================
-const GUARD=['LS','GP','SO','SR'];
-function guardState(t){if(t.routeKey==='NONE')return{ok:true,txt:'NO APPROVAL NEEDED'};const a=t.approval&&t.approval.status;
-  if(a==='Approved')return{ok:true,txt:'APPROVED'+(t.approval.by?' by '+t.approval.by:'')+(t.approval.at?' · '+fmtStamp(t.approval.at):'')};
-  if(a==='Rejected')return{ok:false,txt:'REJECTED – NOT VALID'};if(a==='Cancelled')return{ok:false,txt:'CANCELLED – NOT VALID'};return{ok:false,txt:'NOT YET APPROVED – NOT VALID YET'}}
-function guardLines(t){const d=t.data||{},L=[];
-  if(t.code==='LS'){L.push(['Room no.',d.room],['Date of entry',fmtDate(d.edate)]);if(d.pass)L.push(['Stay-Out Pass no.',d.pass])}
-  else if(t.code==='GP'){L.push(['Type',d.ptype],['Dates',tkDates(t)])}
-  else if(t.code==='SO'){L.push(['Stay-out',tkDates(t)],['Days',String(d.days||'')])}
-  else if(t.code==='SR'){L.push(['Return date',fmtDate(d.rdate)])}
-  return L.filter(x=>x[1])}
-function guardItems(t){const d=t.data||{};return(d.items||[]).filter(r=>r.desc).map(r=>[r.desc,r.qty])}
-function openGuard(t){if(!t)return;const g=guardState(t),F=FORMS[t.code],items=guardItems(t);
-  $('gv-b').innerHTML=`<div class="gv"><div class="gv-h"><img src="${LOGO_B}" alt=""><div><b>${esc(F.title.toUpperCase())}</b><span>${esc(S.company)} · ${esc(F.formNo)}</span></div></div>
-    <div class="gv-no">${esc(t.no)}</div><div class="gv-st ${g.ok?'ok':'bad'}">${esc(g.txt)}</div>
-    <div class="gv-p"><b>${esc(t.emp.name)}</b><span>${esc(t.emp.id)} · ${esc(t.emp.position)} · ${esc(t.emp.dept)}</span></div>
-    <div class="gv-d">${guardLines(t).map(([a,b])=>`<div>${esc(a)}</div><div><b>${esc(b)}</b></div>`).join('')}</div>
-    ${items.length?`<table class="gv-t"><thead><tr><th>Item</th><th>Qty</th></tr></thead><tbody>${items.map(([a,q])=>`<tr><td>${esc(a)}</td><td>${esc(q)}</td></tr>`).join('')}</tbody></table>`:''}
-    <div class="gv-f">Shown ${esc(fmtStamp(Date.now()))} from the KUI Employee Helpdesk. ${t.code==='LS'?'Only the items listed may be brought in.':'Check the dates before letting the employee pass.'}</div></div>`;
-  $('gv-save').onclick=()=>saveGuardPng(t);$('guard-dlg').showModal()}
-document.addEventListener('click',e=>{const b=e.target.closest('[data-gv]');if(b){e.preventDefault();openGuard(S.tickets.find(x=>x.no===b.dataset.gv))}});
-// draw the same slip as a picture (PNG) the employee keeps on the phone
-function saveGuardPng(t){const g=guardState(t),F=FORMS[t.code],items=guardItems(t),L=guardLines(t),W=900,pad=40;
-  const h=330+L.length*44+(items.length?70+items.length*40:0)+90,c=document.createElement('canvas');c.width=W;c.height=h;const x=c.getContext('2d');
-  x.fillStyle='#fff';x.fillRect(0,0,W,h);x.fillStyle='#0B2A5B';x.fillRect(0,0,W,96);x.fillStyle='#F5C518';x.fillRect(0,96,W,6);
-  x.fillStyle='#fff';x.font='bold 30px Segoe UI, Arial';x.fillText(F.title.toUpperCase(),pad,48);x.font='19px Segoe UI, Arial';x.fillStyle='#D6E4F7';x.fillText(S.company+' · '+F.formNo,pad,80);
-  x.fillStyle='#0B2A5B';x.font='bold 54px Segoe UI, Arial';x.fillText(t.no,pad,175);
-  x.fillStyle=g.ok?'#E3F0FC':'#FDECEA';x.fillRect(pad,198,W-2*pad,52);x.fillStyle=g.ok?'#0B2A5B':'#B42318';x.font='bold 24px Segoe UI, Arial';x.fillText(g.txt.length>60?g.txt.slice(0,60)+'…':g.txt,pad+16,233);
-  let y=295;x.fillStyle='#14213D';x.font='bold 28px Segoe UI, Arial';x.fillText(t.emp.name,pad,y);y+=32;x.font='20px Segoe UI, Arial';x.fillStyle='#5B6575';x.fillText(t.emp.id+' · '+t.emp.position+' · '+t.emp.dept,pad,y);y+=20;
-  L.forEach(([a,b])=>{y+=44;x.fillStyle='#5B6575';x.font='21px Segoe UI, Arial';x.fillText(a,pad,y);x.fillStyle='#14213D';x.font='bold 22px Segoe UI, Arial';x.fillText(String(b),pad+260,y)});
-  if(items.length){y+=50;x.fillStyle='#E9ECF1';x.fillRect(pad,y-28,W-2*pad,40);x.fillStyle='#0B2A5B';x.font='bold 20px Segoe UI, Arial';x.fillText('ITEM',pad+12,y);x.fillText('QTY',W-pad-90,y);
-    items.forEach(([a,q])=>{y+=40;x.fillStyle='#14213D';x.font='21px Segoe UI, Arial';x.fillText(String(a).slice(0,58),pad+12,y);x.fillText(String(q),W-pad-90,y);x.fillStyle='#D3D9E2';x.fillRect(pad,y+12,W-2*pad,1)})}
-  y+=60;x.fillStyle='#5B6575';x.font='17px Segoe UI, Arial';x.fillText('Saved '+fmtStamp(Date.now())+' from the KUI Employee Helpdesk.',pad,y);
-  c.toBlob(b=>{if(b)downloadBlob(t.no+'_'+F.title.replace(/[^A-Za-z0-9]+/g,'_')+'.png',b);else say('The picture could not be made. Take a screenshot instead.')},'image/png')}
 // ===================== DISPLAY HELPERS + PRINT =====================
 function coLine(){return`<div class="lg"><img src="${LOGO_B}" alt=""><div class="co">${esc(S.company.toUpperCase())}</div></div>`}
 function fmtVal(f,v){if(v==null||v==='')return'';
   if(f.type==='date')return fmtDate(v);if(f.type==='time')return fmtTime(v);if(f.type==='check')return v?'Yes':'';
-  if(f.type==='file')return Array.isArray(v)?v.map(x=>x.name).join(', '):'';
   if(f.type==='emp')return v.name+' ('+v.id+') · '+v.position+' · '+v.dept;
   if(f.type==='rows')return v.map(r=>f.cols.map(c=>{const x=r[c.k];if(x===''||x==null)return'';return c.label+': '+(c.type==='date'?fmtDate(x):c.type==='time'?fmtTime(x):x)}).filter(Boolean).join(', ')).join(' | ');
   return String(v)}
@@ -2208,14 +2011,14 @@ function tkReason(t){if(t.code==='LEAVE'||t.code==='PAYROLL')return t.reason;ret
 function detailsHTML(t){let rows=[];
   if(t.code==='LEAVE')rows=[['Leave type',t.typeText],['Dates',tkDates(t)],['No. of days',t.days],['Duration',t.duration],['Filing',t.filing],['Medical certificate',t.mc],['Reason',t.reason],['Return to duty',fmtDate(t.returnDate)]];
   else if(t.code==='PAYROLL')rows=[['Concern',t.type],['Date',fmtDate(t.date)],['Actual in / out',(t.ain||'–')+' / '+(t.aout||'–')],['Reason',t.reason]];
-  else FORMS[t.code].fields.forEach(f=>{if(f.type==='check')return;if(f.type==='file'){if(Array.isArray(t.data[f.k]))rows.push([f.label,{html:filesHTML(t.data[f.k])}]);return}const v=fmtVal(f,t.data[f.k]);if(v!=='')rows.push([f.label,v])});
+  else FORMS[t.code].fields.forEach(f=>{if(f.type==='check')return;const v=fmtVal(f,t.data[f.k]);if(v!=='')rows.push([f.label,v])});
   if(t.code==='LEAVE'&&t.bal&&t.bal.bal!=null)rows.push(['Leave balance when filed',balText(t)]);
   if(t.data&&t.data.cpAgreed)rows.push(['Counterpart agreed (own login)',fmtStamp(t.data.cpAgreed)]);
   if(t.approval&&t.approval.at)rows.push(['Step 1 – '+stLabel(t.approval.status),(t.approval.by||'')+' · '+fmtStamp(t.approval.at)+(t.approval.remark?' · '+t.approval.remark:'')]);
   if(t.proc&&t.proc.dept)rows.push(['Step 2 – Processing',procText(t)]);
   if(t.auth)rows.push(['Filed with','Own Employee ID and PIN · '+fmtStamp(t.auth.at)]);
   (t.hist||[]).forEach(h=>rows.push(['History · '+fmtStamp(h.at),h.what]));
-  return`<div class="dl">${rows.map(([a,b])=>`<div>${esc(a)}</div><div>${b&&b.html!==undefined?b.html:esc(b)}</div>`).join('')}</div>`}
+  return`<div class="dl">${rows.map(([a,b])=>`<div>${esc(a)}</div><div>${esc(b)}</div>`).join('')}</div>`}
 
 // ===================== PRINT =====================
 const bx=c=>`<span class="bx">${c?'✓':''}</span>`;
@@ -2254,7 +2057,7 @@ const PRINT={
     `<div class="sec">II. TYPE OF REQUEST</div><table><tr><td>${boxes(['Change of Day Off','Change of Shift'],d.ctype)}</td></tr></table>
     <div class="sec">III. COUNTERPART EMPLOYEE (employee to swap with)</div>`+(d.swap==='Not applicable (no swap)'?'<table><tr><td><b>Not applicable</b> – no counterpart (no swap)</td></tr></table>':kv([['Name',V(c.name),'Employee No.',V(c.id)],['Position',V(c.position),'Department',V(c.dept)]]))+(d.cpAgreed?`<div class="auth" style="margin:0">✓ Counterpart agreed on the Helpdesk with own Employee ID and PIN · ${esc(fmtStamp(d.cpAgreed))}</div>`:'')+
     `<div class="sec">IV. DETAILS OF CHANGE</div><table><tr><th style="width:34%"></th><th>From (Original)</th><th>To (Requested)</th></tr>
-      <tr><th>Applicant's day off / shift</th><td>${V(schedV(d,'aFrom'))}</td><td>${V(schedV(d,'aTo'))}</td></tr><tr><th>Counterpart's day off / shift</th><td>${d.swap==='Not applicable (no swap)'?'N/A':V(schedV(d,'cFrom'))}</td><td>${d.swap==='Not applicable (no swap)'?'N/A':V(schedV(d,'cTo'))}</td></tr>
+      <tr><th>Applicant's day off / shift</th><td>${V(d.aFrom)}</td><td>${V(d.aTo)}</td></tr><tr><th>Counterpart's day off / shift</th><td>${d.swap==='Not applicable (no swap)'?'N/A':V(d.cFrom)}</td><td>${d.swap==='Not applicable (no swap)'?'N/A':V(d.cTo)}</td></tr>
       <tr><th>Date(s) affected</th><td>${V(FORMS.CS.dates(d))}</td><td><b>No. of days:</b> ${V(d.days)}</td></tr></table>
     <div class="sec">V. REASON FOR REQUEST</div><table><tr><td style="height:44px">${V(d.reason)}</td></tr></table>
     <div class="cert"><b>UNDERTAKING:</b> We, the undersigned, voluntarily agree to the above change of schedule. We understand that this arrangement must not result in overtime, rest day or holiday premium pay, nor in more than six (6) consecutive working days for either employee, and that each of us remains fully responsible for the shift we have agreed to cover. Any absence from the agreed schedule shall be treated as unauthorized.</div>`+
@@ -2279,7 +2082,7 @@ const PRINT={
  OB(tk){const d=tk.data;return head(tk,'OFFICIAL BUSINESS FORM','Form No. HR-F-005 | Rev. 00 | Submitted through the Employee Helpdesk')+
     empSec(tk,'',[['Date Filed',V(fmtStamp(tk.filed)),'','']])+
     `<div class="sec">II. NATURE OF OFFICIAL BUSINESS</div><table><tr><td>${boxes(OBCALL,d.nature)}${d.nature==='Others'?': <b>'+V(d.natOther)+'</b>':''}</td></tr></table>
-    <div class="sec">III. DETAILS OF OFFICIAL BUSINESS</div>`+grid([{h:'Date',v:r=>V(fmtDate(r.date)),w:'14%'},{h:'Destination / Company or Office to Visit',v:r=>V(r.dest)},{h:'Agenda',v:r=>V(r.person),w:'20%'},{h:'Time Out',v:r=>V(fmtTime(r.tout)),w:'11%'},{h:'Time In',v:r=>V(fmtTime(r.tin)),w:'11%'}],d.rows,4)+
+    <div class="sec">III. DETAILS OF OFFICIAL BUSINESS</div>`+grid([{h:'Date',v:r=>V(fmtDate(r.date)),w:'14%'},{h:'Destination / Company or Office to Visit',v:r=>V(r.dest)},{h:'Person to Meet',v:r=>V(r.person),w:'20%'},{h:'Time Out',v:r=>V(fmtTime(r.tout)),w:'11%'},{h:'Time In',v:r=>V(fmtTime(r.tin)),w:'11%'}],d.rows,4)+
     `<div class="sec">IV. PURPOSE AND PARTICULARS</div>`+kv([['Purpose',V(d.purpose)],['Duration',boxes(['Whole Day','Half Day - AM','Half Day - PM'],d.dur)],['Return to office',boxes(['Yes, same day','No, proceed home after OB'],d.ret)],
       ['Transportation',boxes(['Company vehicle','Public transport','Personal vehicle'],d.trans)],['Cash advance',boxes(['Yes','No'],d.cash)+' &nbsp;&nbsp; <b>Est. reimbursable expense:</b> '+(d.exp?'PHP '+V(d.exp):'')]])+
     `<div class="cert"><b>UNDERTAKING:</b> I certify that the official business stated above is work-related and that I will report the actual time of departure and return. I understand that time spent outside the office not covered by an approved Official Business form may be treated as undertime or absence, and that misrepresentation may be a ground for disciplinary action.</div>`+
@@ -2289,7 +2092,7 @@ const PRINT={
     empSec(tk,'',[['Date Filed',V(fmtStamp(tk.filed)),'Payroll period',V(d.period)]])+
     `<div class="sec">II. CONCERN</div><table><tr><td style="line-height:1.8">${boxes(FORMS.SC.fields[0].opts,d.concern)}</td></tr></table>`+
     (d.concern==='Overtime pay'?`<div class="sec">III. OVERTIME NOT PAID / WRONGLY PAID</div>`+grid([{h:'OT Date',v:r=>V(fmtDate(r.date))},{h:'Day Type',v:r=>V(r.dt)},{h:'OT Hours Rendered',v:r=>V(r.hrs)},{h:'Hours Paid in Payslip',v:r=>V(r.paid)},{h:'Approved OT Form / Ticket No.',v:r=>V(r.ref)}],d.ot,3):'')+
-    `<div class="sec">${d.concern==='Overtime pay'?'IV':'III'}. DETAILS</div>`+kv([['Details',V(d.details)],['Amount concerned',d.amount?'PHP '+V(d.amount):''],['Supporting document',V(d.proof&&d.proof.length?'Uploaded on the Helpdesk: '+d.proof.map(x=>x.name).join(', '):(d.doc||''))]])+
+    `<div class="sec">${d.concern==='Overtime pay'?'IV':'III'}. DETAILS</div>`+kv([['Details',V(d.details)],['Amount concerned',d.amount?'PHP '+V(d.amount):''],['Supporting document',V(d.doc)]])+
     `<div class="cert">I certify that the information stated above is true and correct.</div>`+sigs([empSig(tk),apSig(tk,'Noted by: Immediate Head / Dept. Head / Date'),{label:'Received by (HR / Payroll) / Date'}])+
     `<div class="sec">FOR PAYROLL / HR USE ONLY</div>`+kv([['Findings',''],['Adjustment','Amount: ____________ &nbsp; To be paid on payroll: ____________'],['Processed by / Date','']])+warnNote(tk)},
  SO(tk){const d=tk.data,dh=deptRoute(tk.dept),blank='&nbsp;';
@@ -2321,7 +2124,7 @@ const PRINT={
     sigs([{label:'Employee – Signature over printed name',name:tk.emp.name},{label:'Date Signed'}])+
     `<div class="sec">GUARDIAN NOTIFICATION RECORD <i>(filled out by the employee; proof verified by HR)</i></div>`+
     kv([['Guardian Name',V(d.gName),'Relationship',V(d.gRel)],['Contact No.',V(d.gNo),'Date Notified',V(fmtDate(d.gDate))],
-      ['Mode of Notice',boxes(['Phone call','Text / SMS','Messenger / chat app','Email','Other'],d.gMode),'Proof Attached',(d.gFiles&&d.gFiles.length)?V('Uploaded on the Helpdesk: '+d.gFiles.map(x=>x.name).join(', ')):boxes(['Screenshot of message / chat','Call log','Email copy','Other'],d.gProof)]])+
+      ['Mode of Notice',boxes(['Phone call','Text / SMS','Messenger / chat app','Email','Other'],d.gMode),'Proof Attached',boxes(['Screenshot of message / chat','Call log','Email copy','Other'],d.gProof)]])+
     `<div style="margin-top:8px;font-weight:bold;font-size:9.5pt">Witnessed by:</div>`+
     sigs([{label:'HR Representative (Proof Verified) / Date'},{label:'Department Head (Notified) / Date',name:dh.name},{label:'Dormitory Admin / Date',name:roleRec('ADMIN').name}])+
     `<div class="rem"><i>Attach to: Approved Request Letter, Temporary Stay-Out Pass (Annex A), and proof of guardian notification. Copies: HR File / Employee.</i></div>`;
@@ -2381,17 +2184,16 @@ function stepsHTML(t){const a=t.approval||{},p=t.proc||{};let out=[];
     out.push(t.data.cpAgreed?['done','Counterpart agreed']:a.status==='Counterpart'?['now','Waiting for '+t.data.cp.name+' to agree']:a.status==='Declined'?['bad','Counterpart declined'+(a.remark?': '+a.remark:'')]:['','Counterpart']);
   if(a.status==='NotRequired')out.push(['done','No approval needed']);
   else{const who=t.routeKey==='NONE'?'':apprNameOf(t);
-    const SCx=t.code==='SC';
-    out.push(a.status==='Approved'?['done',SCx?'1 · HR forwarded to Payroll'+(a.remark?': '+a.remark:''):'1 · Approved by '+who]:a.status==='Pending'?['now',(SCx?'1 · Waiting for HR validation: ':'1 · Waiting for approval: ')+who]:a.status==='Rejected'?['bad',(SCx?'1 · HR did not forward to Payroll':'1 · Rejected by '+who)+(a.remark?': '+a.remark:'')]:a.status==='Cancelled'?['bad','1 · Cancelled']:['','1 · Approval: '+who])}
+    out.push(a.status==='Approved'?['done','1 · Approved by '+who]:a.status==='Pending'?['now','1 · Waiting for approval: '+who]:a.status==='Rejected'?['bad','1 · Rejected by '+who+(a.remark?': '+a.remark:'')]:a.status==='Cancelled'?['bad','1 · Cancelled']:['','1 · Approval: '+who])}
   if(p.dept){const L=PROC_LABEL[p.dept];
-    out.push(p.status==='Processed'&&p.result?[p.result==='Valid'?'done':'bad','2 · Payroll: '+(p.result==='Valid'?'VALID':'NOT VALID')+(p.remark?' – '+p.remark:'')+(p.at?' · '+fmtStamp(p.at):'')]:p.status==='Processed'?['done','2 · Processed by '+L+(p.at?' · '+fmtStamp(p.at):'')]:p.status==='For processing'?['now','2 · For processing: '+L]:p.status==='On hold'?['bad','2 · On hold at '+L+(p.remark?': '+p.remark:'')]:NOSTEP2.includes(a.status)?null:['','2 · Processing: '+L]);out=out.filter(Boolean)}
+    out.push(p.status==='Processed'?['done','2 · Processed by '+L+(p.at?' · '+fmtStamp(p.at):'')]:p.status==='For processing'?['now','2 · For processing: '+L]:p.status==='On hold'?['bad','2 · On hold at '+L+(p.remark?': '+p.remark:'')]:NOSTEP2.includes(a.status)?null:['','2 · Processing: '+L]);out=out.filter(Boolean)}
   return`<div class="steps">${out.map(([c,x])=>`<span class="sp ${c}">${esc(x)}</span>`).join('<span class="ar">→</span>')}</div>`}
 function renderMine(){if(!USER)return;const me=USER.id.toUpperCase(),all=S.tickets.filter(t=>t.emp.id.toUpperCase()===me).reverse(),fl=$('m-filter').value,list=all.filter(t=>!fl||t.approval.status===fl);
   USER_SEEN=Date.now();renderUAlerts();
   const sw=swapsFor(me);
   $('m-swaps').innerHTML=sw.length?`<div class="box hl"><b class="t">🔔 Swap requests waiting for your answer (${sw.length})</b><p class="note" style="margin-top:0">A co-employee asked to swap schedules with you. The request goes to the approver only after you agree. If you decline, the request ends.</p>`+
     sw.map(t=>{const d=t.data;return`<div class="appr s-Counterpart"><div><b>${esc(t.no)}</b> · ${esc(d.ctype)} · from <b>${esc(t.emp.name)}</b> (${esc(t.emp.id)}) · ${esc(t.emp.position)}
-      <div class="meta">Date(s) affected: <b>${esc(tkDates(t))}</b> (${esc(String(d.days||''))} day(s))<br>${esc(firstName(t.emp.name))}'s day off / shift: ${esc(schedV(d,'aFrom'))} → ${esc(schedV(d,'aTo'))}<br>Your day off / shift: <b>${esc(schedV(d,'cFrom'))} → ${esc(schedV(d,'cTo'))}</b><br>Reason: ${esc(d.reason)}<br>Filed ${esc(fmtStamp(t.filed))}</div></div>
+      <div class="meta">Date(s) affected: <b>${esc(tkDates(t))}</b> (${esc(String(d.days||''))} day(s))<br>${esc(firstName(t.emp.name))}'s day off / shift: ${esc(d.aFrom)} → ${esc(d.aTo)}<br>Your day off / shift: <b>${esc(d.cFrom)} → ${esc(d.cTo)}</b><br>Reason: ${esc(d.reason)}<br>Filed ${esc(fmtStamp(t.filed))}</div></div>
       <div class="btns"><button class="btn ok small" data-cpa="${esc(t.no)}">I agree</button><button class="btn bad small" data-cpd="${esc(t.no)}">Decline</button></div></div>`}).join('')+'</div>':'';
   const c=s=>all.filter(t=>t.approval.status===s).length,pr=all.filter(t=>t.proc&&t.proc.status==='Processed').length;
   $('m-stats').innerHTML=`<div><b>${all.length}</b>All requests</div><div><b>${c('Pending')+c('Counterpart')}</b>Waiting for approval</div><div><b>${c('Approved')}</b>Approved</div><div><b>${pr}</b>Processed</div><div><b>${c('Rejected')+c('Declined')}</b>Rejected / declined</div>`;
@@ -2399,7 +2201,7 @@ function renderMine(){if(!USER)return;const me=USER.id.toUpperCase(),all=S.ticke
     <div class="meta">Filed ${esc(fmtStamp(t.filed))}${(t.warnings||[]).length?'<br><b style="color:var(--warn)">Note: '+esc(t.warnings.join('; '))+'</b>':''}</div></div>
     <div style="text-align:right"><span class="st ${a.status}">${esc(stLabel(a.status))}</span>${p.status?`<div style="margin-top:4px"><span class="st ${PCLS[p.status]||''}">${esc(p.status)}</span></div>`:''}${p.status&&p.remark?`<div class="meta">${esc(p.remark)}</div>`:''}
     ${a.status==='Counterpart'?`<div class="btns" style="margin-top:8px"><button class="btn small sec" data-myc="${esc(t.no)}">Cancel my request</button></div>`:''}
-    ${S.printer||GUARD.includes(t.code)?`<div class="btns" style="margin-top:8px">${GUARD.includes(t.code)?`<button class="btn small gold" data-gv="${esc(t.no)}">${t.code==='LS'?'Show slip':'Show pass'} for the guard</button>`:''}${S.printer?`<button class="btn small sec" data-rp="${esc(t.no)}">Print my copy</button>`:''}</div>`:''}</div>
+    ${S.printer?`<div class="btns" style="margin-top:8px"><button class="btn small sec" data-rp="${esc(t.no)}">Print my copy</button></div>`:''}</div>
     ${stepsHTML(t)}
     <details><summary>Show all details</summary>${detailsHTML(t)}</details></div>`}).join('')||'<p class="lead">No requests yet.</p>'}
 // the counterpart answers a swap request with their own login
@@ -2413,7 +2215,7 @@ document.addEventListener('click',async e=>{const a=e.target.closest('[data-cpa]
     setAppr(t,{status:'Declined',by:USER.name,at:Date.now(),method:'Declined by counterpart',remark:r.trim()});addHist(t,'Counterpart '+USER.name+' declined with own login: '+r.trim());save();renderMine();return}
   const dd=t.data;
   modal('Agree to the swap – '+t.no,`<p style="margin-top:0"><b>${esc(t.emp.name)}</b> asks to swap with you (${esc(dd.ctype)}), <b>${esc(tkDates(t))}</b>.</p>
-    <div class="dl"><div>Their day off / shift</div><div>${esc(schedV(dd,'aFrom'))} → ${esc(schedV(dd,'aTo'))}</div><div>Your day off / shift</div><div><b>${esc(schedV(dd,'cFrom'))} → ${esc(schedV(dd,'cTo'))}</b></div><div>Reason</div><div>${esc(dd.reason)}</div></div>
+    <div class="dl"><div>Their day off / shift</div><div>${esc(dd.aFrom)} → ${esc(dd.aTo)}</div><div>Your day off / shift</div><div><b>${esc(dd.cFrom)} → ${esc(dd.cTo)}</b></div><div>Reason</div><div>${esc(dd.reason)}</div></div>
     <div class="warnbox" style="margin:12px 0 0">We voluntarily agree to this change of schedule. It must not result in overtime, rest day or holiday premium pay, nor in more than six (6) consecutive working days for either of us. Each of us is fully responsible for the shift we agreed to cover. Any absence from the agreed schedule is unauthorized.</div>
     <label class="check" style="margin-top:12px"><input type="checkbox" id="cpa-ok"><span>I, ${esc(USER.name)}, agree to this change of schedule and to the undertaking above. I will sign the Conforme on the printed form.</span></label>`,'I agree',()=>{
     if(!$('cpa-ok').checked)return'Tick the box to agree.';load();const y=S.tickets.find(z=>z.no===no);if(!y||y.approval.status!=='Counterpart')return'This request was already answered or cancelled.';
@@ -2475,23 +2277,26 @@ function renderAppr(){
     <div class="meta"><b>${esc(reqLabel(t))}</b> · ${esc(tkDates(t))}<br>${tkReason(t)?'Reason: '+esc(tkReason(t))+'<br>':''}Filed ${esc(fmtStamp(t.filed))}${t.auth?' · ✓ filed with own ID and PIN':''}${t.data&&t.data.cpAgreed?' · ✓ counterpart agreed '+esc(fmtStamp(t.data.cpAgreed)):''}${balLine(t)}${t.warnings&&t.warnings.length?'<br><b style="color:var(--warn)">'+esc(t.warnings.join('; '))+'</b>':''}${extra||''}</div></div>
     <div class="btns">${btns}</div><details><summary>Show all details</summary>${detailsHTML(t)}</details></div>`;
   let h='';
-  if(list.length||dk.length||!apprUser.procs.length)h+=`<h3>Step 1 – Waiting for your approval (${list.length})</h3>`+(list.map(t=>card(t,'s-Pending',t.code==='SC'?`<button class="btn ok small" data-ap="${esc(t.no)}">Forward to Payroll</button><button class="btn bad small" data-rj="${esc(t.no)}">Do not forward</button>`:`<button class="btn ok small" data-ap="${esc(t.no)}">Approve</button><button class="btn bad small" data-rj="${esc(t.no)}">Reject</button>`)).join('')||'<p class="lead">Nothing waiting for your approval.</p>');
+  if(list.length||dk.length||!apprUser.procs.length)h+=`<h3>Step 1 – Waiting for your approval (${list.length})</h3>`+(list.map(t=>card(t,'s-Pending',t.code==='SC'?`<button class="btn ok small" data-ap="${esc(t.no)}">Valid – send to Payroll</button><button class="btn bad small" data-rj="${esc(t.no)}">Not valid – return to employee</button>`:`<button class="btn ok small" data-ap="${esc(t.no)}">Approve</button><button class="btn bad small" data-rj="${esc(t.no)}">Reject</button>`)).join('')||'<p class="lead">Nothing waiting for your approval.</p>');
   apprUser.procs.forEach(D=>{const q=pq.filter(t=>t.proc.dept===D).sort((a,b)=>(a.approval.at||a.filed)-(b.approval.at||b.filed));
     h+=`<h3>Step 2 – Waiting for processing by ${esc(PROC_LABEL[D])} (${q.length})</h3>`+(q.map(t=>{const a=t.approval,p=t.proc;
-      return card(t,p.status==='On hold'?'s-Rejected':'s-Approved',t.code==='SC'?`<button class="btn ok small" data-pd="${esc(t.no)}" data-res="Valid">Valid</button><button class="btn bad small" data-pd="${esc(t.no)}" data-res="Not valid">Not valid</button>${p.status==='On hold'?'':`<button class="btn sec small" data-ph="${esc(t.no)}">On hold</button>`}`:`<button class="btn ok small" data-pd="${esc(t.no)}">Mark as processed</button>${p.status==='On hold'?'':`<button class="btn sec small" data-ph="${esc(t.no)}">On hold</button>`}`,
-        `<br>${a.status==='NotRequired'?'No approval needed':(t.code==='SC'?'✓ Forwarded by HR: ':'✓ Approved by ')+esc(a.by)+' · '+esc(fmtStamp(a.at))+(t.code==='SC'&&a.remark?' · HR: '+esc(a.remark):'')}${p.status==='On hold'?'<br><b style="color:var(--bad)">On hold: '+esc(p.remark)+' ('+esc(p.by)+', '+esc(fmtStamp(p.at))+')</b>':''}`)}).join('')||'<p class="lead">Nothing waiting for processing.</p>');
+      return card(t,p.status==='On hold'?'s-Rejected':'s-Approved',`<button class="btn ok small" data-pd="${esc(t.no)}">Mark as processed</button>${p.status==='On hold'?'':`<button class="btn sec small" data-ph="${esc(t.no)}">On hold</button>`}`,
+        `<br>${a.status==='NotRequired'?'No approval needed':'✓ Approved by '+esc(a.by)+' · '+esc(fmtStamp(a.at))}${p.status==='On hold'?'<br><b style="color:var(--bad)">On hold: '+esc(p.remark)+' ('+esc(p.by)+', '+esc(fmtStamp(p.at))+')</b>':''}`)}).join('')||'<p class="lead">Nothing waiting for processing.</p>');
     const done=S.tickets.filter(t=>t.proc&&t.proc.dept===D&&t.proc.status==='Processed').sort((a,b)=>(b.proc.at||0)-(a.proc.at||0)).slice(0,20);
-    if(done.length)h+=`<details class="box"><summary style="cursor:pointer;font-weight:700;color:var(--navy)">Recently processed by ${esc(PROC_LABEL[D])} (last ${done.length})</summary><div style="overflow:auto"><table><tr><th>Ticket</th><th>Employee</th><th>Request</th><th>Processed</th><th>Remark</th></tr>${done.map(t=>`<tr><td>${esc(t.no)}</td><td>${esc(t.emp.name)}</td><td>${esc(reqLabel(t))}</td><td>${esc(t.proc.by)}<br>${esc(fmtStamp(t.proc.at))}</td><td>${t.proc.result?'<b>'+esc(t.proc.result.toUpperCase())+'</b> – ':''}${esc(t.proc.remark||'')}</td></tr>`).join('')}</table></div></details>`});
+    if(done.length)h+=`<details class="box"><summary style="cursor:pointer;font-weight:700;color:var(--navy)">Recently processed by ${esc(PROC_LABEL[D])} (last ${done.length})</summary><div style="overflow:auto"><table><tr><th>Ticket</th><th>Employee</th><th>Request</th><th>Processed</th><th>Remark</th></tr>${done.map(t=>`<tr><td>${esc(t.no)}</td><td>${esc(t.emp.name)}</td><td>${esc(reqLabel(t))}</td><td>${esc(t.proc.by)}<br>${esc(fmtStamp(t.proc.at))}</td><td>${esc(t.proc.remark||'')}</td></tr>`).join('')}</table></div></details>`});
+  if(apprUser.procs.includes('HR')){const cc=S.tickets.filter(t=>t.code==='OT').sort((a,b)=>(b.filed||0)-(a.filed||0)).slice(0,30);
+    const ap=t=>t.approval.status==='Approved'?'Approved by '+t.approval.by:t.approval.status==='Rejected'?'Rejected by '+t.approval.by+(t.approval.remark?': '+t.approval.remark:''):stLabel(t.approval.status);
+    const pr=t=>!t.proc||t.approval.status!=='Approved'?'–':t.proc.status+(t.proc.by?' ('+t.proc.by+')':'')+(t.proc.remark?': '+t.proc.remark:'');
+    h+=`<details class="box cc" open id="a-cc"><summary style="cursor:pointer;font-weight:700;color:var(--navy)">CC to HR: Overtime requests (${cc.length})</summary><p class="note" style="margin:6px 0">For your information only. The approver approves overtime and Payroll processes it; HR receives a copy. No action needed here.</p>`+
+      (cc.length?`<div style="overflow:auto"><table><tr><th>Ticket</th><th>Employee</th><th>Overtime</th><th>Approval</th><th>Payroll</th></tr>${cc.map(t=>`<tr><td>${esc(t.no)}</td><td>${esc(t.emp.name)} (${esc(t.emp.id)})</td><td>${esc(reqLabel(t))}<br>${esc(tkDates(t))}</td><td>${esc(ap(t))}</td><td>${esc(pr(t))}</td></tr>`).join('')}</table></div>`:'<p class="lead">No overtime requests yet.</p>')+'</details>'}
   $('a-list').innerHTML=h;
 }
 document.addEventListener('click',async e=>{
   const a=e.target.closest('[data-ap]'),r=e.target.closest('[data-rj]');if(!a&&!r)return;if(!apprUser)return;
   load();const t=S.tickets.find(x=>x.no===(a||r).dataset[a?'ap':'rj']);let remark='';
   if(!t||t.approval.status!=='Pending'||!apprUser.keys.includes(t.routeKey)){renderAppr();return}
-  const sc=t.code==='SC';
-  if(r){remark=await ask(sc?'Why is '+t.no+' NOT forwarded to Payroll? Explain to the employee (they see this), for example "The OT on Oct 7 has no approved OT form."':'Reason for rejecting '+t.no+':');if(remark===null)return;if(!remark.trim()){alert(sc?'Please explain to the employee why it is not forwarded.':'Please give a reason.');return}}
-  else if(sc){remark=await ask('Forward '+t.no+' to Payroll. Explanation for the employee (they see this; Payroll sees it too):','Your concern was checked by HR and forwarded to Payroll for proper crediting.');if(remark===null)return;if(!remark.trim()){alert('Please write a short explanation for the employee.');return}}
-  setAppr(t,{status:a?'Approved':'Rejected',by:apprUser.name+(apprUser.backup?' (backup)':''),at:Date.now(),method:sc?(a?'Forwarded to Payroll by HR':'Not forwarded to Payroll by HR'):(a?'Approved on the Helpdesk':'Rejected on the Helpdesk'),remark:remark.trim()});
+  if(r){remark=await ask(t.code==='SC'?'Message to the employee: why is '+t.no+' not valid? (for example, what to check or bring)':'Reason for rejecting '+t.no+':');if(remark===null)return;if(!remark.trim()){alert('Please give a reason.');return}}
+  setAppr(t,{status:a?'Approved':'Rejected',by:apprUser.name+(apprUser.backup?' (backup)':''),at:Date.now(),method:t.code==='SC'?(a?'Validated by HR on the Helpdesk':'Returned by HR: not valid'):a?'Approved on the Helpdesk':'Rejected on the Helpdesk',remark:remark.trim()});
   save();renderAppr();apprTouch();
 });
 // step 2: HR / Admin / Payroll mark the approved request as processed, or put it on hold
@@ -2501,12 +2306,9 @@ document.addEventListener('click',async e=>{
   if(!t||!t.proc||!apprUser.procs.includes(t.proc.dept)||!['For processing','On hold'].includes(t.proc.status)){renderAppr();return}
   let remark;
   if(o){remark=await ask('Why is '+t.no+' on hold? What is needed? (the employee sees this)');if(remark===null)return;if(!remark.trim()){alert('Please type what is needed.');return}}
-  const res=d?d.dataset.res||'':'';
-  if(res==='Valid'){remark=await ask(t.no+' is VALID. When and how will it be paid? (the employee sees this, for example "Adjustment in the Nov 21 – Dec 5 payroll, paid Dec 10")');if(remark===null)return;if(!remark.trim()){alert('Please tell the employee when or how it will be paid.');return}}
-  else if(res==='Not valid'){remark=await ask(t.no+' is NOT VALID. Reason (the employee sees this):');if(remark===null)return;if(!remark.trim()){alert('Please give the reason.');return}}
-  else if(!o){remark=await ask('Mark '+t.no+' as processed. Remark (optional, for example "Encoded in the Nov 6–20 payroll"):','');if(remark===null)return}
+  else{remark=await ask('Mark '+t.no+' as processed. Remark (optional, for example "Encoded in the Nov 6–20 payroll"):','');if(remark===null)return}
   const who=apprUser.name+(apprUser.backup?' (backup)':''),st=d?'Processed':'On hold';
-  t.proc=Object.assign({},t.proc,{status:st,by:who,at:Date.now(),remark:remark.trim(),result:res});addHist(t,(res?'Payroll: '+res.toUpperCase():st)+' by '+who+(remark.trim()?': '+remark.trim():''));
+  t.proc=Object.assign({},t.proc,{status:st,by:who,at:Date.now(),remark:remark.trim()});addHist(t,st+' by '+who+(remark.trim()?': '+remark.trim():''));
   save();renderAppr();apprTouch();
 });
 $('a-xls').onclick=()=>{const list=[...new Set([...apprPending(),...procQueue()])];if(!list.length){alert('Nothing waiting for you.');return}
@@ -2659,7 +2461,7 @@ function typeSheet(code,list){let head,rows;const base=t=>[t.no,fmtStamp(t.filed
     // one line per row of the main table (e.g. one line per manual entry / OT date / item), so it can be pasted straight into the HR files
     head=[...bh,...(rf?rf.cols.map(c=>c.label):[]),...other.map(f=>f.label),...(code==='CS'?['Counterpart agreed (own PIN)']:[]),'Cut-off','Approver','Notes',...APH,...PH,'HR Status'];rows=[];
     list.forEach(t=>{const d=t.data,lines=rf&&d[rf.k]&&d[rf.k].length?d[rf.k]:[null];
-      lines.forEach(r=>rows.push([...base(t),...(rf?rf.cols.map(c=>r?r[c.k]:''):[]),...other.map(f=>f.type==='rows'||f.type==='file'?fmtVal(f,d[f.k]):f.type==='emp'?(d[f.k]?d[f.k].name+' ('+d[f.k].id+')':''):d[f.k]),
+      lines.forEach(r=>rows.push([...base(t),...(rf?rf.cols.map(c=>r?r[c.k]:''):[]),...other.map(f=>f.type==='rows'?fmtVal(f,d[f.k]):f.type==='emp'?(d[f.k]?d[f.k].name+' ('+d[f.k].id+')':''):d[f.k]),
         ...(code==='CS'?[d.cpAgreed?fmtStamp(d.cpAgreed):'']:[]),F.cut?cutoff(r&&r.date?r.date:F.cut(d)):'',t.routeKey==='NONE'?'':apprNameOf(t),(t.warnings||[]).join('; '),...apprCols(t),...procCols(t),t.hrStatus]))})}
   return{name:FORMS[code].title,title:S.company+' – '+FORMS[code].title+(FORMS[code].formNo?' ('+FORMS[code].formNo+')':''),sub:'',head,rows:rows.map(r=>r.map(numify))}}
 function xList(){const st=$('x-st').value,ty=$('x-type').value,f=$('x-from').value,to=$('x-to').value,nw=$('x-new').checked;
@@ -2704,7 +2506,6 @@ function pinCell(arr,i,k){const r=S[arr][i],p=(PEND.get(r)||{})[k];
     (r[k]&&p!=='__CLEAR__'?`<div class="note"><span class="st own">Set</span> <a href="#" data-pc="${arr}" data-r="${i}" data-pk="${k}">remove</a></div>`:'')}
 function renderSettings(){
   $('set-jump').innerHTML='<span class="note" style="margin:0 6px 0 0;align-self:center">Jump to:</span>'+[...$('set-body').querySelectorAll('h3')].filter(h=>!h.closest('.man,details')).map((h,i)=>{h.id='sj'+i;h.style.scrollMarginTop='120px';return`<button data-sj="sj${i}">${esc(h.textContent.replace(/\s*\(.*\)$/,'').replace(/ – .*/,''))}</button>`}).join('');
-  $('s-roster').value=S.roster||DEFAULT_ROSTER;rlCheck();renderBio();
   renderPM();$('s-co').value=S.company;$('s-bk').value=S.bkDays;$('s-printer').checked=S.printer;renderAdmin();renderLv();
   const oneWord=0;
   $('emp-count').innerHTML=esc(S.employees.length+' employees in the name list'+(S.employees===DEFAULT_EMPLOYEES?' (the list built into the app).':'.'))+
@@ -2833,7 +2634,6 @@ $('set-save').onclick=()=>{
   plan.forEach(([r,k,h])=>{r[k]=h;PEND.delete(r)});
   const raised=[];FORM_ORDER.forEach(c=>{const x=S.forms[c];x.prefix=nf[c].prefix||FORMS[c].prefix;x.route=nf[c].route;x.proc=nf[c].proc||'';const want=Math.max(1,parseInt(nf[c].next)||1),min=maxNo(x.prefix)+1;
     x.next=Math.max(want,min);if(want<min)raised.push(FORMS[c].title+' to '+min)});
-  {const rv=$('s-roster').value.trim();S.roster=rv&&rv!==DEFAULT_ROSTER.trim()?rv:'';}
   S.company=$('s-co').value||S.company;S.bkDays=Math.min(60,Math.max(1,parseInt($('s-bk').value)||7));S.printer=$('s-printer').checked;applyPrinter();
   S.routes=S.routes.filter(r=>r.dept.trim());save();$('coName').textContent=S.company;renderSettings();$('man-route').innerHTML=routeTableHTML();
   msg('Saved.'+(raised.length?' Next number raised to avoid duplicate tickets: '+raised.join(', ')+'.':''));
@@ -2897,151 +2697,6 @@ $('emp-file').onchange=async ev=>{const f=ev.target.files[0];ev.target.value='';
     const sheets=await readXlsx(await f.arrayBuffer());if(!sheets.length)throw new Error('No sheets found.');
     const best=sheets.slice().sort((a,b)=>idScore(b.rows)-idScore(a.rows))[0];importRows(best.rows,best.name,sheets)}
   catch(e){alert('Could not read this file: '+e.message+'\nSave it as .xlsx (or .csv) and try again, or use copy and paste.')}};
-
-// ===================== BIOMETRIC CHECK: roster + raw biometric -> missing Time In / Time Out per employee =====================
-const RO_KEY=PFX+'.roster',BIO_KEY=PFX+'.bio',DOCC={};
-function getDoc(k){const raw=LS.getItem(k);if(!raw)return null;if(DOCC[k]&&DOCC[k].raw===raw)return DOCC[k].v;let v=null;try{v=JSON.parse(LZ.unpack(raw))}catch(e){}DOCC[k]={raw,v};return v}
-function putDoc(k,v){LS.setItem(k,LZ.pack(JSON.stringify(v)))}
-const NOPUNCH=new Set(['RDOA','RDONA','VL','SL','UPL','AB','OB','RESIGNED','ML','PL','SPL','BL','EL','HOL','LWOP','AWOL','LOA']);
-const isoD=d=>d.getUTCFullYear()+'-'+pad(d.getUTCMonth()+1,2)+'-'+pad(d.getUTCDate(),2);
-const isoAdd=(iso,n)=>isoD(new Date(Date.parse(iso+'T00:00:00Z')+n*864e5));
-const dayNo=iso=>Math.round(Date.parse(iso+'T00:00:00Z')/864e5);
-const serialIso=v=>{const n=parseFloat(v);return /^\d+(\.\d+)?$/.test(String(v).trim())&&n>30000&&n<80000?isoD(new Date(Math.round((n-25569)*864e5))):''};
-const fmtMin=m=>{m=((m%1440)+1440)%1440;const h=Math.floor(m/60),mi=m%60;return((h+11)%12+1)+':'+pad(mi,2)+(h<12?' AM':' PM')};
-// --- roster file: one row per employee, one column per date (any sheet, any month) ---
-function parseRoster(sheets){const out={};
-  sheets.forEach(sh=>{const rows=sh.rows;let hr=-1,idc=-1;
-    for(let r=0;r<Math.min(rows.length,12)&&hr<0;r++)(rows[r]||[]).forEach((c,i)=>{if(hr<0&&/^(employee\s*id|emp\.?\s*id|employee\s*code|id\s*(no\.?|number)?)$/i.test(String(c).trim())){hr=r;idc=i}});
-    if(hr<0)return;
-    const find=re=>{for(let r=hr;r<=hr+2;r++){const row=rows[r]||[];for(let i=0;i<row.length;i++)if(re.test(String(row[i]).trim()))return i}return-1};
-    const nc=find(/^(name|employee\s*name|full\s*name)$/i),pc=find(/^position$/i),lc=find(/^(location|work\s*location|department|dept\.?)$/i),last=Math.max(idc,nc,pc,lc);
-    const dcols=[];for(let r=hr;r<=hr+1;r++)(rows[r]||[]).forEach((c,i)=>{const iso=serialIso(c);if(iso&&i>last)dcols.push([i,iso])});
-    if(!dcols.length)return;
-    for(let r=hr+1;r<rows.length;r++){const row=rows[r]||[],id=String(row[idc]||'').trim().toUpperCase();if(!/^[A-Z]*\d{3,}$/.test(id))continue;
-      const rec=out[id]=out[id]||{n:'',p:'',l:'',c:{}};if(nc>=0&&row[nc])rec.n=String(row[nc]).trim();if(pc>=0&&row[pc])rec.p=String(row[pc]).trim();if(lc>=0&&row[lc])rec.l=String(row[lc]).trim();
-      dcols.forEach(([i,iso])=>{const v=String(row[i]||'').trim().toUpperCase();if(v&&!rec.c[iso])rec.c[iso]=v})}});
-  return out}
-function mergeRoster(up){const R=getDoc(RO_KEY)||{e:{},m:{}};const months=new Set();let emps=0;const codes=new Set();
-  Object.entries(up).forEach(([id,rec])=>{const byM={};Object.entries(rec.c).forEach(([iso,v])=>{codes.add(v);(byM[iso.slice(0,7)]=byM[iso.slice(0,7)]||{})[+iso.slice(8)]=v});
-    if(!Object.keys(byM).length)return;emps++;R.e[id]={n:rec.n,p:rec.p,l:rec.l};
-    Object.entries(byM).forEach(([m,days])=>{months.add(m);const a=[];for(let d=1;d<=31;d++)a.push(days[d]||'');while(a.length&&!a[a.length-1])a.pop();(R.m[m]=R.m[m]||{})[id]=a.join(',')})});
-  const keep=Object.keys(R.m).sort().slice(-4);Object.keys(R.m).forEach(m=>{if(!keep.includes(m))delete R.m[m]});
-  return{R,emps,months:[...months].sort(),codes}}
-function rosterCode(id,iso){const R=getDoc(RO_KEY),m=R&&R.m&&R.m[iso.slice(0,7)],s=m&&m[id];return s?(s.split(',')[+iso.slice(8)-1]||''):''}
-// --- biometric file: Date/Time + ID Number (+ Name, Status) ---
-function parseStamp(v){v=String(v).trim();
-  if(/^\d+(\.\d+)?$/.test(v)){const n=parseFloat(v);if(!(n>30000&&n<80000))return null;const ms=Math.round((n-25569)*864e5/6e4)*6e4,d=new Date(ms),dd=d.getUTCDate(),mm=d.getUTCMonth()+1;
-    return{ms,amb:dd<=12&&dd!==mm,alt:dd<=12&&dd!==mm?Date.UTC(d.getUTCFullYear(),dd-1,mm,d.getUTCHours(),d.getUTCMinutes()):null}}
-  let m=/^(\d{4})-(\d{1,2})-(\d{1,2})[ T](\d{1,2}):(\d{2})/.exec(v);if(m)return{ms:Date.UTC(+m[1],m[2]-1,+m[3],+m[4],+m[5])};
-  m=/^(\d{1,2})[\/.-](\d{1,2})[\/.-](\d{2,4})\s+(\d{1,2}):(\d{2})(?::\d{2})?\s*([AP]\.?\s*M\.?)?/i.exec(v);if(!m)return null;
-  let a=+m[1],b=+m[2],y=+m[3],h=+m[4];if(y<100)y+=2000;const ap=(m[6]||'').toUpperCase().replace(/[.\s]/g,'');if(ap==='PM'&&h<12)h+=12;if(ap==='AM'&&h===12)h=0;
-  const mo=a>12&&b<=12?b:a,da=a>12&&b<=12?a:b;return{ms:Date.UTC(y,mo-1,da,h,+m[5])}}
-function parseBio(rows){let hr=-1,dc=-1,ic=-1,nc=-1;
-  for(let r=0;r<Math.min(rows.length,15)&&hr<0;r++){const row=(rows[r]||[]).map(c=>String(c).trim().toLowerCase()),d=row.findIndex(c=>/^(date\s*\/\s*time|date\s*time|datetime|time)$/.test(c));if(d<0)continue;
-    hr=r;dc=d;ic=row.findIndex(c=>/^(id\s*number|employee\s*id|employee\s*code|emp\.?\s*id|user\s*id)$/.test(c));if(ic<0)ic=row.findIndex(c=>/^(no\.?|ac-?no\.?|enroll\s*no\.?|id)$/.test(c));nc=row.findIndex(c=>/^(name|employee\s*name)$/.test(c))}
-  if(hr<0)throw new Error('No "Date/Time" column was found. Upload the raw biometric export (with the Date/Time and ID Number columns).');
-  if(ic<0)throw new Error('No "ID Number" column was found in the biometric file.');
-  const P=[];let bad=0;
-  for(let r=hr+1;r<rows.length;r++){const row=rows[r]||[],id=String(row[ic]||'').trim().toUpperCase(),v=String(row[dc]??'').trim();if(!id||!v)continue;const t=parseStamp(v);if(!t){bad++;continue}P.push(Object.assign({id,name:nc>=0?String(row[nc]||'').trim():''},t))}
-  // Excel sometimes turns 11/5/2026 into May 11, 2026: put such dates back next to the others
-  const sure=P.filter(p=>!p.amb).map(p=>p.ms).sort((a,b)=>a-b),mid=sure.length?sure[Math.floor(sure.length/2)]:null;let fixed=0;
-  if(mid!==null)P.forEach(p=>{if(p.amb&&p.alt!=null&&Math.abs(p.alt-mid)<Math.abs(p.ms-mid)){p.ms=p.alt;fixed++}});
-  return{P,bad,fixed}}
-function mergeBio(P){const B=getDoc(BIO_KEY)||{p:{},n:{}};let lo=Infinity,hi=-Infinity;P.forEach(p=>{lo=Math.min(lo,p.ms);hi=Math.max(hi,p.ms)});
-  const from=isoD(new Date(lo)),to=isoD(new Date(hi)),ids=new Set();
-  Object.values(B.p).forEach(days=>Object.keys(days).forEach(iso=>{if(iso>=from&&iso<=to)delete days[iso]}));   // a new file replaces the dates it covers
-  P.sort((a,b)=>a.ms-b.ms).forEach(p=>{const iso=isoD(new Date(p.ms)),min=Math.round((p.ms-Date.parse(iso+'T00:00:00Z'))/6e4),d=(B.p[p.id]=B.p[p.id]||{}),a=(d[iso]=d[iso]||[]);
-    ids.add(p.id);if(p.name)B.n[p.id]=p.name;if(a.length&&min-a[a.length-1]<5)return;a.push(min)});   // punches within 5 minutes count once
-  let all=[];Object.values(B.p).forEach(days=>all=all.concat(Object.keys(days)));all.sort();
-  const oldest=isoAdd(all[all.length-1]||to,-45);
-  Object.keys(B.p).forEach(id=>{Object.keys(B.p[id]).forEach(iso=>{if(iso<oldest)delete B.p[id][iso]});if(!Object.keys(B.p[id]).length)delete B.p[id]});
-  all=all.filter(x=>x>=oldest);let last=0;Object.values(B.p).forEach(days=>Object.entries(days).forEach(([iso,a])=>{a.forEach(m=>{const x=dayNo(iso)*1440+m;if(x>last)last=x})}));
-  B.from=all[0];B.to=all[all.length-1];B.last=last;return{B,from,to,ids:ids.size}}
-// --- shift times for one employee, from the Roster Legend (Administrator -> Shift codes and times) ---
-function rosterInfo(id){const R=getDoc(RO_KEY),e=(R&&R.e&&R.e[id])||{},h=empById(id)||{};return{name:e.n||h.name||(((getDoc(BIO_KEY)||{}).n||{})[id])||id,pos:[e.p,h.position].filter(Boolean),dep:[e.l,h.dept,e.p,h.position].filter(Boolean)}}
-function codeTime(id,code){const rows=roster().times.filter(r=>r.code===code);if(!rows.length)return null;const info=rosterInfo(id),N=rlN;
-  const word=(a,t)=>{a=N(a);return N(t).split(' ').some(w=>w===a||(a.length>=2&&w.startsWith(a))||(a.length>=3&&w.endsWith(a)))};
-  const r=rows.find(r=>r.pos.length&&r.pos.some(x=>info.pos.some(p=>N(p)===N(x))))||rows.find(r=>!r.pos.length&&info.dep.some(t=>word(r.dept,t)));
-  return r?{time:r.time,assumed:false}:{time:rows[0].time,assumed:true}}
-function parseSpans(t){const out=[],re=/(\d{1,2})(?::(\d{2}))?\s*(AM|PM|NN|MN)?\s*[–—-]\s*(\d{1,2})(?::(\d{2}))?\s*(AM|PM|NN|MN)?/gi;let m;
-  const mins=(h,mi,ap)=>{h=+h;mi=+(mi||0);ap=(ap||'').toUpperCase();if(ap==='PM'&&h<12)h+=12;if(ap==='AM'&&h===12)h=0;if(ap==='NN')h=12;if(ap==='MN')h=0;return h*60+mi};
-  while((m=re.exec(t))){const s=mins(m[1],m[2],m[3]||m[6]);let e=mins(m[4],m[5],m[6]);if(e<=s)e+=1440;out.push([s,e])}return out}
-const isHMUA=id=>rosterInfo(id).pos.some(p=>/hmua|make\s*-?\s*up/i.test(p));
-// the missing logs of one employee, within the dates of the uploaded biometric file
-const phAbs=ms=>{const d=new Date(ms+(480+new Date(ms).getTimezoneOffset())*6e4);return dayNo(d.getFullYear()+'-'+pad(d.getMonth()+1,2)+'-'+pad(d.getDate(),2))*1440+d.getHours()*60+d.getMinutes()};
-const bioSilent=id=>{const B=getDoc(BIO_KEY),d=B&&B.p&&B.p[id];return!d||!Object.keys(d).some(iso=>iso>=B.from&&iso<=B.to)};
-// an employee with no punch at all in the file is an export or enrollment problem for HR, not a list of missed punches for the employee
-function bioFlags(id,unknown,evenSilent){const B=getDoc(BIO_KEY);if(!B||!B.from)return[];if(!evenSilent&&bioSilent(id))return[];const L=roster(),days=(B.p&&B.p[id])||{},abs=(iso,m)=>dayNo(iso)*1440+m,cut=Math.max(B.last||0,B.at?phAbs(B.at)-60:0);
-  const exp=[];
-  for(let iso=isoAdd(B.from,-1);iso<=B.to;iso=isoAdd(iso,1)){const code=rosterCode(id,iso);if(!code)continue;
-    const cat=(L.codes[code]||{}).cat||'';if(NOPUNCH.has(code)||/rest|leave|absen|no punch/i.test(cat))continue;
-    const ct=codeTime(id,code);if(!ct&&!L.codes[code]){if(unknown&&iso>=B.from)unknown.add(code);continue}
-    const sp=ct&&ct.time?parseSpans(ct.time):[];exp.push({iso,code,time:sp.length?ct.time:'',spans:sp.length?sp:null,ctx:iso<B.from})}
-  const P=[];Object.entries(days).forEach(([iso,a])=>a.forEach(m=>P.push(abs(iso,m))));
-  const iv=[];exp.forEach((x,xi)=>{if(x.spans)x.spans.forEach((sp,bi)=>iv.push({xi,bi,S:abs(x.iso,sp[0]),E:abs(x.iso,sp[1]),got:[]}))});
-  P.forEach(p=>{let best=null,bd=1e9,bt=1e9;iv.forEach(v=>{const d=p<v.S?v.S-p:p>v.E?p-v.E:0,t=Math.min(Math.abs(p-v.S),Math.abs(p-v.E));if(d<bd||(d===bd&&t<bt)){best=v;bd=d;bt=t}});if(best&&bd<=300)best.got.push(p)});
-  const out=[];
-  exp.forEach((x,xi)=>{if(x.ctx)return;
-    if(x.spans){const vs=iv.filter(v=>v.xi===xi);if(Math.max(...vs.map(v=>v.E))+60>cut)return;   // shift not over yet when the file was uploaded
-      const parts=[];let any=false;vs.forEach(v=>{const M=(v.S+v.E)/2,i=v.got.some(p=>p<M),o=v.got.some(p=>p>=M);if(v.got.length)any=true;const miss=[!i&&'Time In',!o&&'Time Out'].filter(Boolean);if(miss.length)parts.push({b:vs.length>1?v.bi+1:0,miss})});
-      if(parts.length)out.push({id,iso:x.iso,code:x.code,time:x.time,none:!any,parts,have:vs.flatMap(v=>v.got).sort((a,b)=>a-b).map(fmtMin)})}
-    else{if(abs(x.iso,1440)+60>cut)return;const need=isHMUA(id)?6:2,got=(days[x.iso]||[]);if(got.length<need)out.push({id,iso:x.iso,code:x.code,time:'',none:!got.length,count:[got.length,need],have:got.map(fmtMin)})}});
-  return out}
-function flagText(f){if(f.none)return'No Time In and no Time Out';if(f.count)return'Only '+f.count[0]+' of '+f.count[1]+' punches';
-  return f.parts.map(x=>(x.b?'Block '+x.b+': ':'')+'no '+x.miss.join(' and no ')).join(' · ')}
-const flagType=f=>!f.none&&!f.count&&f.parts.length===1&&!f.parts[0].b&&f.parts[0].miss.length===1?(f.parts[0].miss[0]==='Time In'?'In':'Out'):'Both';
-function meDue(iso){let d=iso,n=0;while(n<3){d=isoAdd(d,1);const w=new Date(d+'T00:00:00Z').getUTCDay();if(w!==0&&w!==6)n++}return d}
-function meFiled(id,iso){return S.tickets.find(t=>t.code==='ME'&&t.emp&&String(t.emp.id).toUpperCase()===id&&!['Cancelled','Rejected','Declined'].includes(t.approval&&t.approval.status)&&((t.data&&t.data.rows)||[]).some(r=>r.date===iso))}
-function bioIds(){const R=getDoc(RO_KEY),ids=new Set();if(R&&R.m)Object.values(R.m).forEach(m=>Object.keys(m).forEach(id=>ids.add(id)));return[...ids]}
-// --- employee: a notice at login, with a button that opens the Manual Time In / Out form already filled in ---
-function bioNotice(){if(!USER)return'';const B=getDoc(BIO_KEY);if(!B||!B.from)return'';const id=String(USER.id).toUpperCase();
-  const fl=bioFlags(id).filter(f=>f.iso>=isoAdd(todayIso(),-40));if(!fl.length)return'';
-  const items=fl.map(f=>{const tk=meFiled(id,f.iso),due=meDue(f.iso),late=todayIso()>due;
-    return`<li><b>${esc(fmtDS(f.iso))}</b> <span class="note" style="display:inline">(${esc(f.code)}${f.time?' · '+esc(f.time):''})</span>: ${f.have.length?'recorded '+esc(f.have.join(', '))+', ':''}<b>${esc(flagText(f))}</b>.
-      ${tk?`<span class="st Approved">✓ Filed ${esc(tk.no)} – ${esc(stLabel(tk.approval.status))}</span>`:`${late?'<span class="st Rejected">Late: file now; it is credited in the next payroll</span>':'File by <b>'+esc(fmtDS(due))+'</b>.'} <button class="btn small" data-mefile="${f.iso}|${flagType(f)}">File Manual Time In / Out</button>`}</li>`}).join('');
-  const open=fl.filter(f=>!meFiled(id,f.iso)).length;
-  return`<div class="alert ${open?'warn':'info'}"><div class="grow"><b>⏱ ${open?'Missing biometric logs: '+open+' day'+(open>1?'s':'')+' to file':'Missing biometric logs: all filed'}</b> <span class="note" style="display:inline">(checked against your roster, biometric up to ${esc(fmtDS(B.to))})</span><ul class="bio-ul">${items}</ul></div></div>`}
-document.addEventListener('click',e=>{const b=e.target.closest('[data-mefile]');if(!b)return;e.preventDefault();const[iso,et]=b.dataset.mefile.split('|');
-  needLogin(()=>{openForm('ME');setTimeout(()=>{const c=document.querySelector('#fx-cause input[value="Missed punch"]');if(c)c.checked=true;
-    const tb=$('fx-rows'),tr=tb&&tb.querySelector('tr');if(tr){const d=tr.querySelector('[data-col=date]'),t=tr.querySelector('[data-col=et]');if(d)d.value=iso;if(t)t.value=et}
-    try{refreshForm()}catch(x){}const f=tr&&tr.querySelector(et==='Out'?'[data-col=out]':'[data-col=in]');if(f)f.focus()},60)})});
-// --- Administrator: uploads and the list of everyone's missing logs ---
-async function readTable(f){if(/\.csv$/i.test(f.name)){const raw=await f.arrayBuffer();let t=new TextDecoder('utf-8').decode(raw);if(t.includes('�'))t=new TextDecoder('windows-1252').decode(raw);if(t.charCodeAt(0)===0xFEFF)t=t.slice(1);return[{name:f.name,rows:splitRows(t)}]}
-  if(/\.xls$/i.test(f.name))throw new Error('This is an old .xls file. Open it in Excel, choose File → Save As → Excel Workbook (.xlsx), then upload the .xlsx file.');return await readXlsx(await f.arrayBuffer())}
-function bioAll(){const unknown=new Set(),all=[],silent=[];bioIds().forEach(id=>{if(bioSilent(id)){if(bioFlags(id,unknown,true).length)silent.push(id);return}bioFlags(id,unknown).forEach(f=>all.push(f))});all.sort((a,b)=>a.iso<b.iso?1:a.iso>b.iso?-1:rosterInfo(a.id).name.localeCompare(rosterInfo(b.id).name));return{all,unknown,silent}}
-function renderBio(){const st=$('bio-status');if(!st)return;const R=getDoc(RO_KEY),B=getDoc(BIO_KEY);
-  const rm=R&&R.m?Object.keys(R.m).sort().map(m=>new Date(m+'-01T00:00:00').toLocaleDateString('en-US',{month:'short',year:'numeric'})):[];
-  st.innerHTML=`<b>Roster:</b> ${R&&R.at?esc(bioIds().length+' employees · '+rm.join(', ')+' · uploaded '+fmtStamp(R.at)+(R.by?' by '+R.by:'')+(R.file?' ('+R.file+')':'')):'not uploaded yet'}<br>
-    <b>Biometric:</b> ${B&&B.from?esc(fmtDS(B.from)+' – '+fmtDS(B.to)+' · last punch '+fmtDS(isoAdd('1970-01-01',Math.floor(B.last/1440)))+' '+fmtMin(B.last%1440)+' · uploaded '+fmtStamp(B.at)+(B.by?' by '+B.by:'')+(B.file?' ('+B.file+')':'')):'not uploaded yet'}`;
-  const box=$('bio-list');if(!R||!B||!B.from){box.innerHTML='<p class="note">Upload both files to see the missing logs.</p>';return}
-  const{all,unknown,silent}=bioAll(),q=($('bio-q').value||'').trim().toLowerCase(),showAll=$('bio-show').value==='all';
-  const noRoster=Object.keys(B.p||{}).filter(id=>!bioIds().includes(id));
-  const list=all.map(f=>({f,tk:meFiled(f.id,f.iso)})).filter(x=>(showAll||!x.tk)&&(!q||(x.f.id+' '+rosterInfo(x.f.id).name).toLowerCase().includes(q)));
-  const open=all.filter(f=>!meFiled(f.id,f.iso)).length;
-  box.innerHTML=`<div class="note" style="margin:0 0 6px"><b>${all.length}</b> missing log${all.length===1?'':'s'} found · <b>${open}</b> not filed yet · <b>${all.length-open}</b> filed.${unknown.size?' Codes not checked (not in the Roster Legend): <b>'+esc([...unknown].join(', '))+'</b>.':''}${noRoster.length?' '+noRoster.length+' ID(s) in the biometric are not in the roster: '+esc(noRoster.slice(0,8).join(', '))+(noRoster.length>8?'…':'')+'.':''}</div>`+(silent.length?`<div class="alert warn" style="margin:0 0 8px"><div class="grow"><b>${silent.length} scheduled employee${silent.length>1?'s have':' has'} no punch at all in this biometric file</b> (not shown to them). Check that the export includes everyone, or the ID on the device: <span class="note" style="display:inline">${esc(silent.slice(0,12).map(id=>rosterInfo(id).name+' ('+id+')').join(', '))}${silent.length>12?'…':''}</span></div></div>`:'')+
-    (list.length?`<div class="scroll" style="max-height:420px"><table><thead><tr><th>Date</th><th>Employee</th><th>Roster</th><th>Recorded</th><th>Missing</th><th>Manual entry</th></tr></thead><tbody>${list.map(({f,tk})=>`<tr><td>${esc(fmtDS(f.iso))}</td><td><b>${esc(rosterInfo(f.id).name)}</b><br><span class="note" style="display:inline">${esc(f.id)}</span></td><td>${esc(f.code)}${f.time?'<br><span class="note" style="display:inline">'+esc(f.time)+'</span>':''}</td><td>${esc(f.have.join(', ')||'–')}</td><td><b>${esc(flagText(f))}</b></td><td>${tk?`<span class="st Approved">${esc(tk.no)}</span> ${esc(stLabel(tk.approval.status))}`:todayIso()>meDue(f.iso)?'<span class="st Rejected">Not filed – late</span>':'Not filed · due '+esc(fmtDS(meDue(f.iso)))}</td></tr>`).join('')}</tbody></table></div>`:'<p class="note">Nothing to show.</p>')}
-$('ro-pick').onclick=()=>$('ro-file').click();$('bio-pick').onclick=()=>$('bio-file').click();
-$('bio-show').onchange=renderBio;$('bio-q').oninput=renderBio;
-const adminName=()=>(S.admin&&S.admin.name)||'Administrator';
-$('ro-file').onchange=async ev=>{const f=ev.target.files[0];ev.target.value='';if(!f)return;
-  try{const up=parseRoster(await readTable(f)),n=Object.keys(up).filter(id=>Object.keys(up[id].c).length).length;
-    if(!n)throw new Error('No employee rows were found. The roster needs an "EMPLOYEE ID" column and one column per date.');
-    const{R,emps,months,codes}=mergeRoster(up),L=roster(),unk=[...codes].filter(c=>!L.codes[c]&&!NOPUNCH.has(c)&&!L.times.some(t=>t.code===c));
-    const mn=months.map(m=>new Date(m+'-01T00:00:00').toLocaleDateString('en-US',{month:'long',year:'numeric'}));
-    if(!await sure('Roster read: '+emps+' employees, '+mn.join(' and ')+'.\nThe roster of these employees for these months will be replaced by this file.'+(unk.length?'\n\nCodes not in the Roster Legend (not checked): '+unk.join(', '):''),'Upload roster'))return;
-    R.at=Date.now();R.by=adminName();R.file=f.name;putDoc(RO_KEY,R);renderBio()}
-  catch(e){alert('Could not read the roster: '+e.message)}};
-$('bio-file').onchange=async ev=>{const f=ev.target.files[0];ev.target.value='';if(!f)return;
-  try{const sheets=await readTable(f);let res=null,err=null;for(const sh of sheets){try{res=parseBio(sh.rows);if(res.P.length)break}catch(e){err=e}}
-    if(!res||!res.P.length)throw err||new Error('No punches were found in this file.');
-    const{B,from,to,ids}=mergeBio(res.P);
-    if(!await sure('Biometric read: '+res.P.length.toLocaleString()+' punches of '+ids+' employees, '+fmtDS(from)+' – '+fmtDS(to)+'.'+(res.fixed?'\n'+res.fixed.toLocaleString()+' dates that Excel had turned around (day and month) were corrected.':'')+(res.bad?'\n'+res.bad+' rows had no readable date and were skipped.':'')+'\n\nPunches already saved for these dates will be replaced.','Upload biometric'))return;
-    B.at=Date.now();B.by=adminName();B.file=f.name;putDoc(BIO_KEY,B);renderBio()}
-  catch(e){alert('Could not read the biometric file: '+e.message)}};
-$('bio-xls').onclick=()=>{const B=getDoc(BIO_KEY);if(!B||!B.from||!getDoc(RO_KEY)){alert('Upload the roster and the biometric file first.');return}const{all}=bioAll();if(!all.length){alert('No missing logs found.');return}
-  downloadBlob('Missing_Biometric_Logs_'+todayIso()+'.xlsx',XLSX.book([{name:'Missing logs',title:S.company+' – Missing biometric logs',sub:'Biometric '+fmtDS(B.from)+' – '+fmtDS(B.to)+' · checked against the roster · downloaded '+fmtStamp(Date.now()),
-    head:['Date','Emp ID','Employee','Position','Roster code','Shift time','Recorded punches','Missing','Manual entry','Status','Due'],
-    rows:all.map(f=>{const tk=meFiled(f.id,f.iso),i=rosterInfo(f.id);return[f.iso,f.id,i.name,i.pos[0]||'',f.code,f.time,f.have.join(', '),flagText(f),tk?tk.no:'Not filed',tk?stLabel(tk.approval.status):'',meDue(f.iso)]})}]))};
 function buildEmps(body,m){const v=(r,k)=>m[k]>=0?String(r[m[k]]||'').trim():'';const seen=new Set();
   const nm=r=>{const l=v(r,'name'),f=v(r,'first'),mid=v(r,'middle');return f?(l+', '+f+(mid?' '+mid:'')).replace(/\s+/g,' ').trim():l};
   return body.map(r=>({id:v(r,'id').toUpperCase(),name:nm(r),position:v(r,'position'),dept:v(r,'dept'),hiring:v(r,'hiring')})).filter(e=>/^[A-Z]*\d+$/.test(e.id)&&e.name&&!seen.has(e.id)&&seen.add(e.id))}
@@ -3152,28 +2807,11 @@ async function postsBoot(){ASSETS=ONLINE?'drive':'local';if(!ONLINE)POSTS=postsL
 const sortPosts=l=>l.slice().sort((a,b)=>(b.pinned?1:0)-(a.pinned?1:0)||String(b.date).localeCompare(String(a.date))||(b.at||0)-(a.at||0));
 const isNew=p=>Date.now()-(p.at||0)<7*864e5;
 const fsize=n=>n>1048576?(n/1048576).toFixed(1)+' MB':Math.max(1,Math.round(n/1024))+' KB';
+const thumbUrl=(f,w)=>!f?'':f.gid?'https://drive.google.com/thumbnail?id='+encodeURIComponent(f.gid)+'&sz=w'+(w||1000):(/^image\//.test(f.type)?f.data||'':'');
 const fileUrl=f=>f?(f.gid?'https://drive.google.com/file/d/'+encodeURIComponent(f.gid)+'/view':f.data||''):'';
-const BLOBS={};
-async function fileBlob(f){const k=f.gid||f.id||f.name;if(BLOBS[k])return BLOBS[k];
-  let bl;if(f.data&&/^data:/.test(f.data)){bl=await (await fetch(f.data)).blob()}
-  else if(f.gid){const r=await gs('fileData',f.gid);const bin=atob(r.b64),u8=new Uint8Array(bin.length);for(let i=0;i<bin.length;i++)u8[i]=bin.charCodeAt(i);bl=new Blob([u8],{type:r.type||f.type})}
-  else{const r=await fetch(fileUrl(f),{credentials:'include'});if(!r.ok)throw new Error('HTTP '+r.status);bl=await r.blob()}
-  if(f.type&&bl.type!==f.type)bl=new Blob([bl],{type:f.type});
-  return BLOBS[k]={blob:bl,url:URL.createObjectURL(bl)}}
-let PDFJS=null;
-function loadScript(src){return new Promise((ok,no)=>{const sc=document.createElement('script');sc.src=src;sc.onload=ok;sc.onerror=()=>no(new Error('load '+src));document.head.appendChild(sc)})}
-async function pdfLib(){if(PDFJS)return PDFJS;const b='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/';
-  await loadScript(b+'pdf.worker.min.js');await loadScript(b+'pdf.min.js');
-  const L=window.pdfjsLib;if(!L)throw new Error('pdf.js missing');L.GlobalWorkerOptions.workerSrc=b+'pdf.worker.min.js';return PDFJS=L}
-async function renderPdf(blob,box){const L=await pdfLib();const doc=await L.getDocument({data:new Uint8Array(await blob.arrayBuffer())}).promise;
-  box.innerHTML='';const w=Math.max(320,box.clientWidth-20),dpr=Math.min(2,window.devicePixelRatio||1);
-  for(let i=1;i<=doc.numPages;i++){if(!box.isConnected)return;const pg=await doc.getPage(i),v1=pg.getViewport({scale:1}),vp=pg.getViewport({scale:w/v1.width*dpr});
-    const c=document.createElement('canvas');c.width=vp.width;c.height=vp.height;box.appendChild(c);
-    if(doc.numPages>1){const t=document.createElement('div');t.className='pg';t.textContent='Page '+i+' of '+doc.numPages;box.appendChild(t)}
-    await pg.render({canvasContext:c.getContext('2d'),viewport:vp}).promise}}
 function postCard(p,feat){const ex=String(p.body||'').replace(/\s+/g,' ').trim();
   return`<button type="button" class="post c-${esc(p.cat)}${feat?' feat':''}" data-post="${esc(p.id)}"><div class="pt"><span class="cat">${esc(CATS[p.cat]||'Post')}</span>${isNew(p)?'<span class="new">NEW</span>':''}${p.pinned?'<span class="pin">📌 Pinned</span>':''}<span class="dt">${esc(fmtDate(p.date))}</span></div>
-    <h3>${esc(p.title)}</h3>${p.ref?`<div class="ref">${esc(p.ref)}</div>`:''}${ex?`<p class="ex">${esc(ex)}</p>`:''}${p.file?`<div class="att">${/pdf/.test(p.file.type)?'📄':'🖼️'} ${esc(p.file.name)} · ${esc(fsize(p.file.size||0))}</div>`:''}</button>`}
+    <h3>${esc(p.title)}</h3>${p.ref?`<div class="ref">${esc(p.ref)}</div>`:''}${ex?`<p class="ex">${esc(ex)}</p>`:''}${thumbUrl(p.file)?`<img class="thumb" loading="lazy" src="${esc(thumbUrl(p.file,feat?1600:900))}" alt="${esc(p.title)}" onerror="this.remove()">`:''}${p.file?`<div class="att">${/pdf/.test(p.file.type)?'📄':'🖼️'} ${esc(p.file.name)} · ${esc(fsize(p.file.size||0))}</div>`:''}</button>`}
 function renderBoard(){const b=$('bb-list');if(!b)return;const q=$('bb-q').value,all=sortPosts(POSTS);
   const cnt=c=>all.filter(p=>!c||p.cat===c).length;
   $('bb-chips').innerHTML=[['','All'],['ann','Announcements'],['adv','HR Advisories'],['memo','Memos']].map(([k,l])=>`<button data-bbc="${k}" class="${BB_CAT===k?'on':''}">${l}<span>${cnt(k)}</span></button>`).join('');
@@ -3194,10 +2832,10 @@ document.addEventListener('click',e=>{const c=e.target.closest('[data-bbc]');if(
   if(e.target.id==='bb-more'){BB_ALL=true;renderBoard();return}
   if(e.target.closest('[data-bbgo]')){show('home');setTimeout(()=>$('board').scrollIntoView({behavior:'smooth'}),60);return}
   const pc=e.target.closest('[data-post]');if(pc)openPost(pc.dataset.post)});
-function openPost(id){const p=POSTS.find(x=>x.id===id);if(!p)return;const f=p.file,img=f&&/^image\//.test(f.type);
+function openPost(id){const p=POSTS.find(x=>x.id===id);if(!p)return;const f=p.file,u=fileUrl(f);
   $('pd-h').textContent=(CATS[p.cat]||'Post')+(p.ref?' · '+p.ref:'');
   $('pd-b').innerHTML=`<h2 style="margin:0;color:var(--navy);font-size:21px">${esc(p.title)}</h2><div class="note" style="margin:4px 0 0">${esc(fmtDate(p.date))}${p.by?' · posted by '+esc(p.by):''}</div>`+
-    (p.body?`<div class="pb">${esc(p.body)}</div>`:'')+(f?(/^image\//.test(f.type)?`<img class="pv" src="${esc(f.gid?'https://drive.google.com/thumbnail?id='+encodeURIComponent(f.gid)+'&sz=w1600':u)}" alt="${esc(f.name)}">`:`<div class="box" style="margin-top:10px">📄 <b>${esc(f.name)}</b> · ${esc(fsize(f.size||0))}</div>`):'');
+    (p.body?`<div class="pb">${esc(p.body)}</div>`:'')+(f?(/^image\//.test(f.type)?`<img class="pv" src="${esc(f.gid?thumbUrl(f,1600):u)}" alt="${esc(f.name)}">`:f.gid&&/pdf/.test(f.type)?`<iframe class="pv" src="https://drive.google.com/file/d/${encodeURIComponent(f.gid)}/preview" title="${esc(f.name)}" allow="autoplay"></iframe>`:`<div class="box" style="margin-top:10px">📄 <b>${esc(f.name)}</b> · ${esc(fsize(f.size||0))}</div>`):'');
   $('pd-acts').innerHTML=f?(f.gid?`<a class="btn sec" href="${esc(u)}" target="_blank" rel="noopener">Open document</a><a class="btn sec" id="pd-dl" href="https://drive.google.com/uc?export=download&id=${encodeURIComponent(f.gid)}" target="_blank" rel="noopener">Download</a>`:`<a class="btn sec" href="${esc(u)}" target="_blank" rel="noopener">Open document</a><button class="btn sec" id="pd-dl">Download</button>`):'';
   if(f&&!f.gid)$('pd-dl').onclick=async()=>{try{const bl=await (await fetch(u)).blob();downloadBlob(f.name,bl)}catch(e){say('The document could not be downloaded here. Use "Open document".')}};
   $('pd-x').onclick=()=>$('post-dlg').close();$('post-dlg').showModal()}
